@@ -34,9 +34,17 @@ CP1 is mandatory. Before any Phase 2 work, report the selected topologies (names
 4. Implement Phase 1 in reproducible scripts/config; test conversion and GNPy runs; save learning notes and a data/provenance record. Update this handoff with exact progress as work proceeds.
 5. Commit and push each durable checkpoint to the private GitHub repo. Stop at CP1 for the owner's approval; do not begin Phase 2 before the explicit `go`.
 
+## Active topology-source research workflow
+
+- Workflow job: `0da7f1f53084` (addon job), launched 2026-11-23. Purpose: discover and independently verify 10 Internet Topology Zoo and 3 SNDlib candidates. Research only; no files or datasets were downloaded by the workflow.
+- Budget: 15 estimated/requested agent calls, effective limit 17. Planned stages are one discovery agent, one verifier per each of the 13 candidates, then one synthesis agent.
+- Last observed status (2026-11-23 18:14 local): running; 14 agents spawned, 4 completed, 1 running (`0da7f1f53084_a4`), and 9 queued. The workflow result had not yet been delivered.
+- If continuing in this same task, use the existing job and wait for its result; do not start a duplicate workflow. After completion, save the structured evidence and recommended candidate set in a project report, then verify licenses and coordinate completeness before any download.
+- If the job is inaccessible from a new task, inspect the job list/history first. If no retained result is available, restart the source review and record that it is a rerun. Do not treat queued or incomplete research as verified.
+
 ## Phase 1 progress at this checkpoint
 
 - No Phase 1 topologies have been downloaded or converted.
 - No Phase 1 parser, converter, or generation scripts exist yet.
-- Topology-source research and license checks are the immediate next task.
+- Topology-source research is in progress in job `0da7f1f53084`; no candidate selection has been accepted and no source files have been downloaded.
 - Do not claim the Phase 1 deliverables or CP1 are complete until actual files and simulator runs exist.
