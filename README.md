@@ -2,7 +2,7 @@
 
 An open-data and simulation-based project for optical Quality of Transmission (QoT) estimation. The planned platform will compare machine-learning estimates of GSNR/OSNR with GNPy simulations and visualize lightpath feasibility. No operator network data or measured QoT data is included.
 
-**Status:** Phase 0 repository scaffold and environment verified on Ubuntu 24.04 ARM64 with CPython 3.12.3. No topology dataset, trained model, measured result, or finished application is claimed yet.
+**Status:** Phase 1 topology discovery and conversion are underway. Phase 0 was verified on Ubuntu 24.04 ARM64 with CPython 3.12.3. No topology has been converted yet, and no trained model, measured result, or finished application is claimed. See [`docs/CONTINUATION.md`](docs/CONTINUATION.md) for the exact handoff state.
 
 ## Environment
 
