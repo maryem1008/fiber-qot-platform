@@ -1,3 +1,4 @@
+
 # fiber-qot-platform
 
 An open-data and simulation-based project for optical Quality of Transmission (QoT) estimation. The planned platform will compare machine-learning estimates of GSNR/OSNR with GNPy simulations and visualize lightpath feasibility. No operator network data or measured QoT data is included.
