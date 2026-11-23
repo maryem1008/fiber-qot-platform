@@ -1,0 +1,39 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.cache/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+.kaggle/
+*.pem
+*.key
+
+# Generated datasets and local experiment outputs
+/data/external/**
+!/data/external/.gitkeep
+/data/generated/**
+!/data/generated/.gitkeep
+/mlruns/
+mlartifacts/
+*.parquet
+
+# Frontend/build outputs
+node_modules/
+dist/
+.vite/
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/

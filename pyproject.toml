@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fiber-qot-platform"
+version = "0.1.0"
+description = "Simulation-based optical lightpath QoT estimation and feasibility platform"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = "MIT"
+authors = [{ name = "Maryem Chaieb" }]
+dependencies = [
+  "gnpy==3.0.1",
+  "numpy>=2.4,<3",
+  "pandas>=2.3,<3",
+  "pyarrow>=20,<25",
+  "scipy>=1.16,<2",
+  "scikit-learn>=1.7,<2",
+  "xgboost>=3,<4",
+  "torch>=2.7,<3",
+  "shap>=0.50,<1",
+  "networkx>=3.6,<4",
+  "matplotlib>=3.10,<4",
+  "plotly>=6,<7",
+  "mlflow>=3,<4",
+  "fastapi>=0.120,<1",
+  "uvicorn>=0.38,<1",
+  "pydantic>=2.12,<3",
+  "pytest>=8,<10",
+  "ruff>=0.14,<1",
+  "joblib>=1.5,<2",
+  "pyyaml>=6,<7",
+  "optuna>=4.5,<5",
+  "pyproj>=3.8,<4",
+  "kaggle>=1.7,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest-cov>=6,<8", "pre-commit>=4,<5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

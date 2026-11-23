@@ -1,0 +1,16 @@
+# GNPy runtime pin and source-of-truth policy for equipment settings.
+# Values are verified against the official GNPy v3.0.1 package and docs.
+gnpy:
+  package: gnpy
+  version: "3.0.1"
+  python_requires: ">=3.11,<3.13"
+  example_command: gnpy-transmission-example
+  example_network: "gnpy/example-data/edfa_example_network.json"
+  equipment_library:
+    resolve_from_installed_package: true
+    transceiver_modes: "load from the pinned GNPy equipment configuration"
+    feasibility_thresholds: "never hard-code; inspect and document the selected mode fields"
+  reporting:
+    osnr_reference_bandwidth: "0.1 nm, when reported by GNPy"
+    gsnr_convention: "verify from the pinned release output/config before documenting"
+    distinguish_simulation_from_ml_estimate: true
