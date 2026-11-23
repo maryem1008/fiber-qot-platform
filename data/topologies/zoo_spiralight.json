@@ -1,0 +1,236 @@
+{
+  "topology_id": "zoo_spiralight",
+  "source": "zoo:Spiralight.graphml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Milwaukee",
+      "name": "Milwaukee",
+      "latitude": 43.0389,
+      "longitude": -87.90647
+    },
+    {
+      "id": "Rockford",
+      "name": "Rockford",
+      "latitude": 42.27113,
+      "longitude": -89.094
+    },
+    {
+      "id": "Janesville",
+      "name": "Janesville",
+      "latitude": 42.68279,
+      "longitude": -89.01872
+    },
+    {
+      "id": "Waukesha",
+      "name": "Waukesha",
+      "latitude": 43.01168,
+      "longitude": -88.23148
+    },
+    {
+      "id": "Chicago",
+      "name": "Chicago",
+      "latitude": 42.58613,
+      "longitude": -87.8248
+    },
+    {
+      "id": "Madison",
+      "name": "Madison",
+      "latitude": 43.07305,
+      "longitude": -89.40123
+    },
+    {
+      "id": "Camp Douglas",
+      "name": "Camp Douglas",
+      "latitude": 43.92247,
+      "longitude": -90.27152
+    },
+    {
+      "id": "Minneaopolis",
+      "name": "Minneaopolis",
+      "latitude": 44.97997,
+      "longitude": -93.26384
+    },
+    {
+      "id": "Eau Claire",
+      "name": "Eau Claire",
+      "latitude": 44.81135,
+      "longitude": -91.49849
+    },
+    {
+      "id": "Wausau",
+      "name": "Wausau",
+      "latitude": 44.95914,
+      "longitude": -89.63012
+    },
+    {
+      "id": "Green Bay",
+      "name": "Green Bay",
+      "latitude": 44.51916,
+      "longitude": -88.01983
+    },
+    {
+      "id": "Appleton",
+      "name": "Appleton",
+      "latitude": 44.26193,
+      "longitude": -88.41538
+    },
+    {
+      "id": "Oshkosh",
+      "name": "Oshkosh",
+      "latitude": 44.02471,
+      "longitude": -88.54261
+    },
+    {
+      "id": "Fon Du Lac",
+      "name": "Fon Du Lac",
+      "latitude": 43.775,
+      "longitude": -88.43883
+    },
+    {
+      "id": "Beaver Dam",
+      "name": "Beaver Dam",
+      "latitude": 43.45777,
+      "longitude": -88.83733
+    }
+  ],
+  "links": [
+    {
+      "source": "Milwaukee",
+      "target": "Waukesha",
+      "length_km": 26.593,
+      "spans_km": [
+        26.593
+      ]
+    },
+    {
+      "source": "Milwaukee",
+      "target": "Chicago",
+      "length_km": 50.785,
+      "spans_km": [
+        50.785
+      ]
+    },
+    {
+      "source": "Rockford",
+      "target": "Janesville",
+      "length_km": 46.189,
+      "spans_km": [
+        46.189
+      ]
+    },
+    {
+      "source": "Rockford",
+      "target": "Chicago",
+      "length_km": 109.899,
+      "spans_km": [
+        80.0,
+        29.899
+      ]
+    },
+    {
+      "source": "Janesville",
+      "target": "Madison",
+      "length_km": 53.428,
+      "spans_km": [
+        53.428
+      ]
+    },
+    {
+      "source": "Waukesha",
+      "target": "Madison",
+      "length_km": 95.306,
+      "spans_km": [
+        80.0,
+        15.306
+      ]
+    },
+    {
+      "source": "Madison",
+      "target": "Beaver Dam",
+      "length_km": 62.568,
+      "spans_km": [
+        62.568
+      ]
+    },
+    {
+      "source": "Madison",
+      "target": "Camp Douglas",
+      "length_km": 117.68,
+      "spans_km": [
+        80.0,
+        37.68
+      ]
+    },
+    {
+      "source": "Camp Douglas",
+      "target": "Eau Claire",
+      "length_km": 138.855,
+      "spans_km": [
+        80.0,
+        58.855
+      ]
+    },
+    {
+      "source": "Minneaopolis",
+      "target": "Eau Claire",
+      "length_km": 140.312,
+      "spans_km": [
+        80.0,
+        60.312
+      ]
+    },
+    {
+      "source": "Minneaopolis",
+      "target": "Wausau",
+      "length_km": 285.845,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        45.845
+      ]
+    },
+    {
+      "source": "Wausau",
+      "target": "Green Bay",
+      "length_km": 136.269,
+      "spans_km": [
+        80.0,
+        56.269
+      ]
+    },
+    {
+      "source": "Green Bay",
+      "target": "Appleton",
+      "length_km": 42.496,
+      "spans_km": [
+        42.496
+      ]
+    },
+    {
+      "source": "Appleton",
+      "target": "Oshkosh",
+      "length_km": 28.264,
+      "spans_km": [
+        28.264
+      ]
+    },
+    {
+      "source": "Oshkosh",
+      "target": "Fon Du Lac",
+      "length_km": 28.985,
+      "spans_km": [
+        28.985
+      ]
+    },
+    {
+      "source": "Fon Du Lac",
+      "target": "Beaver Dam",
+      "length_km": 47.68,
+      "spans_km": [
+        47.68
+      ]
+    }
+  ]
+}

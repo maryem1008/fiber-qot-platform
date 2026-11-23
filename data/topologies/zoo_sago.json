@@ -1,0 +1,258 @@
+{
+  "topology_id": "zoo_sago",
+  "source": "zoo:Sago.graphml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Ft. Pierce",
+      "name": "Ft. Pierce",
+      "latitude": 27.44671,
+      "longitude": -80.32561
+    },
+    {
+      "id": "Melbourne",
+      "name": "Melbourne",
+      "latitude": 28.08363,
+      "longitude": -80.60811
+    },
+    {
+      "id": "Lake Alfred",
+      "name": "Lake Alfred",
+      "latitude": 28.09196,
+      "longitude": -81.72341
+    },
+    {
+      "id": "Orlando",
+      "name": "Orlando",
+      "latitude": 28.53834,
+      "longitude": -81.37924
+    },
+    {
+      "id": "West Palm Beach",
+      "name": "West Palm Beach",
+      "latitude": 26.71534,
+      "longitude": -80.05337
+    },
+    {
+      "id": "Tampa",
+      "name": "Tampa",
+      "latitude": 27.94752,
+      "longitude": -82.45843
+    },
+    {
+      "id": "Miami",
+      "name": "Miami",
+      "latitude": 25.77427,
+      "longitude": -80.19366
+    },
+    {
+      "id": "Ft. Lauderdale",
+      "name": "Ft. Lauderdale",
+      "latitude": 26.12231,
+      "longitude": -80.14338
+    },
+    {
+      "id": "Flovilla",
+      "name": "Flovilla",
+      "latitude": 33.25373,
+      "longitude": -83.89852
+    },
+    {
+      "id": "Atlanta",
+      "name": "Atlanta",
+      "latitude": 33.749,
+      "longitude": -84.38798
+    },
+    {
+      "id": "Tarrytown",
+      "name": "Tarrytown",
+      "latitude": 32.31879,
+      "longitude": -82.5593
+    },
+    {
+      "id": "Gordon",
+      "name": "Gordon",
+      "latitude": 32.88209,
+      "longitude": -83.33238
+    },
+    {
+      "id": "Newell",
+      "name": "Newell",
+      "latitude": 30.94162,
+      "longitude": -82.02206
+    },
+    {
+      "id": "Surrency",
+      "name": "Surrency",
+      "latitude": 31.72381,
+      "longitude": -82.1979
+    },
+    {
+      "id": "St. Augustine",
+      "name": "St. Augustine",
+      "latitude": 29.89469,
+      "longitude": -81.31452
+    },
+    {
+      "id": "Jacksonville",
+      "name": "Jacksonville",
+      "latitude": 30.33218,
+      "longitude": -81.65565
+    },
+    {
+      "id": "Titusville",
+      "name": "Titusville",
+      "latitude": 28.61222,
+      "longitude": -80.80755
+    },
+    {
+      "id": "Daytona Beach",
+      "name": "Daytona Beach",
+      "latitude": 29.21081,
+      "longitude": -81.02283
+    }
+  ],
+  "links": [
+    {
+      "source": "Ft. Pierce",
+      "target": "Melbourne",
+      "length_km": 76.081,
+      "spans_km": [
+        76.081
+      ]
+    },
+    {
+      "source": "Ft. Pierce",
+      "target": "West Palm Beach",
+      "length_km": 85.675,
+      "spans_km": [
+        80.0,
+        5.675
+      ]
+    },
+    {
+      "source": "Melbourne",
+      "target": "Titusville",
+      "length_km": 61.932,
+      "spans_km": [
+        61.932
+      ]
+    },
+    {
+      "source": "Lake Alfred",
+      "target": "Orlando",
+      "length_km": 59.989,
+      "spans_km": [
+        59.989
+      ]
+    },
+    {
+      "source": "Lake Alfred",
+      "target": "Tampa",
+      "length_km": 73.916,
+      "spans_km": [
+        73.916
+      ]
+    },
+    {
+      "source": "Orlando",
+      "target": "Daytona Beach",
+      "length_km": 82.436,
+      "spans_km": [
+        80.0,
+        2.436
+      ]
+    },
+    {
+      "source": "West Palm Beach",
+      "target": "Ft. Lauderdale",
+      "length_km": 66.548,
+      "spans_km": [
+        66.548
+      ]
+    },
+    {
+      "source": "Miami",
+      "target": "Ft. Lauderdale",
+      "length_km": 39.025,
+      "spans_km": [
+        39.025
+      ]
+    },
+    {
+      "source": "Flovilla",
+      "target": "Atlanta",
+      "length_km": 71.362,
+      "spans_km": [
+        71.362
+      ]
+    },
+    {
+      "source": "Flovilla",
+      "target": "Gordon",
+      "length_km": 67.013,
+      "spans_km": [
+        67.013
+      ]
+    },
+    {
+      "source": "Tarrytown",
+      "target": "Gordon",
+      "length_km": 95.748,
+      "spans_km": [
+        80.0,
+        15.748
+      ]
+    },
+    {
+      "source": "Tarrytown",
+      "target": "Surrency",
+      "length_km": 74.417,
+      "spans_km": [
+        74.417
+      ]
+    },
+    {
+      "source": "Newell",
+      "target": "Surrency",
+      "length_km": 88.564,
+      "spans_km": [
+        80.0,
+        8.564
+      ]
+    },
+    {
+      "source": "Newell",
+      "target": "Jacksonville",
+      "length_km": 76.297,
+      "spans_km": [
+        76.297
+      ]
+    },
+    {
+      "source": "St. Augustine",
+      "target": "Daytona Beach",
+      "length_km": 81.109,
+      "spans_km": [
+        80.0,
+        1.109
+      ]
+    },
+    {
+      "source": "St. Augustine",
+      "target": "Jacksonville",
+      "length_km": 58.678,
+      "spans_km": [
+        58.678
+      ]
+    },
+    {
+      "source": "Titusville",
+      "target": "Daytona Beach",
+      "length_km": 69.781,
+      "spans_km": [
+        69.781
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1579 @@
+{
+  "network_name": "zoo_sago - Phase 1 GNPy network",
+  "elements": [
+    {
+      "uid": "trx_Ft. Pierce",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Ft. Pierce",
+          "latitude": 27.44671,
+          "longitude": -80.32561
+        }
+      }
+    },
+    {
+      "uid": "roadm_Ft. Pierce",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Ft. Pierce",
+          "latitude": 27.44671,
+          "longitude": -80.32561
+        }
+      }
+    },
+    {
+      "uid": "trx_Melbourne",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Melbourne",
+          "latitude": 28.08363,
+          "longitude": -80.60811
+        }
+      }
+    },
+    {
+      "uid": "roadm_Melbourne",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Melbourne",
+          "latitude": 28.08363,
+          "longitude": -80.60811
+        }
+      }
+    },
+    {
+      "uid": "trx_Lake Alfred",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Lake Alfred",
+          "latitude": 28.09196,
+          "longitude": -81.72341
+        }
+      }
+    },
+    {
+      "uid": "roadm_Lake Alfred",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Lake Alfred",
+          "latitude": 28.09196,
+          "longitude": -81.72341
+        }
+      }
+    },
+    {
+      "uid": "trx_Orlando",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Orlando",
+          "latitude": 28.53834,
+          "longitude": -81.37924
+        }
+      }
+    },
+    {
+      "uid": "roadm_Orlando",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Orlando",
+          "latitude": 28.53834,
+          "longitude": -81.37924
+        }
+      }
+    },
+    {
+      "uid": "trx_West Palm Beach",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "West Palm Beach",
+          "latitude": 26.71534,
+          "longitude": -80.05337
+        }
+      }
+    },
+    {
+      "uid": "roadm_West Palm Beach",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "West Palm Beach",
+          "latitude": 26.71534,
+          "longitude": -80.05337
+        }
+      }
+    },
+    {
+      "uid": "trx_Tampa",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Tampa",
+          "latitude": 27.94752,
+          "longitude": -82.45843
+        }
+      }
+    },
+    {
+      "uid": "roadm_Tampa",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Tampa",
+          "latitude": 27.94752,
+          "longitude": -82.45843
+        }
+      }
+    },
+    {
+      "uid": "trx_Miami",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Miami",
+          "latitude": 25.77427,
+          "longitude": -80.19366
+        }
+      }
+    },
+    {
+      "uid": "roadm_Miami",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Miami",
+          "latitude": 25.77427,
+          "longitude": -80.19366
+        }
+      }
+    },
+    {
+      "uid": "trx_Ft. Lauderdale",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Ft. Lauderdale",
+          "latitude": 26.12231,
+          "longitude": -80.14338
+        }
+      }
+    },
+    {
+      "uid": "roadm_Ft. Lauderdale",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Ft. Lauderdale",
+          "latitude": 26.12231,
+          "longitude": -80.14338
+        }
+      }
+    },
+    {
+      "uid": "trx_Flovilla",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Flovilla",
+          "latitude": 33.25373,
+          "longitude": -83.89852
+        }
+      }
+    },
+    {
+      "uid": "roadm_Flovilla",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Flovilla",
+          "latitude": 33.25373,
+          "longitude": -83.89852
+        }
+      }
+    },
+    {
+      "uid": "trx_Atlanta",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Atlanta",
+          "latitude": 33.749,
+          "longitude": -84.38798
+        }
+      }
+    },
+    {
+      "uid": "roadm_Atlanta",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Atlanta",
+          "latitude": 33.749,
+          "longitude": -84.38798
+        }
+      }
+    },
+    {
+      "uid": "trx_Tarrytown",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Tarrytown",
+          "latitude": 32.31879,
+          "longitude": -82.5593
+        }
+      }
+    },
+    {
+      "uid": "roadm_Tarrytown",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Tarrytown",
+          "latitude": 32.31879,
+          "longitude": -82.5593
+        }
+      }
+    },
+    {
+      "uid": "trx_Gordon",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Gordon",
+          "latitude": 32.88209,
+          "longitude": -83.33238
+        }
+      }
+    },
+    {
+      "uid": "roadm_Gordon",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Gordon",
+          "latitude": 32.88209,
+          "longitude": -83.33238
+        }
+      }
+    },
+    {
+      "uid": "trx_Newell",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Newell",
+          "latitude": 30.94162,
+          "longitude": -82.02206
+        }
+      }
+    },
+    {
+      "uid": "roadm_Newell",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Newell",
+          "latitude": 30.94162,
+          "longitude": -82.02206
+        }
+      }
+    },
+    {
+      "uid": "trx_Surrency",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Surrency",
+          "latitude": 31.72381,
+          "longitude": -82.1979
+        }
+      }
+    },
+    {
+      "uid": "roadm_Surrency",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Surrency",
+          "latitude": 31.72381,
+          "longitude": -82.1979
+        }
+      }
+    },
+    {
+      "uid": "trx_St. Augustine",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "St. Augustine",
+          "latitude": 29.89469,
+          "longitude": -81.31452
+        }
+      }
+    },
+    {
+      "uid": "roadm_St. Augustine",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "St. Augustine",
+          "latitude": 29.89469,
+          "longitude": -81.31452
+        }
+      }
+    },
+    {
+      "uid": "trx_Jacksonville",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Jacksonville",
+          "latitude": 30.33218,
+          "longitude": -81.65565
+        }
+      }
+    },
+    {
+      "uid": "roadm_Jacksonville",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Jacksonville",
+          "latitude": 30.33218,
+          "longitude": -81.65565
+        }
+      }
+    },
+    {
+      "uid": "trx_Titusville",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Titusville",
+          "latitude": 28.61222,
+          "longitude": -80.80755
+        }
+      }
+    },
+    {
+      "uid": "roadm_Titusville",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Titusville",
+          "latitude": 28.61222,
+          "longitude": -80.80755
+        }
+      }
+    },
+    {
+      "uid": "trx_Daytona Beach",
+      "type": "Transceiver",
+      "metadata": {
+        "location": {
+          "city": "Daytona Beach",
+          "latitude": 29.21081,
+          "longitude": -81.02283
+        }
+      }
+    },
+    {
+      "uid": "roadm_Daytona Beach",
+      "type": "Roadm",
+      "type_variety": "roadm_type_1",
+      "metadata": {
+        "location": {
+          "city": "Daytona Beach",
+          "latitude": 29.21081,
+          "longitude": -81.02283
+        }
+      }
+    },
+    {
+      "uid": "fiber_0_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 76.081,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_0_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_1_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 80.0,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_1_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_1_1",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 5.675,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_1_1",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_2_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 61.932,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_2_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_3_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 59.989,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_3_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_4_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 73.916,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_4_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_5_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 80.0,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_5_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_5_1",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 2.436,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_5_1",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_6_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 66.548,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_6_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_7_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 39.025,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_7_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_8_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 71.362,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_8_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_9_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 67.013,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_9_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_10_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 80.0,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_10_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_10_1",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 15.748,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_10_1",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_11_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 74.417,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_11_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_12_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 80.0,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_12_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_12_1",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 8.564,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_12_1",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_13_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 76.297,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_13_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_14_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 80.0,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_14_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_14_1",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 1.109,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_14_1",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_15_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 58.678,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_15_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "fiber_16_0",
+      "type": "Fiber",
+      "type_variety": "SSMF",
+      "params": {
+        "length": 69.781,
+        "length_units": "km",
+        "loss_coef": 0.2,
+        "att_in": 0.0,
+        "con_in": 0.5,
+        "con_out": 0.5
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    },
+    {
+      "uid": "edfa_16_0",
+      "type": "Edfa",
+      "type_variety": "std_medium_gain",
+      "operational": {
+        "gain_target": 16.0,
+        "tilt_target": 0.0,
+        "out_voa": 0.0
+      },
+      "metadata": {
+        "location": {
+          "latitude": 0.0,
+          "longitude": 0.0
+        }
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from_node": "trx_Ft. Pierce",
+      "to_node": "roadm_Ft. Pierce"
+    },
+    {
+      "from_node": "roadm_Ft. Pierce",
+      "to_node": "trx_Ft. Pierce"
+    },
+    {
+      "from_node": "trx_Melbourne",
+      "to_node": "roadm_Melbourne"
+    },
+    {
+      "from_node": "roadm_Melbourne",
+      "to_node": "trx_Melbourne"
+    },
+    {
+      "from_node": "trx_Lake Alfred",
+      "to_node": "roadm_Lake Alfred"
+    },
+    {
+      "from_node": "roadm_Lake Alfred",
+      "to_node": "trx_Lake Alfred"
+    },
+    {
+      "from_node": "trx_Orlando",
+      "to_node": "roadm_Orlando"
+    },
+    {
+      "from_node": "roadm_Orlando",
+      "to_node": "trx_Orlando"
+    },
+    {
+      "from_node": "trx_West Palm Beach",
+      "to_node": "roadm_West Palm Beach"
+    },
+    {
+      "from_node": "roadm_West Palm Beach",
+      "to_node": "trx_West Palm Beach"
+    },
+    {
+      "from_node": "trx_Tampa",
+      "to_node": "roadm_Tampa"
+    },
+    {
+      "from_node": "roadm_Tampa",
+      "to_node": "trx_Tampa"
+    },
+    {
+      "from_node": "trx_Miami",
+      "to_node": "roadm_Miami"
+    },
+    {
+      "from_node": "roadm_Miami",
+      "to_node": "trx_Miami"
+    },
+    {
+      "from_node": "trx_Ft. Lauderdale",
+      "to_node": "roadm_Ft. Lauderdale"
+    },
+    {
+      "from_node": "roadm_Ft. Lauderdale",
+      "to_node": "trx_Ft. Lauderdale"
+    },
+    {
+      "from_node": "trx_Flovilla",
+      "to_node": "roadm_Flovilla"
+    },
+    {
+      "from_node": "roadm_Flovilla",
+      "to_node": "trx_Flovilla"
+    },
+    {
+      "from_node": "trx_Atlanta",
+      "to_node": "roadm_Atlanta"
+    },
+    {
+      "from_node": "roadm_Atlanta",
+      "to_node": "trx_Atlanta"
+    },
+    {
+      "from_node": "trx_Tarrytown",
+      "to_node": "roadm_Tarrytown"
+    },
+    {
+      "from_node": "roadm_Tarrytown",
+      "to_node": "trx_Tarrytown"
+    },
+    {
+      "from_node": "trx_Gordon",
+      "to_node": "roadm_Gordon"
+    },
+    {
+      "from_node": "roadm_Gordon",
+      "to_node": "trx_Gordon"
+    },
+    {
+      "from_node": "trx_Newell",
+      "to_node": "roadm_Newell"
+    },
+    {
+      "from_node": "roadm_Newell",
+      "to_node": "trx_Newell"
+    },
+    {
+      "from_node": "trx_Surrency",
+      "to_node": "roadm_Surrency"
+    },
+    {
+      "from_node": "roadm_Surrency",
+      "to_node": "trx_Surrency"
+    },
+    {
+      "from_node": "trx_St. Augustine",
+      "to_node": "roadm_St. Augustine"
+    },
+    {
+      "from_node": "roadm_St. Augustine",
+      "to_node": "trx_St. Augustine"
+    },
+    {
+      "from_node": "trx_Jacksonville",
+      "to_node": "roadm_Jacksonville"
+    },
+    {
+      "from_node": "roadm_Jacksonville",
+      "to_node": "trx_Jacksonville"
+    },
+    {
+      "from_node": "trx_Titusville",
+      "to_node": "roadm_Titusville"
+    },
+    {
+      "from_node": "roadm_Titusville",
+      "to_node": "trx_Titusville"
+    },
+    {
+      "from_node": "trx_Daytona Beach",
+      "to_node": "roadm_Daytona Beach"
+    },
+    {
+      "from_node": "roadm_Daytona Beach",
+      "to_node": "trx_Daytona Beach"
+    },
+    {
+      "from_node": "roadm_Ft. Pierce",
+      "to_node": "fiber_0_0"
+    },
+    {
+      "from_node": "fiber_0_0",
+      "to_node": "edfa_0_0"
+    },
+    {
+      "from_node": "edfa_0_0",
+      "to_node": "roadm_Melbourne"
+    },
+    {
+      "from_node": "roadm_Ft. Pierce",
+      "to_node": "fiber_1_0"
+    },
+    {
+      "from_node": "fiber_1_0",
+      "to_node": "edfa_1_0"
+    },
+    {
+      "from_node": "edfa_1_0",
+      "to_node": "fiber_1_1"
+    },
+    {
+      "from_node": "fiber_1_1",
+      "to_node": "edfa_1_1"
+    },
+    {
+      "from_node": "edfa_1_1",
+      "to_node": "roadm_West Palm Beach"
+    },
+    {
+      "from_node": "roadm_Melbourne",
+      "to_node": "fiber_2_0"
+    },
+    {
+      "from_node": "fiber_2_0",
+      "to_node": "edfa_2_0"
+    },
+    {
+      "from_node": "edfa_2_0",
+      "to_node": "roadm_Titusville"
+    },
+    {
+      "from_node": "roadm_Lake Alfred",
+      "to_node": "fiber_3_0"
+    },
+    {
+      "from_node": "fiber_3_0",
+      "to_node": "edfa_3_0"
+    },
+    {
+      "from_node": "edfa_3_0",
+      "to_node": "roadm_Orlando"
+    },
+    {
+      "from_node": "roadm_Lake Alfred",
+      "to_node": "fiber_4_0"
+    },
+    {
+      "from_node": "fiber_4_0",
+      "to_node": "edfa_4_0"
+    },
+    {
+      "from_node": "edfa_4_0",
+      "to_node": "roadm_Tampa"
+    },
+    {
+      "from_node": "roadm_Orlando",
+      "to_node": "fiber_5_0"
+    },
+    {
+      "from_node": "fiber_5_0",
+      "to_node": "edfa_5_0"
+    },
+    {
+      "from_node": "edfa_5_0",
+      "to_node": "fiber_5_1"
+    },
+    {
+      "from_node": "fiber_5_1",
+      "to_node": "edfa_5_1"
+    },
+    {
+      "from_node": "edfa_5_1",
+      "to_node": "roadm_Daytona Beach"
+    },
+    {
+      "from_node": "roadm_West Palm Beach",
+      "to_node": "fiber_6_0"
+    },
+    {
+      "from_node": "fiber_6_0",
+      "to_node": "edfa_6_0"
+    },
+    {
+      "from_node": "edfa_6_0",
+      "to_node": "roadm_Ft. Lauderdale"
+    },
+    {
+      "from_node": "roadm_Miami",
+      "to_node": "fiber_7_0"
+    },
+    {
+      "from_node": "fiber_7_0",
+      "to_node": "edfa_7_0"
+    },
+    {
+      "from_node": "edfa_7_0",
+      "to_node": "roadm_Ft. Lauderdale"
+    },
+    {
+      "from_node": "roadm_Flovilla",
+      "to_node": "fiber_8_0"
+    },
+    {
+      "from_node": "fiber_8_0",
+      "to_node": "edfa_8_0"
+    },
+    {
+      "from_node": "edfa_8_0",
+      "to_node": "roadm_Atlanta"
+    },
+    {
+      "from_node": "roadm_Flovilla",
+      "to_node": "fiber_9_0"
+    },
+    {
+      "from_node": "fiber_9_0",
+      "to_node": "edfa_9_0"
+    },
+    {
+      "from_node": "edfa_9_0",
+      "to_node": "roadm_Gordon"
+    },
+    {
+      "from_node": "roadm_Tarrytown",
+      "to_node": "fiber_10_0"
+    },
+    {
+      "from_node": "fiber_10_0",
+      "to_node": "edfa_10_0"
+    },
+    {
+      "from_node": "edfa_10_0",
+      "to_node": "fiber_10_1"
+    },
+    {
+      "from_node": "fiber_10_1",
+      "to_node": "edfa_10_1"
+    },
+    {
+      "from_node": "edfa_10_1",
+      "to_node": "roadm_Gordon"
+    },
+    {
+      "from_node": "roadm_Tarrytown",
+      "to_node": "fiber_11_0"
+    },
+    {
+      "from_node": "fiber_11_0",
+      "to_node": "edfa_11_0"
+    },
+    {
+      "from_node": "edfa_11_0",
+      "to_node": "roadm_Surrency"
+    },
+    {
+      "from_node": "roadm_Newell",
+      "to_node": "fiber_12_0"
+    },
+    {
+      "from_node": "fiber_12_0",
+      "to_node": "edfa_12_0"
+    },
+    {
+      "from_node": "edfa_12_0",
+      "to_node": "fiber_12_1"
+    },
+    {
+      "from_node": "fiber_12_1",
+      "to_node": "edfa_12_1"
+    },
+    {
+      "from_node": "edfa_12_1",
+      "to_node": "roadm_Surrency"
+    },
+    {
+      "from_node": "roadm_Newell",
+      "to_node": "fiber_13_0"
+    },
+    {
+      "from_node": "fiber_13_0",
+      "to_node": "edfa_13_0"
+    },
+    {
+      "from_node": "edfa_13_0",
+      "to_node": "roadm_Jacksonville"
+    },
+    {
+      "from_node": "roadm_St. Augustine",
+      "to_node": "fiber_14_0"
+    },
+    {
+      "from_node": "fiber_14_0",
+      "to_node": "edfa_14_0"
+    },
+    {
+      "from_node": "edfa_14_0",
+      "to_node": "fiber_14_1"
+    },
+    {
+      "from_node": "fiber_14_1",
+      "to_node": "edfa_14_1"
+    },
+    {
+      "from_node": "edfa_14_1",
+      "to_node": "roadm_Daytona Beach"
+    },
+    {
+      "from_node": "roadm_St. Augustine",
+      "to_node": "fiber_15_0"
+    },
+    {
+      "from_node": "fiber_15_0",
+      "to_node": "edfa_15_0"
+    },
+    {
+      "from_node": "edfa_15_0",
+      "to_node": "roadm_Jacksonville"
+    },
+    {
+      "from_node": "roadm_Titusville",
+      "to_node": "fiber_16_0"
+    },
+    {
+      "from_node": "fiber_16_0",
+      "to_node": "edfa_16_0"
+    },
+    {
+      "from_node": "edfa_16_0",
+      "to_node": "roadm_Daytona Beach"
+    }
+  ]
+}

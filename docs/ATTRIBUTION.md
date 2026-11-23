@@ -14,6 +14,20 @@ This file records third-party software and data sources used by the project. Ver
 
 No external topology, Kaggle dataset, or operator measurement data has been downloaded or included yet. Candidate dataset search and licensing/access notes are recorded in [`external_data_search.md`](external_data_search.md). Source-specific citation and license details must be added before a dataset is used or redistributed.
 
+## Phase 1 topology data
+
+- **Internet Topology Zoo**: GraphML source files downloaded from the official
+  `mroughan/InternetTopologyZoo` repository. The dataset is presented as CC BY 4.0 in its
+  Fishshare metadata and requires attribution and indication of changes. Preserve source URLs and
+  topology metadata in `data/topologies/phase1_manifest.json`; this repository does not claim that
+  historical snapshots are current network inventories.
+- **SNDlib**: native XML files are used for Germany50, Nobel-Germany, and India35 with geographic
+  coordinates. SNDlib source and license details are being kept separate until the official dataset
+  terms can be verified from the primary SNDlib source. The downloaded mirror copies are research
+  inputs and must not be redistributed as independently licensed official data.
+- **Tunisia demonstration**: explicitly illustrative and synthetic. City coordinates are only
+  geographic anchors; no relationship to a real operator network is claimed.
+
 ## Project code
 
 Project source code is intended to be licensed under MIT. This does not change the licenses of third-party software or datasets.

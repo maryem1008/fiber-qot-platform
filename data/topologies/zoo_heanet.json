@@ -1,0 +1,150 @@
+{
+  "topology_id": "zoo_heanet",
+  "source": "zoo:Heanet.graphml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Galway",
+      "name": "Galway",
+      "latitude": 53.27194,
+      "longitude": -9.04889
+    },
+    {
+      "id": "Limerick",
+      "name": "Limerick",
+      "latitude": 52.66472,
+      "longitude": -8.62306
+    },
+    {
+      "id": "Cork",
+      "name": "Cork",
+      "latitude": 51.89861,
+      "longitude": -8.49583
+    },
+    {
+      "id": "CityWest",
+      "name": "CityWest",
+      "latitude": 53.34399,
+      "longitude": -6.26719
+    },
+    {
+      "id": "DCU (Dublin City University",
+      "name": "DCU (Dublin City University",
+      "latitude": 53.34399,
+      "longitude": -6.26719
+    },
+    {
+      "id": "TDC (Trinity College Dublin)",
+      "name": "TDC (Trinity College Dublin)",
+      "latitude": 53.34399,
+      "longitude": -6.26719
+    },
+    {
+      "id": "Kilcarbery",
+      "name": "Kilcarbery",
+      "latitude": 53.34399,
+      "longitude": -6.26719
+    }
+  ],
+  "links": [
+    {
+      "source": "Galway",
+      "target": "CityWest",
+      "length_km": 184.979,
+      "spans_km": [
+        80.0,
+        80.0,
+        24.979
+      ]
+    },
+    {
+      "source": "Galway",
+      "target": "Kilcarbery",
+      "length_km": 184.979,
+      "spans_km": [
+        80.0,
+        80.0,
+        24.979
+      ]
+    },
+    {
+      "source": "Limerick",
+      "target": "Cork",
+      "length_km": 85.626,
+      "spans_km": [
+        80.0,
+        5.626
+      ]
+    },
+    {
+      "source": "Limerick",
+      "target": "CityWest",
+      "length_km": 174.786,
+      "spans_km": [
+        80.0,
+        80.0,
+        14.786
+      ]
+    },
+    {
+      "source": "Limerick",
+      "target": "Kilcarbery",
+      "length_km": 174.786,
+      "spans_km": [
+        80.0,
+        80.0,
+        14.786
+      ]
+    },
+    {
+      "source": "Cork",
+      "target": "CityWest",
+      "length_km": 220.124,
+      "spans_km": [
+        80.0,
+        80.0,
+        60.124
+      ]
+    },
+    {
+      "source": "CityWest",
+      "target": "DCU (Dublin City University",
+      "length_km": 0.0,
+      "spans_km": [
+        0.0
+      ]
+    },
+    {
+      "source": "CityWest",
+      "target": "TDC (Trinity College Dublin)",
+      "length_km": 0.0,
+      "spans_km": [
+        0.0
+      ]
+    },
+    {
+      "source": "CityWest",
+      "target": "Kilcarbery",
+      "length_km": 0.0,
+      "spans_km": [
+        0.0
+      ]
+    },
+    {
+      "source": "DCU (Dublin City University",
+      "target": "Kilcarbery",
+      "length_km": 0.0,
+      "spans_km": [
+        0.0
+      ]
+    },
+    {
+      "source": "TDC (Trinity College Dublin)",
+      "target": "Kilcarbery",
+      "length_km": 0.0,
+      "spans_km": [
+        0.0
+      ]
+    }
+  ]
+}

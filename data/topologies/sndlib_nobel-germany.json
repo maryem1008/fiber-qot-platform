@@ -1,0 +1,351 @@
+{
+  "topology_id": "sndlib_nobel-germany",
+  "source": "sndlib:nobel-germany.xml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Hannover",
+      "name": "Hannover",
+      "latitude": 52.39,
+      "longitude": 9.8
+    },
+    {
+      "id": "Frankfurt",
+      "name": "Frankfurt",
+      "latitude": 50.14,
+      "longitude": 8.66
+    },
+    {
+      "id": "Hamburg",
+      "name": "Hamburg",
+      "latitude": 53.55,
+      "longitude": 10.08
+    },
+    {
+      "id": "Norden",
+      "name": "Norden",
+      "latitude": 53.6,
+      "longitude": 7.21
+    },
+    {
+      "id": "Bremen",
+      "name": "Bremen",
+      "latitude": 53.08,
+      "longitude": 8.8
+    },
+    {
+      "id": "Berlin",
+      "name": "Berlin",
+      "latitude": 52.52,
+      "longitude": 13.48
+    },
+    {
+      "id": "Muenchen",
+      "name": "Muenchen",
+      "latitude": 48.15,
+      "longitude": 11.55
+    },
+    {
+      "id": "Ulm",
+      "name": "Ulm",
+      "latitude": 48.4,
+      "longitude": 9.99
+    },
+    {
+      "id": "Nuernberg",
+      "name": "Nuernberg",
+      "latitude": 49.45,
+      "longitude": 11.08
+    },
+    {
+      "id": "Stuttgart",
+      "name": "Stuttgart",
+      "latitude": 48.73,
+      "longitude": 9.12
+    },
+    {
+      "id": "Karlsruhe",
+      "name": "Karlsruhe",
+      "latitude": 49.01,
+      "longitude": 8.41
+    },
+    {
+      "id": "Mannheim",
+      "name": "Mannheim",
+      "latitude": 49.49,
+      "longitude": 8.49
+    },
+    {
+      "id": "Essen",
+      "name": "Essen",
+      "latitude": 51.44,
+      "longitude": 7.0
+    },
+    {
+      "id": "Dortmund",
+      "name": "Dortmund",
+      "latitude": 51.51,
+      "longitude": 7.48
+    },
+    {
+      "id": "Duesseldorf",
+      "name": "Duesseldorf",
+      "latitude": 51.22,
+      "longitude": 6.78
+    },
+    {
+      "id": "Koeln",
+      "name": "Koeln",
+      "latitude": 50.92,
+      "longitude": 7.01
+    },
+    {
+      "id": "Leipzig",
+      "name": "Leipzig",
+      "latitude": 51.34,
+      "longitude": 12.38
+    }
+  ],
+  "links": [
+    {
+      "source": "Berlin",
+      "target": "Hamburg",
+      "length_km": 254.523,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        14.523
+      ]
+    },
+    {
+      "source": "Berlin",
+      "target": "Hannover",
+      "length_km": 249.75,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        9.75
+      ]
+    },
+    {
+      "source": "Berlin",
+      "target": "Leipzig",
+      "length_km": 151.338,
+      "spans_km": [
+        80.0,
+        71.338
+      ]
+    },
+    {
+      "source": "Bremen",
+      "target": "Hamburg",
+      "length_km": 99.804,
+      "spans_km": [
+        80.0,
+        19.804
+      ]
+    },
+    {
+      "source": "Bremen",
+      "target": "Hannover",
+      "length_km": 102.075,
+      "spans_km": [
+        80.0,
+        22.075
+      ]
+    },
+    {
+      "source": "Bremen",
+      "target": "Norden",
+      "length_km": 120.356,
+      "spans_km": [
+        80.0,
+        40.356
+      ]
+    },
+    {
+      "source": "Dortmund",
+      "target": "Essen",
+      "length_km": 34.143,
+      "spans_km": [
+        34.143
+      ]
+    },
+    {
+      "source": "Dortmund",
+      "target": "Hannover",
+      "length_km": 186.685,
+      "spans_km": [
+        80.0,
+        80.0,
+        26.685
+      ]
+    },
+    {
+      "source": "Dortmund",
+      "target": "Koeln",
+      "length_km": 73.319,
+      "spans_km": [
+        73.319
+      ]
+    },
+    {
+      "source": "Dortmund",
+      "target": "Norden",
+      "length_km": 233.113,
+      "spans_km": [
+        80.0,
+        80.0,
+        73.113
+      ]
+    },
+    {
+      "source": "Duesseldorf",
+      "target": "Essen",
+      "length_km": 28.846,
+      "spans_km": [
+        28.846
+      ]
+    },
+    {
+      "source": "Duesseldorf",
+      "target": "Koeln",
+      "length_km": 37.028,
+      "spans_km": [
+        37.028
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Hannover",
+      "length_km": 262.452,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        22.452
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Koeln",
+      "length_km": 145.337,
+      "spans_km": [
+        80.0,
+        65.337
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Leipzig",
+      "length_km": 293.77,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        53.77
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Mannheim",
+      "length_km": 73.299,
+      "spans_km": [
+        73.299
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Nuernberg",
+      "length_km": 189.883,
+      "spans_km": [
+        80.0,
+        80.0,
+        29.883
+      ]
+    },
+    {
+      "source": "Hamburg",
+      "target": "Hannover",
+      "length_km": 130.342,
+      "spans_km": [
+        80.0,
+        50.342
+      ]
+    },
+    {
+      "source": "Hannover",
+      "target": "Leipzig",
+      "length_km": 212.149,
+      "spans_km": [
+        80.0,
+        80.0,
+        52.149
+      ]
+    },
+    {
+      "source": "Karlsruhe",
+      "target": "Mannheim",
+      "length_km": 53.688,
+      "spans_km": [
+        53.688
+      ]
+    },
+    {
+      "source": "Karlsruhe",
+      "target": "Stuttgart",
+      "length_km": 60.548,
+      "spans_km": [
+        60.548
+      ]
+    },
+    {
+      "source": "Leipzig",
+      "target": "Nuernberg",
+      "length_km": 229.465,
+      "spans_km": [
+        80.0,
+        80.0,
+        69.465
+      ]
+    },
+    {
+      "source": "Muenchen",
+      "target": "Nuernberg",
+      "length_km": 148.595,
+      "spans_km": [
+        80.0,
+        68.595
+      ]
+    },
+    {
+      "source": "Muenchen",
+      "target": "Ulm",
+      "length_km": 118.747,
+      "spans_km": [
+        80.0,
+        38.747
+      ]
+    },
+    {
+      "source": "Nuernberg",
+      "target": "Stuttgart",
+      "length_km": 163.638,
+      "spans_km": [
+        80.0,
+        80.0,
+        3.638
+      ]
+    },
+    {
+      "source": "Stuttgart",
+      "target": "Ulm",
+      "length_km": 73.789,
+      "spans_km": [
+        73.789
+      ]
+    }
+  ]
+}

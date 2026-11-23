@@ -1,0 +1,89 @@
+{
+  "topology_id": "zoo_arpanet196912",
+  "source": "zoo:Arpanet196912.graphml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "SRI",
+      "name": "SRI",
+      "latitude": 37.45383,
+      "longitude": -122.18219
+    },
+    {
+      "id": "USCB",
+      "name": "USCB",
+      "latitude": 34.42083,
+      "longitude": -119.69819
+    },
+    {
+      "id": "UCLA",
+      "name": "UCLA",
+      "latitude": 34.05223,
+      "longitude": -118.24368
+    },
+    {
+      "id": "UTAH",
+      "name": "UTAH",
+      "latitude": 40.76078,
+      "longitude": -111.89105
+    }
+  ],
+  "links": [
+    {
+      "source": "SRI",
+      "target": "USCB",
+      "length_km": 404.623,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        4.623
+      ]
+    },
+    {
+      "source": "SRI",
+      "target": "UCLA",
+      "length_km": 518.912,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        38.912
+      ]
+    },
+    {
+      "source": "SRI",
+      "target": "UTAH",
+      "length_km": 960.303,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        0.303
+      ]
+    },
+    {
+      "source": "USCB",
+      "target": "UCLA",
+      "length_km": 139.848,
+      "spans_km": [
+        80.0,
+        59.848
+      ]
+    }
+  ]
+}

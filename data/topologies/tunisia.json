@@ -1,0 +1,209 @@
+{
+  "topology_id": "tunisia",
+  "source": "illustrative synthetic: Phase 1 project definition",
+  "illustrative": true,
+  "nodes": [
+    {
+      "id": "Bizerte",
+      "name": "Bizerte",
+      "latitude": 37.2744,
+      "longitude": 9.8739
+    },
+    {
+      "id": "Tunis",
+      "name": "Tunis",
+      "latitude": 36.8065,
+      "longitude": 10.1815
+    },
+    {
+      "id": "Nabeul",
+      "name": "Nabeul",
+      "latitude": 36.4513,
+      "longitude": 10.7351
+    },
+    {
+      "id": "Sousse",
+      "name": "Sousse",
+      "latitude": 35.8256,
+      "longitude": 10.6369
+    },
+    {
+      "id": "Monastir",
+      "name": "Monastir",
+      "latitude": 35.778,
+      "longitude": 10.8262
+    },
+    {
+      "id": "Kairouan",
+      "name": "Kairouan",
+      "latitude": 35.6781,
+      "longitude": 10.0963
+    },
+    {
+      "id": "Sfax",
+      "name": "Sfax",
+      "latitude": 34.7406,
+      "longitude": 10.7603
+    },
+    {
+      "id": "Gabes",
+      "name": "Gabes",
+      "latitude": 33.8885,
+      "longitude": 10.0982
+    },
+    {
+      "id": "Gafsa",
+      "name": "Gafsa",
+      "latitude": 34.425,
+      "longitude": 8.7842
+    },
+    {
+      "id": "Tozeur",
+      "name": "Tozeur",
+      "latitude": 33.9197,
+      "longitude": 8.1335
+    },
+    {
+      "id": "Medenine",
+      "name": "Medenine",
+      "latitude": 33.3549,
+      "longitude": 10.5055
+    },
+    {
+      "id": "Kef",
+      "name": "Kef",
+      "latitude": 36.1743,
+      "longitude": 8.7049
+    }
+  ],
+  "links": [
+    {
+      "source": "Bizerte",
+      "target": "Tunis",
+      "length_km": 73.445,
+      "spans_km": [
+        73.445
+      ]
+    },
+    {
+      "source": "Tunis",
+      "target": "Nabeul",
+      "length_km": 79.061,
+      "spans_km": [
+        79.061
+      ]
+    },
+    {
+      "source": "Nabeul",
+      "target": "Sousse",
+      "length_km": 87.664,
+      "spans_km": [
+        80.0,
+        7.664
+      ]
+    },
+    {
+      "source": "Sousse",
+      "target": "Monastir",
+      "length_km": 22.342,
+      "spans_km": [
+        22.342
+      ]
+    },
+    {
+      "source": "Monastir",
+      "target": "Sfax",
+      "length_km": 144.386,
+      "spans_km": [
+        80.0,
+        64.386
+      ]
+    },
+    {
+      "source": "Sfax",
+      "target": "Gabes",
+      "length_km": 140.729,
+      "spans_km": [
+        80.0,
+        60.729
+      ]
+    },
+    {
+      "source": "Gabes",
+      "target": "Medenine",
+      "length_km": 87.881,
+      "spans_km": [
+        80.0,
+        7.881
+      ]
+    },
+    {
+      "source": "Medenine",
+      "target": "Sfax",
+      "length_km": 194.826,
+      "spans_km": [
+        80.0,
+        80.0,
+        34.826
+      ]
+    },
+    {
+      "source": "Sfax",
+      "target": "Kairouan",
+      "length_km": 150.551,
+      "spans_km": [
+        80.0,
+        70.551
+      ]
+    },
+    {
+      "source": "Kairouan",
+      "target": "Tunis",
+      "length_km": 157.131,
+      "spans_km": [
+        80.0,
+        77.131
+      ]
+    },
+    {
+      "source": "Tunis",
+      "target": "Kef",
+      "length_km": 186.938,
+      "spans_km": [
+        80.0,
+        80.0,
+        26.938
+      ]
+    },
+    {
+      "source": "Kef",
+      "target": "Gafsa",
+      "length_km": 243.308,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        3.308
+      ]
+    },
+    {
+      "source": "Gafsa",
+      "target": "Tozeur",
+      "length_km": 102.625,
+      "spans_km": [
+        80.0,
+        22.625
+      ]
+    },
+    {
+      "source": "Tozeur",
+      "target": "Gabes",
+      "length_km": 226.688,
+      "spans_km": [
+        80.0,
+        80.0,
+        66.688
+      ]
+    }
+  ]
+}

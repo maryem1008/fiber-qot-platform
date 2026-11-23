@@ -26,6 +26,36 @@ The user-provided master prompt is at `/home/ubuntu/upload/Master_Prompt_Manus_Q
 
 CP1 is mandatory. Before any Phase 2 work, report the selected topologies (names, node/link counts), successful GNPy runs, example output, exact modes/thresholds, and problems, then stop and wait for the user to say `go`.
 
+## Phase 1 implementation status
+
+Phase 1 topology conversion is implemented and reproducible through `make phase1`. Accepted and converted
+open topology sources include:
+
+- Zoo: Aarnet (19/24), AttMpls (25/56), Bics (33/48), CrlNetworkServices (33/38), Bellcanada (48/64),
+  Darkstrand (28/31), EliBackbone (20/30), Goodnet (17/31), Agis (25/30), Palmetto (45/64),
+  Spiralight (15/16), Geant2009 (34/52), Bbnplanet (27/28), Sago (18/17). Each is 15-60 nodes where
+  the preferred range is applied, complete, connected, and converted.
+- SNDlib: Germany50 (50/88), Nobel-Germany (17/26), India35 (35/80), each with complete coordinates.
+- Illustrative synthetic Tunisia (12 nodes, 14 links), with 12 real city coordinates and a 1.25 route factor.
+
+GNPy 3.0.1 successfully loaded the selected files and the generated Tunisia GNPy network. A real CLI lightpath
+from Bizerte to Sfax ran over 407 km/7 fiber spans and returned final GSNR 21.15 dB in 0.1 nm and 17.07 dB
+in signal bandwidth; OSNR ASE was 21.65 dB in 0.1 nm and 17.57 dB in signal bandwidth.
+
+Exact installed transceiver modes in `eqpt_config.json`:
+
+- `vendorA_trx-type1`: mode 1 11 dB OSNR, mode 2 15 dB OSNR.
+- `Voyager`: mode 1 12 dB, mode 3 18 dB, mode 2 21 dB, mode 4 16 dB OSNR.
+
+The CI-style Phase 1 unit tests pass and Ruff lint passes. GNPy also warns that the equipment `Roadm` entry
+without a type variety uses the default; this is recorded and not hidden.
+
+## CP1 stop
+
+The CP1 report is in `docs/report/CP1_PHASE1_REPORT.md`. It records the selected Zoo/SNDlib/Tunisia
+topologies, the successful Tunisia GNPy run, exact installed transceiver OSNR requirements, and known
+configuration warnings. Phase 2 has not started. Wait for the owner's explicit `go`.
+
 ## Exact starting point for the next agent
 
 1. Read this file, `README.md`, `docs/phase0-environment.md`, `docs/learning_notes.md`, `docs/ATTRIBUTION.md`, and the master prompt Phase 1 pages.

@@ -1,0 +1,815 @@
+{
+  "topology_id": "zoo_palmetto",
+  "source": "zoo:Palmetto.graphml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Rock Hill",
+      "name": "Rock Hill",
+      "latitude": 34.92487,
+      "longitude": -81.02508
+    },
+    {
+      "id": "Charlotte",
+      "name": "Charlotte",
+      "latitude": 35.22709,
+      "longitude": -80.84313
+    },
+    {
+      "id": "Bethune",
+      "name": "Bethune",
+      "latitude": 34.41488,
+      "longitude": -80.34868
+    },
+    {
+      "id": "Lancaster",
+      "name": "Lancaster",
+      "latitude": 34.72043,
+      "longitude": -80.7709
+    },
+    {
+      "id": "Courtney",
+      "name": "Courtney",
+      "latitude": 36.06014,
+      "longitude": -80.62062
+    },
+    {
+      "id": "Lexington",
+      "name": "Lexington",
+      "latitude": 35.82403,
+      "longitude": -80.25338
+    },
+    {
+      "id": "Concord",
+      "name": "Concord",
+      "latitude": 35.40875,
+      "longitude": -80.57951
+    },
+    {
+      "id": "Salisbury",
+      "name": "Salisbury",
+      "latitude": 35.64375,
+      "longitude": -80.46256
+    },
+    {
+      "id": "High Point",
+      "name": "High Point",
+      "latitude": 35.95569,
+      "longitude": -80.00532
+    },
+    {
+      "id": "Asheboro",
+      "name": "Asheboro",
+      "latitude": 35.70791,
+      "longitude": -79.81364
+    },
+    {
+      "id": "Orangeburg",
+      "name": "Orangeburg",
+      "latitude": 33.49182,
+      "longitude": -80.85565
+    },
+    {
+      "id": "Aiken",
+      "name": "Aiken",
+      "latitude": 33.56042,
+      "longitude": -81.71955
+    },
+    {
+      "id": "Chester",
+      "name": "Chester",
+      "latitude": 34.70486,
+      "longitude": -81.21426
+    },
+    {
+      "id": "Columbia",
+      "name": "Columbia",
+      "latitude": 34.00071,
+      "longitude": -81.03481
+    },
+    {
+      "id": "Sumter",
+      "name": "Sumter",
+      "latitude": 33.92044,
+      "longitude": -80.34147
+    },
+    {
+      "id": "Georgetown",
+      "name": "Georgetown",
+      "latitude": 33.37683,
+      "longitude": -79.2945
+    },
+    {
+      "id": "Moncks Corner",
+      "name": "Moncks Corner",
+      "latitude": 33.196,
+      "longitude": -80.01314
+    },
+    {
+      "id": "Charleston",
+      "name": "Charleston",
+      "latitude": 32.77657,
+      "longitude": -79.93092
+    },
+    {
+      "id": "St George",
+      "name": "St George",
+      "latitude": 33.186,
+      "longitude": -80.57565
+    },
+    {
+      "id": "Walterboro",
+      "name": "Walterboro",
+      "latitude": 32.90517,
+      "longitude": -80.66677
+    },
+    {
+      "id": "Yemassee",
+      "name": "Yemassee",
+      "latitude": 32.69018,
+      "longitude": -80.85066
+    },
+    {
+      "id": "Augusta",
+      "name": "Augusta",
+      "latitude": 33.5018,
+      "longitude": -81.96512
+    },
+    {
+      "id": "Hilton Head",
+      "name": "Hilton Head",
+      "latitude": 32.21632,
+      "longitude": -80.75261
+    },
+    {
+      "id": "Beaufort",
+      "name": "Beaufort",
+      "latitude": 32.43158,
+      "longitude": -80.66983
+    },
+    {
+      "id": "Savannah",
+      "name": "Savannah",
+      "latitude": 32.08354,
+      "longitude": -81.09983
+    },
+    {
+      "id": "Greenwood",
+      "name": "Greenwood",
+      "latitude": 34.1954,
+      "longitude": -82.16179
+    },
+    {
+      "id": "Due West",
+      "name": "Due West",
+      "latitude": 34.33345,
+      "longitude": -82.3879
+    },
+    {
+      "id": "Spartanburg",
+      "name": "Spartanburg",
+      "latitude": 34.94957,
+      "longitude": -81.93205
+    },
+    {
+      "id": "Asheville",
+      "name": "Asheville",
+      "latitude": 35.60095,
+      "longitude": -82.55402
+    },
+    {
+      "id": "Boone",
+      "name": "Boone",
+      "latitude": 36.2168,
+      "longitude": -81.67455
+    },
+    {
+      "id": "Hickory",
+      "name": "Hickory",
+      "latitude": 35.73319,
+      "longitude": -81.3412
+    },
+    {
+      "id": "Anderson",
+      "name": "Anderson",
+      "latitude": 34.50344,
+      "longitude": -82.65013
+    },
+    {
+      "id": "Clemson",
+      "name": "Clemson",
+      "latitude": 34.68344,
+      "longitude": -82.83737
+    },
+    {
+      "id": "Toccoa",
+      "name": "Toccoa",
+      "latitude": 34.57732,
+      "longitude": -83.33239
+    },
+    {
+      "id": "Greenville",
+      "name": "Greenville",
+      "latitude": 34.85262,
+      "longitude": -82.39401
+    },
+    {
+      "id": "Myrtle Beach",
+      "name": "Myrtle Beach",
+      "latitude": 33.68906,
+      "longitude": -78.88669
+    },
+    {
+      "id": "Florence",
+      "name": "Florence",
+      "latitude": 34.19543,
+      "longitude": -79.76256
+    },
+    {
+      "id": "Baldwin",
+      "name": "Baldwin",
+      "latitude": 36.34763,
+      "longitude": -81.53288
+    },
+    {
+      "id": "Sparta",
+      "name": "Sparta",
+      "latitude": 36.50541,
+      "longitude": -81.12092
+    },
+    {
+      "id": "Level Cross",
+      "name": "Level Cross",
+      "latitude": 36.4993,
+      "longitude": -80.60729
+    },
+    {
+      "id": "Greensboro",
+      "name": "Greensboro",
+      "latitude": 36.07264,
+      "longitude": -79.79198
+    },
+    {
+      "id": "Raleigh",
+      "name": "Raleigh",
+      "latitude": 35.7721,
+      "longitude": -78.63861
+    },
+    {
+      "id": "Rocky Mount",
+      "name": "Rocky Mount",
+      "latitude": 35.9246,
+      "longitude": -77.79665
+    },
+    {
+      "id": "Fayetteville",
+      "name": "Fayetteville",
+      "latitude": 35.05266,
+      "longitude": -78.87836
+    },
+    {
+      "id": "Wilmington",
+      "name": "Wilmington",
+      "latitude": 34.22573,
+      "longitude": -77.94471
+    }
+  ],
+  "links": [
+    {
+      "source": "Rock Hill",
+      "target": "Charlotte",
+      "length_km": 37.463,
+      "spans_km": [
+        37.463
+      ]
+    },
+    {
+      "source": "Rock Hill",
+      "target": "Lancaster",
+      "length_km": 32.483,
+      "spans_km": [
+        32.483
+      ]
+    },
+    {
+      "source": "Rock Hill",
+      "target": "Chester",
+      "length_km": 29.946,
+      "spans_km": [
+        29.946
+      ]
+    },
+    {
+      "source": "Charlotte",
+      "target": "Spartanburg",
+      "length_km": 103.771,
+      "spans_km": [
+        80.0,
+        23.771
+      ]
+    },
+    {
+      "source": "Charlotte",
+      "target": "Concord",
+      "length_km": 31.307,
+      "spans_km": [
+        31.307
+      ]
+    },
+    {
+      "source": "Bethune",
+      "target": "Lancaster",
+      "length_km": 51.468,
+      "spans_km": [
+        51.468
+      ]
+    },
+    {
+      "source": "Bethune",
+      "target": "Florence",
+      "length_km": 59.108,
+      "spans_km": [
+        59.108
+      ]
+    },
+    {
+      "source": "Bethune",
+      "target": "Sumter",
+      "length_km": 54.983,
+      "spans_km": [
+        54.983
+      ]
+    },
+    {
+      "source": "Courtney",
+      "target": "Level Cross",
+      "length_km": 48.847,
+      "spans_km": [
+        48.847
+      ]
+    },
+    {
+      "source": "Courtney",
+      "target": "Baldwin",
+      "length_km": 87.873,
+      "spans_km": [
+        80.0,
+        7.873
+      ]
+    },
+    {
+      "source": "Courtney",
+      "target": "Lexington",
+      "length_km": 42.217,
+      "spans_km": [
+        42.217
+      ]
+    },
+    {
+      "source": "Lexington",
+      "target": "High Point",
+      "length_km": 26.715,
+      "spans_km": [
+        26.715
+      ]
+    },
+    {
+      "source": "Lexington",
+      "target": "Asheboro",
+      "length_km": 41.724,
+      "spans_km": [
+        41.724
+      ]
+    },
+    {
+      "source": "Lexington",
+      "target": "Concord",
+      "length_km": 54.785,
+      "spans_km": [
+        54.785
+      ]
+    },
+    {
+      "source": "Lexington",
+      "target": "Salisbury",
+      "length_km": 27.538,
+      "spans_km": [
+        27.538
+      ]
+    },
+    {
+      "source": "Concord",
+      "target": "Salisbury",
+      "length_km": 28.193,
+      "spans_km": [
+        28.193
+      ]
+    },
+    {
+      "source": "High Point",
+      "target": "Greensboro",
+      "length_km": 23.18,
+      "spans_km": [
+        23.18
+      ]
+    },
+    {
+      "source": "High Point",
+      "target": "Asheboro",
+      "length_km": 32.522,
+      "spans_km": [
+        32.522
+      ]
+    },
+    {
+      "source": "Orangeburg",
+      "target": "St George",
+      "length_km": 42.813,
+      "spans_km": [
+        42.813
+      ]
+    },
+    {
+      "source": "Orangeburg",
+      "target": "Columbia",
+      "length_km": 58.961,
+      "spans_km": [
+        58.961
+      ]
+    },
+    {
+      "source": "Aiken",
+      "target": "Augusta",
+      "length_km": 23.677,
+      "spans_km": [
+        23.677
+      ]
+    },
+    {
+      "source": "Aiken",
+      "target": "Columbia",
+      "length_km": 80.012,
+      "spans_km": [
+        80.0,
+        0.012
+      ]
+    },
+    {
+      "source": "Chester",
+      "target": "Due West",
+      "length_km": 115.183,
+      "spans_km": [
+        80.0,
+        35.183
+      ]
+    },
+    {
+      "source": "Chester",
+      "target": "Columbia",
+      "length_km": 80.012,
+      "spans_km": [
+        80.0,
+        0.012
+      ]
+    },
+    {
+      "source": "Columbia",
+      "target": "Augusta",
+      "length_km": 102.349,
+      "spans_km": [
+        80.0,
+        22.349
+      ]
+    },
+    {
+      "source": "Columbia",
+      "target": "Sumter",
+      "length_km": 64.565,
+      "spans_km": [
+        64.565
+      ]
+    },
+    {
+      "source": "Sumter",
+      "target": "Moncks Corner",
+      "length_km": 86.108,
+      "spans_km": [
+        80.0,
+        6.108
+      ]
+    },
+    {
+      "source": "Sumter",
+      "target": "Florence",
+      "length_km": 61.474,
+      "spans_km": [
+        61.474
+      ]
+    },
+    {
+      "source": "Sumter",
+      "target": "Georgetown",
+      "length_km": 114.217,
+      "spans_km": [
+        80.0,
+        34.217
+      ]
+    },
+    {
+      "source": "Georgetown",
+      "target": "Myrtle Beach",
+      "length_km": 51.324,
+      "spans_km": [
+        51.324
+      ]
+    },
+    {
+      "source": "Moncks Corner",
+      "target": "Charleston",
+      "length_km": 47.265,
+      "spans_km": [
+        47.265
+      ]
+    },
+    {
+      "source": "Charleston",
+      "target": "Savannah",
+      "length_km": 134.065,
+      "spans_km": [
+        80.0,
+        54.065
+      ]
+    },
+    {
+      "source": "Charleston",
+      "target": "St George",
+      "length_km": 75.426,
+      "spans_km": [
+        75.426
+      ]
+    },
+    {
+      "source": "Charleston",
+      "target": "Myrtle Beach",
+      "length_km": 140.454,
+      "spans_km": [
+        80.0,
+        60.454
+      ]
+    },
+    {
+      "source": "St George",
+      "target": "Walterboro",
+      "length_km": 32.361,
+      "spans_km": [
+        32.361
+      ]
+    },
+    {
+      "source": "Walterboro",
+      "target": "Yemassee",
+      "length_km": 29.443,
+      "spans_km": [
+        29.443
+      ]
+    },
+    {
+      "source": "Yemassee",
+      "target": "Savannah",
+      "length_km": 71.398,
+      "spans_km": [
+        71.398
+      ]
+    },
+    {
+      "source": "Yemassee",
+      "target": "Hilton Head",
+      "length_km": 53.488,
+      "spans_km": [
+        53.488
+      ]
+    },
+    {
+      "source": "Yemassee",
+      "target": "Beaufort",
+      "length_km": 33.377,
+      "spans_km": [
+        33.377
+      ]
+    },
+    {
+      "source": "Augusta",
+      "target": "Savannah",
+      "length_km": 177.233,
+      "spans_km": [
+        80.0,
+        80.0,
+        17.233
+      ]
+    },
+    {
+      "source": "Augusta",
+      "target": "Anderson",
+      "length_km": 128.031,
+      "spans_km": [
+        80.0,
+        48.031
+      ]
+    },
+    {
+      "source": "Hilton Head",
+      "target": "Savannah",
+      "length_km": 35.868,
+      "spans_km": [
+        35.868
+      ]
+    },
+    {
+      "source": "Greenwood",
+      "target": "Due West",
+      "length_km": 25.834,
+      "spans_km": [
+        25.834
+      ]
+    },
+    {
+      "source": "Due West",
+      "target": "Anderson",
+      "length_km": 30.592,
+      "spans_km": [
+        30.592
+      ]
+    },
+    {
+      "source": "Spartanburg",
+      "target": "Greenville",
+      "length_km": 43.486,
+      "spans_km": [
+        43.486
+      ]
+    },
+    {
+      "source": "Spartanburg",
+      "target": "Hickory",
+      "length_km": 102.296,
+      "spans_km": [
+        80.0,
+        22.296
+      ]
+    },
+    {
+      "source": "Asheville",
+      "target": "Greenville",
+      "length_km": 84.47,
+      "spans_km": [
+        80.0,
+        4.47
+      ]
+    },
+    {
+      "source": "Asheville",
+      "target": "Hickory",
+      "length_km": 110.544,
+      "spans_km": [
+        80.0,
+        30.544
+      ]
+    },
+    {
+      "source": "Boone",
+      "target": "Baldwin",
+      "length_km": 19.31,
+      "spans_km": [
+        19.31
+      ]
+    },
+    {
+      "source": "Anderson",
+      "target": "Clemson",
+      "length_km": 26.351,
+      "spans_km": [
+        26.351
+      ]
+    },
+    {
+      "source": "Anderson",
+      "target": "Toccoa",
+      "length_km": 63.029,
+      "spans_km": [
+        63.029
+      ]
+    },
+    {
+      "source": "Clemson",
+      "target": "Toccoa",
+      "length_km": 46.804,
+      "spans_km": [
+        46.804
+      ]
+    },
+    {
+      "source": "Clemson",
+      "target": "Greenville",
+      "length_km": 44.654,
+      "spans_km": [
+        44.654
+      ]
+    },
+    {
+      "source": "Toccoa",
+      "target": "Greenville",
+      "length_km": 91.068,
+      "spans_km": [
+        80.0,
+        11.068
+      ]
+    },
+    {
+      "source": "Myrtle Beach",
+      "target": "Florence",
+      "length_km": 98.48,
+      "spans_km": [
+        80.0,
+        18.48
+      ]
+    },
+    {
+      "source": "Myrtle Beach",
+      "target": "Wilmington",
+      "length_km": 105.399,
+      "spans_km": [
+        80.0,
+        25.399
+      ]
+    },
+    {
+      "source": "Florence",
+      "target": "Fayetteville",
+      "length_km": 125.025,
+      "spans_km": [
+        80.0,
+        45.025
+      ]
+    },
+    {
+      "source": "Baldwin",
+      "target": "Sparta",
+      "length_km": 40.82,
+      "spans_km": [
+        40.82
+      ]
+    },
+    {
+      "source": "Sparta",
+      "target": "Level Cross",
+      "length_km": 45.914,
+      "spans_km": [
+        45.914
+      ]
+    },
+    {
+      "source": "Greensboro",
+      "target": "Raleigh",
+      "length_km": 109.101,
+      "spans_km": [
+        80.0,
+        29.101
+      ]
+    },
+    {
+      "source": "Raleigh",
+      "target": "Rocky Mount",
+      "length_km": 77.758,
+      "spans_km": [
+        77.758
+      ]
+    },
+    {
+      "source": "Raleigh",
+      "target": "Fayetteville",
+      "length_km": 82.896,
+      "spans_km": [
+        80.0,
+        2.896
+      ]
+    },
+    {
+      "source": "Rocky Mount",
+      "target": "Fayetteville",
+      "length_km": 137.809,
+      "spans_km": [
+        80.0,
+        57.809
+      ]
+    },
+    {
+      "source": "Fayetteville",
+      "target": "Wilmington",
+      "length_km": 125.5,
+      "spans_km": [
+        80.0,
+        45.5
+      ]
+    }
+  ]
+}

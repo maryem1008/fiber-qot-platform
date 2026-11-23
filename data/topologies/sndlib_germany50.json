@@ -1,0 +1,1078 @@
+{
+  "topology_id": "sndlib_germany50",
+  "source": "sndlib:germany50.xml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Aachen",
+      "name": "Aachen",
+      "latitude": 50.76,
+      "longitude": 6.04
+    },
+    {
+      "id": "Augsburg",
+      "name": "Augsburg",
+      "latitude": 48.33,
+      "longitude": 10.9
+    },
+    {
+      "id": "Bayreuth",
+      "name": "Bayreuth",
+      "latitude": 49.93,
+      "longitude": 11.59
+    },
+    {
+      "id": "Berlin",
+      "name": "Berlin",
+      "latitude": 52.52,
+      "longitude": 13.39
+    },
+    {
+      "id": "Bielefeld",
+      "name": "Bielefeld",
+      "latitude": 52.04,
+      "longitude": 8.5
+    },
+    {
+      "id": "Braunschweig",
+      "name": "Braunschweig",
+      "latitude": 52.28,
+      "longitude": 10.55
+    },
+    {
+      "id": "Bremen",
+      "name": "Bremen",
+      "latitude": 53.11,
+      "longitude": 8.85
+    },
+    {
+      "id": "Bremerhaven",
+      "name": "Bremerhaven",
+      "latitude": 53.54,
+      "longitude": 8.58
+    },
+    {
+      "id": "Chemnitz",
+      "name": "Chemnitz",
+      "latitude": 50.84,
+      "longitude": 12.93
+    },
+    {
+      "id": "Darmstadt",
+      "name": "Darmstadt",
+      "latitude": 49.89,
+      "longitude": 8.65
+    },
+    {
+      "id": "Dortmund",
+      "name": "Dortmund",
+      "latitude": 51.51,
+      "longitude": 7.45
+    },
+    {
+      "id": "Dresden",
+      "name": "Dresden",
+      "latitude": 51.03,
+      "longitude": 13.73
+    },
+    {
+      "id": "Duesseldorf",
+      "name": "Duesseldorf",
+      "latitude": 51.25,
+      "longitude": 6.77
+    },
+    {
+      "id": "Erfurt",
+      "name": "Erfurt",
+      "latitude": 50.98,
+      "longitude": 11.04
+    },
+    {
+      "id": "Essen",
+      "name": "Essen",
+      "latitude": 51.46,
+      "longitude": 7.02
+    },
+    {
+      "id": "Flensburg",
+      "name": "Flensburg",
+      "latitude": 54.77,
+      "longitude": 9.45
+    },
+    {
+      "id": "Frankfurt",
+      "name": "Frankfurt",
+      "latitude": 50.12,
+      "longitude": 8.71
+    },
+    {
+      "id": "Freiburg",
+      "name": "Freiburg",
+      "latitude": 47.98,
+      "longitude": 7.8
+    },
+    {
+      "id": "Fulda",
+      "name": "Fulda",
+      "latitude": 50.56,
+      "longitude": 9.69
+    },
+    {
+      "id": "Giessen",
+      "name": "Giessen",
+      "latitude": 50.57,
+      "longitude": 8.67
+    },
+    {
+      "id": "Greifswald",
+      "name": "Greifswald",
+      "latitude": 54.09,
+      "longitude": 13.4
+    },
+    {
+      "id": "Hamburg",
+      "name": "Hamburg",
+      "latitude": 53.57,
+      "longitude": 9.99
+    },
+    {
+      "id": "Hannover",
+      "name": "Hannover",
+      "latitude": 52.38,
+      "longitude": 9.72
+    },
+    {
+      "id": "Kaiserslautern",
+      "name": "Kaiserslautern",
+      "latitude": 49.43,
+      "longitude": 7.75
+    },
+    {
+      "id": "Karlsruhe",
+      "name": "Karlsruhe",
+      "latitude": 49.01,
+      "longitude": 8.41
+    },
+    {
+      "id": "Kassel",
+      "name": "Kassel",
+      "latitude": 51.32,
+      "longitude": 9.51
+    },
+    {
+      "id": "Kempten",
+      "name": "Kempten",
+      "latitude": 47.72,
+      "longitude": 10.32
+    },
+    {
+      "id": "Kiel",
+      "name": "Kiel",
+      "latitude": 54.34,
+      "longitude": 10.12
+    },
+    {
+      "id": "Koblenz",
+      "name": "Koblenz",
+      "latitude": 50.4,
+      "longitude": 7.52
+    },
+    {
+      "id": "Koeln",
+      "name": "Koeln",
+      "latitude": 50.94,
+      "longitude": 6.87
+    },
+    {
+      "id": "Konstanz",
+      "name": "Konstanz",
+      "latitude": 47.66,
+      "longitude": 9.18
+    },
+    {
+      "id": "Leipzig",
+      "name": "Leipzig",
+      "latitude": 51.34,
+      "longitude": 12.38
+    },
+    {
+      "id": "Magdeburg",
+      "name": "Magdeburg",
+      "latitude": 52.14,
+      "longitude": 11.64
+    },
+    {
+      "id": "Mannheim",
+      "name": "Mannheim",
+      "latitude": 49.49,
+      "longitude": 8.49
+    },
+    {
+      "id": "Muenchen",
+      "name": "Muenchen",
+      "latitude": 48.15,
+      "longitude": 11.57
+    },
+    {
+      "id": "Muenster",
+      "name": "Muenster",
+      "latitude": 51.97,
+      "longitude": 7.6
+    },
+    {
+      "id": "Norden",
+      "name": "Norden",
+      "latitude": 53.6,
+      "longitude": 7.21
+    },
+    {
+      "id": "Nuernberg",
+      "name": "Nuernberg",
+      "latitude": 49.57,
+      "longitude": 11.03
+    },
+    {
+      "id": "Oldenburg",
+      "name": "Oldenburg",
+      "latitude": 53.11,
+      "longitude": 8.21
+    },
+    {
+      "id": "Osnabrueck",
+      "name": "Osnabrueck",
+      "latitude": 52.28,
+      "longitude": 8.03
+    },
+    {
+      "id": "Passau",
+      "name": "Passau",
+      "latitude": 48.57,
+      "longitude": 13.46
+    },
+    {
+      "id": "Regensburg",
+      "name": "Regensburg",
+      "latitude": 49.0,
+      "longitude": 12.09
+    },
+    {
+      "id": "Saarbruecken",
+      "name": "Saarbruecken",
+      "latitude": 49.23,
+      "longitude": 7.03
+    },
+    {
+      "id": "Schwerin",
+      "name": "Schwerin",
+      "latitude": 53.55,
+      "longitude": 11.45
+    },
+    {
+      "id": "Siegen",
+      "name": "Siegen",
+      "latitude": 50.91,
+      "longitude": 8.03
+    },
+    {
+      "id": "Stuttgart",
+      "name": "Stuttgart",
+      "latitude": 48.74,
+      "longitude": 9.1
+    },
+    {
+      "id": "Trier",
+      "name": "Trier",
+      "latitude": 49.75,
+      "longitude": 6.68
+    },
+    {
+      "id": "Ulm",
+      "name": "Ulm",
+      "latitude": 48.4,
+      "longitude": 9.99
+    },
+    {
+      "id": "Wesel",
+      "name": "Wesel",
+      "latitude": 51.39,
+      "longitude": 6.37
+    },
+    {
+      "id": "Wuerzburg",
+      "name": "Wuerzburg",
+      "latitude": 49.78,
+      "longitude": 9.97
+    }
+  ],
+  "links": [
+    {
+      "source": "Duesseldorf",
+      "target": "Essen",
+      "length_km": 29.097,
+      "spans_km": [
+        29.097
+      ]
+    },
+    {
+      "source": "Dortmund",
+      "target": "Essen",
+      "length_km": 30.289,
+      "spans_km": [
+        30.289
+      ]
+    },
+    {
+      "source": "Wesel",
+      "target": "Essen",
+      "length_km": 45.734,
+      "spans_km": [
+        45.734
+      ]
+    },
+    {
+      "source": "Koeln",
+      "target": "Duesseldorf",
+      "length_km": 35.171,
+      "spans_km": [
+        35.171
+      ]
+    },
+    {
+      "source": "Aachen",
+      "target": "Koeln",
+      "length_km": 61.61,
+      "spans_km": [
+        61.61
+      ]
+    },
+    {
+      "source": "Koblenz",
+      "target": "Koeln",
+      "length_km": 75.523,
+      "spans_km": [
+        75.523
+      ]
+    },
+    {
+      "source": "Muenster",
+      "target": "Dortmund",
+      "length_km": 52.182,
+      "spans_km": [
+        52.182
+      ]
+    },
+    {
+      "source": "Siegen",
+      "target": "Dortmund",
+      "length_km": 77.996,
+      "spans_km": [
+        77.996
+      ]
+    },
+    {
+      "source": "Kassel",
+      "target": "Dortmund",
+      "length_km": 144.409,
+      "spans_km": [
+        80.0,
+        64.409
+      ]
+    },
+    {
+      "source": "Wesel",
+      "target": "Aachen",
+      "length_km": 73.749,
+      "spans_km": [
+        73.749
+      ]
+    },
+    {
+      "source": "Trier",
+      "target": "Aachen",
+      "length_km": 121.173,
+      "spans_km": [
+        80.0,
+        41.173
+      ]
+    },
+    {
+      "source": "Bielefeld",
+      "target": "Muenster",
+      "length_km": 62.095,
+      "spans_km": [
+        62.095
+      ]
+    },
+    {
+      "source": "Osnabrueck",
+      "target": "Muenster",
+      "length_km": 45.276,
+      "spans_km": [
+        45.276
+      ]
+    },
+    {
+      "source": "Siegen",
+      "target": "Koblenz",
+      "length_km": 67.146,
+      "spans_km": [
+        67.146
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Koblenz",
+      "length_km": 90.14,
+      "spans_km": [
+        80.0,
+        10.14
+      ]
+    },
+    {
+      "source": "Kaiserslautern",
+      "target": "Koblenz",
+      "length_km": 109.109,
+      "spans_km": [
+        80.0,
+        29.109
+      ]
+    },
+    {
+      "source": "Trier",
+      "target": "Koblenz",
+      "length_km": 93.899,
+      "spans_km": [
+        80.0,
+        13.899
+      ]
+    },
+    {
+      "source": "Bielefeld",
+      "target": "Siegen",
+      "length_km": 129.797,
+      "spans_km": [
+        80.0,
+        49.797
+      ]
+    },
+    {
+      "source": "Giessen",
+      "target": "Siegen",
+      "length_km": 58.801,
+      "spans_km": [
+        58.801
+      ]
+    },
+    {
+      "source": "Oldenburg",
+      "target": "Wesel",
+      "length_km": 228.605,
+      "spans_km": [
+        80.0,
+        80.0,
+        68.605
+      ]
+    },
+    {
+      "source": "Norden",
+      "target": "Wesel",
+      "length_km": 252.23,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        12.23
+      ]
+    },
+    {
+      "source": "Leipzig",
+      "target": "Berlin",
+      "length_km": 148.36,
+      "spans_km": [
+        80.0,
+        68.36
+      ]
+    },
+    {
+      "source": "Dresden",
+      "target": "Berlin",
+      "length_km": 167.323,
+      "spans_km": [
+        80.0,
+        80.0,
+        7.323
+      ]
+    },
+    {
+      "source": "Schwerin",
+      "target": "Berlin",
+      "length_km": 173.032,
+      "spans_km": [
+        80.0,
+        80.0,
+        13.032
+      ]
+    },
+    {
+      "source": "Magdeburg",
+      "target": "Berlin",
+      "length_km": 126.197,
+      "spans_km": [
+        80.0,
+        46.197
+      ]
+    },
+    {
+      "source": "Greifswald",
+      "target": "Berlin",
+      "length_km": 174.577,
+      "spans_km": [
+        80.0,
+        80.0,
+        14.577
+      ]
+    },
+    {
+      "source": "Dresden",
+      "target": "Leipzig",
+      "length_km": 100.206,
+      "spans_km": [
+        80.0,
+        20.206
+      ]
+    },
+    {
+      "source": "Erfurt",
+      "target": "Leipzig",
+      "length_km": 101.657,
+      "spans_km": [
+        80.0,
+        21.657
+      ]
+    },
+    {
+      "source": "Magdeburg",
+      "target": "Leipzig",
+      "length_km": 102.514,
+      "spans_km": [
+        80.0,
+        22.514
+      ]
+    },
+    {
+      "source": "Bayreuth",
+      "target": "Leipzig",
+      "length_km": 166.388,
+      "spans_km": [
+        80.0,
+        80.0,
+        6.388
+      ]
+    },
+    {
+      "source": "Erfurt",
+      "target": "Dresden",
+      "length_km": 188.29,
+      "spans_km": [
+        80.0,
+        80.0,
+        28.29
+      ]
+    },
+    {
+      "source": "Chemnitz",
+      "target": "Dresden",
+      "length_km": 59.909,
+      "spans_km": [
+        59.909
+      ]
+    },
+    {
+      "source": "Chemnitz",
+      "target": "Erfurt",
+      "length_km": 133.421,
+      "spans_km": [
+        80.0,
+        53.421
+      ]
+    },
+    {
+      "source": "Kassel",
+      "target": "Erfurt",
+      "length_km": 113.215,
+      "spans_km": [
+        80.0,
+        33.215
+      ]
+    },
+    {
+      "source": "Wuerzburg",
+      "target": "Erfurt",
+      "length_km": 153.492,
+      "spans_km": [
+        80.0,
+        73.492
+      ]
+    },
+    {
+      "source": "Bayreuth",
+      "target": "Chemnitz",
+      "length_km": 138.795,
+      "spans_km": [
+        80.0,
+        58.795
+      ]
+    },
+    {
+      "source": "Magdeburg",
+      "target": "Schwerin",
+      "length_km": 157.303,
+      "spans_km": [
+        80.0,
+        77.303
+      ]
+    },
+    {
+      "source": "Greifswald",
+      "target": "Schwerin",
+      "length_km": 141.378,
+      "spans_km": [
+        80.0,
+        61.378
+      ]
+    },
+    {
+      "source": "Hamburg",
+      "target": "Schwerin",
+      "length_km": 96.453,
+      "spans_km": [
+        80.0,
+        16.453
+      ]
+    },
+    {
+      "source": "Kiel",
+      "target": "Schwerin",
+      "length_km": 123.66,
+      "spans_km": [
+        80.0,
+        43.66
+      ]
+    },
+    {
+      "source": "Braunschweig",
+      "target": "Magdeburg",
+      "length_km": 75.882,
+      "spans_km": [
+        75.882
+      ]
+    },
+    {
+      "source": "Kiel",
+      "target": "Hamburg",
+      "length_km": 86.042,
+      "spans_km": [
+        80.0,
+        6.042
+      ]
+    },
+    {
+      "source": "Hannover",
+      "target": "Hamburg",
+      "length_km": 133.551,
+      "spans_km": [
+        80.0,
+        53.551
+      ]
+    },
+    {
+      "source": "Braunschweig",
+      "target": "Hamburg",
+      "length_km": 148.271,
+      "spans_km": [
+        80.0,
+        68.271
+      ]
+    },
+    {
+      "source": "Oldenburg",
+      "target": "Bremen",
+      "length_km": 42.719,
+      "spans_km": [
+        42.719
+      ]
+    },
+    {
+      "source": "Bremerhaven",
+      "target": "Bremen",
+      "length_km": 51.066,
+      "spans_km": [
+        51.066
+      ]
+    },
+    {
+      "source": "Hannover",
+      "target": "Bremen",
+      "length_km": 100.091,
+      "spans_km": [
+        80.0,
+        20.091
+      ]
+    },
+    {
+      "source": "Flensburg",
+      "target": "Kiel",
+      "length_km": 64.442,
+      "spans_km": [
+        64.442
+      ]
+    },
+    {
+      "source": "Norden",
+      "target": "Oldenburg",
+      "length_km": 85.866,
+      "spans_km": [
+        80.0,
+        5.866
+      ]
+    },
+    {
+      "source": "Osnabrueck",
+      "target": "Oldenburg",
+      "length_km": 93.085,
+      "spans_km": [
+        80.0,
+        13.085
+      ]
+    },
+    {
+      "source": "Bremerhaven",
+      "target": "Flensburg",
+      "length_km": 148.035,
+      "spans_km": [
+        80.0,
+        68.035
+      ]
+    },
+    {
+      "source": "Bielefeld",
+      "target": "Hannover",
+      "length_km": 91.319,
+      "spans_km": [
+        80.0,
+        11.319
+      ]
+    },
+    {
+      "source": "Braunschweig",
+      "target": "Hannover",
+      "length_km": 57.486,
+      "spans_km": [
+        57.486
+      ]
+    },
+    {
+      "source": "Osnabrueck",
+      "target": "Hannover",
+      "length_km": 115.374,
+      "spans_km": [
+        80.0,
+        35.374
+      ]
+    },
+    {
+      "source": "Braunschweig",
+      "target": "Bielefeld",
+      "length_km": 142.356,
+      "spans_km": [
+        80.0,
+        62.356
+      ]
+    },
+    {
+      "source": "Kassel",
+      "target": "Braunschweig",
+      "length_km": 128.485,
+      "spans_km": [
+        80.0,
+        48.485
+      ]
+    },
+    {
+      "source": "Giessen",
+      "target": "Kassel",
+      "length_km": 102.069,
+      "spans_km": [
+        80.0,
+        22.069
+      ]
+    },
+    {
+      "source": "Fulda",
+      "target": "Kassel",
+      "length_km": 85.444,
+      "spans_km": [
+        80.0,
+        5.444
+      ]
+    },
+    {
+      "source": "Darmstadt",
+      "target": "Frankfurt",
+      "length_km": 25.932,
+      "spans_km": [
+        25.932
+      ]
+    },
+    {
+      "source": "Giessen",
+      "target": "Frankfurt",
+      "length_km": 50.118,
+      "spans_km": [
+        50.118
+      ]
+    },
+    {
+      "source": "Fulda",
+      "target": "Frankfurt",
+      "length_km": 85.033,
+      "spans_km": [
+        80.0,
+        5.033
+      ]
+    },
+    {
+      "source": "Mannheim",
+      "target": "Darmstadt",
+      "length_km": 45.943,
+      "spans_km": [
+        45.943
+      ]
+    },
+    {
+      "source": "Kaiserslautern",
+      "target": "Darmstadt",
+      "length_km": 82.539,
+      "spans_km": [
+        80.0,
+        2.539
+      ]
+    },
+    {
+      "source": "Karlsruhe",
+      "target": "Mannheim",
+      "length_km": 53.688,
+      "spans_km": [
+        53.688
+      ]
+    },
+    {
+      "source": "Saarbruecken",
+      "target": "Kaiserslautern",
+      "length_km": 56.717,
+      "spans_km": [
+        56.717
+      ]
+    },
+    {
+      "source": "Karlsruhe",
+      "target": "Kaiserslautern",
+      "length_km": 66.923,
+      "spans_km": [
+        66.923
+      ]
+    },
+    {
+      "source": "Fulda",
+      "target": "Giessen",
+      "length_km": 72.052,
+      "spans_km": [
+        72.052
+      ]
+    },
+    {
+      "source": "Saarbruecken",
+      "target": "Trier",
+      "length_km": 63.106,
+      "spans_km": [
+        63.106
+      ]
+    },
+    {
+      "source": "Wuerzburg",
+      "target": "Fulda",
+      "length_km": 88.995,
+      "spans_km": [
+        80.0,
+        8.995
+      ]
+    },
+    {
+      "source": "Karlsruhe",
+      "target": "Saarbruecken",
+      "length_km": 103.364,
+      "spans_km": [
+        80.0,
+        23.364
+      ]
+    },
+    {
+      "source": "Karlsruhe",
+      "target": "Stuttgart",
+      "length_km": 58.717,
+      "spans_km": [
+        58.717
+      ]
+    },
+    {
+      "source": "Ulm",
+      "target": "Stuttgart",
+      "length_km": 75.614,
+      "spans_km": [
+        75.614
+      ]
+    },
+    {
+      "source": "Konstanz",
+      "target": "Stuttgart",
+      "length_km": 120.237,
+      "spans_km": [
+        80.0,
+        40.237
+      ]
+    },
+    {
+      "source": "Wuerzburg",
+      "target": "Stuttgart",
+      "length_km": 131.752,
+      "spans_km": [
+        80.0,
+        51.752
+      ]
+    },
+    {
+      "source": "Freiburg",
+      "target": "Karlsruhe",
+      "length_km": 123.034,
+      "spans_km": [
+        80.0,
+        43.034
+      ]
+    },
+    {
+      "source": "Augsburg",
+      "target": "Ulm",
+      "length_km": 67.676,
+      "spans_km": [
+        67.676
+      ]
+    },
+    {
+      "source": "Freiburg",
+      "target": "Konstanz",
+      "length_km": 109.004,
+      "spans_km": [
+        80.0,
+        29.004
+      ]
+    },
+    {
+      "source": "Kempten",
+      "target": "Konstanz",
+      "length_km": 85.589,
+      "spans_km": [
+        80.0,
+        5.589
+      ]
+    },
+    {
+      "source": "Augsburg",
+      "target": "Muenchen",
+      "length_km": 53.503,
+      "spans_km": [
+        53.503
+      ]
+    },
+    {
+      "source": "Kempten",
+      "target": "Muenchen",
+      "length_km": 104.678,
+      "spans_km": [
+        80.0,
+        24.678
+      ]
+    },
+    {
+      "source": "Passau",
+      "target": "Muenchen",
+      "length_km": 147.237,
+      "spans_km": [
+        80.0,
+        67.237
+      ]
+    },
+    {
+      "source": "Nuernberg",
+      "target": "Muenchen",
+      "length_km": 162.762,
+      "spans_km": [
+        80.0,
+        80.0,
+        2.762
+      ]
+    },
+    {
+      "source": "Regensburg",
+      "target": "Muenchen",
+      "length_km": 101.964,
+      "spans_km": [
+        80.0,
+        21.964
+      ]
+    },
+    {
+      "source": "Wuerzburg",
+      "target": "Augsburg",
+      "length_km": 174.892,
+      "spans_km": [
+        80.0,
+        80.0,
+        14.892
+      ]
+    },
+    {
+      "source": "Regensburg",
+      "target": "Passau",
+      "length_km": 111.177,
+      "spans_km": [
+        80.0,
+        31.177
+      ]
+    },
+    {
+      "source": "Bayreuth",
+      "target": "Nuernberg",
+      "length_km": 56.755,
+      "spans_km": [
+        56.755
+      ]
+    },
+    {
+      "source": "Wuerzburg",
+      "target": "Nuernberg",
+      "length_km": 79.768,
+      "spans_km": [
+        79.768
+      ]
+    },
+    {
+      "source": "Regensburg",
+      "target": "Nuernberg",
+      "length_km": 99.639,
+      "spans_km": [
+        80.0,
+        19.639
+      ]
+    }
+  ]
+}

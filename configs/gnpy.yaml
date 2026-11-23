@@ -14,3 +14,13 @@ gnpy:
     osnr_reference_bandwidth: "0.1 nm, when reported by GNPy"
     gsnr_convention: "verify from the pinned release output/config before documenting"
     distinguish_simulation_from_ml_estimate: true
+
+topology:
+  max_span_km: 80
+  route_factor: 1.25
+  route_factor_range: [1.20, 1.30]
+  fiber_type: SSMF
+  edfa_type: std_medium_gain
+  connector_loss_db: 0.5
+  splice_loss_db: 0
+  roadm_type: roadm_type_1

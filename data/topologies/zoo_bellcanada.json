@@ -1,0 +1,1234 @@
+{
+  "topology_id": "zoo_bellcanada",
+  "source": "zoo:Bellcanada.graphml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Cold Lake",
+      "name": "Cold Lake",
+      "latitude": 54.45018,
+      "longitude": -110.2017
+    },
+    {
+      "id": "Grande Prairie",
+      "name": "Grande Prairie",
+      "latitude": 55.16667,
+      "longitude": -118.80271
+    },
+    {
+      "id": "Edmonton",
+      "name": "Edmonton",
+      "latitude": 53.55014,
+      "longitude": -113.46871
+    },
+    {
+      "id": "Fort McMurray",
+      "name": "Fort McMurray",
+      "latitude": 56.7335,
+      "longitude": -111.38519
+    },
+    {
+      "id": "Kamloops",
+      "name": "Kamloops",
+      "latitude": 50.66648,
+      "longitude": -120.3192
+    },
+    {
+      "id": "Vernon",
+      "name": "Vernon",
+      "latitude": 40.9126,
+      "longitude": -73.83708
+    },
+    {
+      "id": "Dawson Creek",
+      "name": "Dawson Creek",
+      "latitude": 55.7666,
+      "longitude": -120.23616
+    },
+    {
+      "id": "Prince George",
+      "name": "Prince George",
+      "latitude": 53.9166,
+      "longitude": -122.75301
+    },
+    {
+      "id": "Kelowna",
+      "name": "Kelowna",
+      "latitude": 49.88307,
+      "longitude": -119.48568
+    },
+    {
+      "id": "Penticton?",
+      "name": "Penticton?",
+      "latitude": 49.48062,
+      "longitude": -119.58584
+    },
+    {
+      "id": "Sept -Iles",
+      "name": "Sept -Iles",
+      "latitude": 50.20011,
+      "longitude": -66.38208
+    },
+    {
+      "id": "Charlottetown",
+      "name": "Charlottetown",
+      "latitude": 46.23525,
+      "longitude": -63.12671
+    },
+    {
+      "id": "New York",
+      "name": "New York",
+      "latitude": 40.71427,
+      "longitude": -74.00597
+    },
+    {
+      "id": "Ottawa",
+      "name": "Ottawa",
+      "latitude": 45.41117,
+      "longitude": -75.69812
+    },
+    {
+      "id": "Montreal",
+      "name": "Montreal",
+      "latitude": 45.50884,
+      "longitude": -73.58781
+    },
+    {
+      "id": "Sherbrooke",
+      "name": "Sherbrooke",
+      "latitude": 45.40008,
+      "longitude": -71.89908
+    },
+    {
+      "id": "Quebec City",
+      "name": "Quebec City",
+      "latitude": 46.81228,
+      "longitude": -71.21454
+    },
+    {
+      "id": "Chicoutimi",
+      "name": "Chicoutimi",
+      "latitude": 48.42749,
+      "longitude": -71.06352
+    },
+    {
+      "id": "Rimouski",
+      "name": "Rimouski",
+      "latitude": 48.44879,
+      "longitude": -68.52396
+    },
+    {
+      "id": "Baie-Comeau",
+      "name": "Baie-Comeau",
+      "latitude": 49.21679,
+      "longitude": -68.14894
+    },
+    {
+      "id": "Saint John",
+      "name": "Saint John",
+      "latitude": 45.27271,
+      "longitude": -66.06766
+    },
+    {
+      "id": "Moncton",
+      "name": "Moncton",
+      "latitude": 46.11594,
+      "longitude": -64.80186
+    },
+    {
+      "id": "Halifax",
+      "name": "Halifax",
+      "latitude": 44.646,
+      "longitude": -63.57333
+    },
+    {
+      "id": "Fredericton",
+      "name": "Fredericton",
+      "latitude": 45.94541,
+      "longitude": -66.66558
+    },
+    {
+      "id": "St John's",
+      "name": "St John's",
+      "latitude": 47.56494,
+      "longitude": -52.70931
+    },
+    {
+      "id": "Onslow",
+      "name": "Onslow",
+      "latitude": 45.36685,
+      "longitude": -63.28198
+    },
+    {
+      "id": "Lethbridge",
+      "name": "Lethbridge",
+      "latitude": 49.69999,
+      "longitude": -112.81856
+    },
+    {
+      "id": "Calgary",
+      "name": "Calgary",
+      "latitude": 51.05011,
+      "longitude": -114.08529
+    },
+    {
+      "id": "Buffalo",
+      "name": "Buffalo",
+      "latitude": 42.88645,
+      "longitude": -78.87837
+    },
+    {
+      "id": "Toronto",
+      "name": "Toronto",
+      "latitude": 43.70011,
+      "longitude": -79.4163
+    },
+    {
+      "id": "Victoria",
+      "name": "Victoria",
+      "latitude": 48.43294,
+      "longitude": -123.3693
+    },
+    {
+      "id": "Seattle",
+      "name": "Seattle",
+      "latitude": 47.60621,
+      "longitude": -122.33207
+    },
+    {
+      "id": "Courtenay",
+      "name": "Courtenay",
+      "latitude": 49.68657,
+      "longitude": -124.9936
+    },
+    {
+      "id": "Vancouver",
+      "name": "Vancouver",
+      "latitude": 49.24966,
+      "longitude": -123.11934
+    },
+    {
+      "id": "Chicago",
+      "name": "Chicago",
+      "latitude": 41.85003,
+      "longitude": -87.65005
+    },
+    {
+      "id": "Los Angeles",
+      "name": "Los Angeles",
+      "latitude": 34.05223,
+      "longitude": -118.24368
+    },
+    {
+      "id": "Palo Alto",
+      "name": "Palo Alto",
+      "latitude": 37.44188,
+      "longitude": -122.14302
+    },
+    {
+      "id": "San Francisco",
+      "name": "San Francisco",
+      "latitude": 37.77493,
+      "longitude": -122.41942
+    },
+    {
+      "id": "Medicine Hat",
+      "name": "Medicine Hat",
+      "latitude": 50.05006,
+      "longitude": -110.66834
+    },
+    {
+      "id": "Red Deer",
+      "name": "Red Deer",
+      "latitude": 52.26682,
+      "longitude": -113.802
+    },
+    {
+      "id": "Washington",
+      "name": "Washington",
+      "latitude": 38.89511,
+      "longitude": -77.03637
+    },
+    {
+      "id": "Atlanta",
+      "name": "Atlanta",
+      "latitude": 33.749,
+      "longitude": -84.38798
+    },
+    {
+      "id": "Dallas",
+      "name": "Dallas",
+      "latitude": 32.78306,
+      "longitude": -96.80667
+    },
+    {
+      "id": "Sudbury",
+      "name": "Sudbury",
+      "latitude": 46.49,
+      "longitude": -80.99001
+    },
+    {
+      "id": "Thunder Bay",
+      "name": "Thunder Bay",
+      "latitude": 48.4001,
+      "longitude": -89.31683
+    },
+    {
+      "id": "Winnipeg",
+      "name": "Winnipeg",
+      "latitude": 49.8844,
+      "longitude": -97.14704
+    },
+    {
+      "id": "Saskatoon",
+      "name": "Saskatoon",
+      "latitude": 52.11679,
+      "longitude": -106.63452
+    },
+    {
+      "id": "Regina",
+      "name": "Regina",
+      "latitude": 50.45008,
+      "longitude": -104.6178
+    }
+  ],
+  "links": [
+    {
+      "source": "Cold Lake",
+      "target": "Edmonton",
+      "length_km": 235.787,
+      "spans_km": [
+        80.0,
+        80.0,
+        75.787
+      ]
+    },
+    {
+      "source": "Grande Prairie",
+      "target": "Edmonton",
+      "length_km": 389.421,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        69.421
+      ]
+    },
+    {
+      "source": "Grande Prairie",
+      "target": "Dawson Creek",
+      "length_km": 112.311,
+      "spans_km": [
+        80.0,
+        32.311
+      ]
+    },
+    {
+      "source": "Edmonton",
+      "target": "Fort McMurray",
+      "length_km": 377.885,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        57.885
+      ]
+    },
+    {
+      "source": "Edmonton",
+      "target": "Kamloops",
+      "length_km": 566.79,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        6.79
+      ]
+    },
+    {
+      "source": "Edmonton",
+      "target": "Red Deer",
+      "length_km": 144.438,
+      "spans_km": [
+        80.0,
+        64.438
+      ]
+    },
+    {
+      "source": "Edmonton",
+      "target": "Saskatoon",
+      "length_km": 485.743,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        5.743
+      ]
+    },
+    {
+      "source": "Kamloops",
+      "target": "Vancouver",
+      "length_km": 254.814,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        14.814
+      ]
+    },
+    {
+      "source": "Kamloops",
+      "target": "Vernon",
+      "length_km": 3696.179,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        16.179
+      ]
+    },
+    {
+      "source": "Kamloops",
+      "target": "Prince George",
+      "length_km": 397.442,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        77.442
+      ]
+    },
+    {
+      "source": "Vernon",
+      "target": "Kelowna",
+      "length_km": 3639.415,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        39.415
+      ]
+    },
+    {
+      "source": "Dawson Creek",
+      "target": "Prince George",
+      "length_km": 261.283,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        21.283
+      ]
+    },
+    {
+      "source": "Kelowna",
+      "target": "Penticton?",
+      "length_km": 45.327,
+      "spans_km": [
+        45.327
+      ]
+    },
+    {
+      "source": "Kelowna",
+      "target": "Calgary",
+      "length_km": 403.547,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        3.547
+      ]
+    },
+    {
+      "source": "Kelowna",
+      "target": "Vancouver",
+      "length_km": 271.319,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        31.319
+      ]
+    },
+    {
+      "source": "Sept -Iles",
+      "target": "Baie-Comeau",
+      "length_km": 167.613,
+      "spans_km": [
+        80.0,
+        80.0,
+        7.613
+      ]
+    },
+    {
+      "source": "Charlottetown",
+      "target": "Onslow",
+      "length_km": 97.309,
+      "spans_km": [
+        80.0,
+        17.309
+      ]
+    },
+    {
+      "source": "Charlottetown",
+      "target": "Moncton",
+      "length_km": 129.66,
+      "spans_km": [
+        80.0,
+        49.66
+      ]
+    },
+    {
+      "source": "New York",
+      "target": "Washington",
+      "length_km": 328.491,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        8.491
+      ]
+    },
+    {
+      "source": "New York",
+      "target": "Buffalo",
+      "length_km": 470.482,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        70.482
+      ]
+    },
+    {
+      "source": "New York",
+      "target": "Montreal",
+      "length_km": 534.209,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        54.209
+      ]
+    },
+    {
+      "source": "Ottawa",
+      "target": "Toronto",
+      "length_km": 350.645,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        30.645
+      ]
+    },
+    {
+      "source": "Ottawa",
+      "target": "Montreal",
+      "length_km": 164.942,
+      "spans_km": [
+        80.0,
+        80.0,
+        4.942
+      ]
+    },
+    {
+      "source": "Montreal",
+      "target": "Quebec City",
+      "length_km": 233.255,
+      "spans_km": [
+        80.0,
+        80.0,
+        73.255
+      ]
+    },
+    {
+      "source": "Montreal",
+      "target": "Sherbrooke",
+      "length_km": 132.273,
+      "spans_km": [
+        80.0,
+        52.273
+      ]
+    },
+    {
+      "source": "Sherbrooke",
+      "target": "Quebec City",
+      "length_km": 165.658,
+      "spans_km": [
+        80.0,
+        80.0,
+        5.658
+      ]
+    },
+    {
+      "source": "Quebec City",
+      "target": "Chicoutimi",
+      "length_km": 179.959,
+      "spans_km": [
+        80.0,
+        80.0,
+        19.959
+      ]
+    },
+    {
+      "source": "Quebec City",
+      "target": "Fredericton",
+      "length_km": 361.968,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        41.968
+      ]
+    },
+    {
+      "source": "Quebec City",
+      "target": "Moncton",
+      "length_km": 497.08,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        17.08
+      ]
+    },
+    {
+      "source": "Chicoutimi",
+      "target": "Rimouski",
+      "length_km": 187.349,
+      "spans_km": [
+        80.0,
+        80.0,
+        27.349
+      ]
+    },
+    {
+      "source": "Rimouski",
+      "target": "Baie-Comeau",
+      "length_km": 89.701,
+      "spans_km": [
+        80.0,
+        9.701
+      ]
+    },
+    {
+      "source": "Saint John",
+      "target": "Moncton",
+      "length_km": 135.852,
+      "spans_km": [
+        80.0,
+        55.852
+      ]
+    },
+    {
+      "source": "Saint John",
+      "target": "Halifax",
+      "length_km": 208.254,
+      "spans_km": [
+        80.0,
+        80.0,
+        48.254
+      ]
+    },
+    {
+      "source": "Saint John",
+      "target": "Fredericton",
+      "length_km": 88.081,
+      "spans_km": [
+        80.0,
+        8.081
+      ]
+    },
+    {
+      "source": "Moncton",
+      "target": "Onslow",
+      "length_km": 144.389,
+      "spans_km": [
+        80.0,
+        64.389
+      ]
+    },
+    {
+      "source": "Halifax",
+      "target": "St John's",
+      "length_km": 897.286,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        17.286
+      ]
+    },
+    {
+      "source": "Halifax",
+      "target": "Onslow",
+      "length_km": 83.363,
+      "spans_km": [
+        80.0,
+        3.363
+      ]
+    },
+    {
+      "source": "St John's",
+      "target": "Onslow",
+      "length_km": 845.055,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        45.055
+      ]
+    },
+    {
+      "source": "Lethbridge",
+      "target": "Calgary",
+      "length_km": 174.944,
+      "spans_km": [
+        80.0,
+        80.0,
+        14.944
+      ]
+    },
+    {
+      "source": "Calgary",
+      "target": "Vancouver",
+      "length_km": 673.596,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        33.596
+      ]
+    },
+    {
+      "source": "Calgary",
+      "target": "Medicine Hat",
+      "length_km": 265.765,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        25.765
+      ]
+    },
+    {
+      "source": "Calgary",
+      "target": "Red Deer",
+      "length_km": 136.696,
+      "spans_km": [
+        80.0,
+        56.696
+      ]
+    },
+    {
+      "source": "Buffalo",
+      "target": "Toronto",
+      "length_km": 100.404,
+      "spans_km": [
+        80.0,
+        20.404
+      ]
+    },
+    {
+      "source": "Toronto",
+      "target": "Chicago",
+      "length_km": 702.465,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        62.465
+      ]
+    },
+    {
+      "source": "Toronto",
+      "target": "Sudbury",
+      "length_km": 333.893,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        13.893
+      ]
+    },
+    {
+      "source": "Victoria",
+      "target": "Courtenay",
+      "length_km": 182.853,
+      "spans_km": [
+        80.0,
+        80.0,
+        22.853
+      ]
+    },
+    {
+      "source": "Victoria",
+      "target": "Vancouver",
+      "length_km": 92.639,
+      "spans_km": [
+        80.0,
+        12.639
+      ]
+    },
+    {
+      "source": "Victoria",
+      "target": "Seattle",
+      "length_km": 120.006,
+      "spans_km": [
+        80.0,
+        40.006
+      ]
+    },
+    {
+      "source": "Seattle",
+      "target": "Vancouver",
+      "length_km": 191.75,
+      "spans_km": [
+        80.0,
+        80.0,
+        31.75
+      ]
+    },
+    {
+      "source": "Seattle",
+      "target": "Los Angeles",
+      "length_km": 1545.303,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        25.303
+      ]
+    },
+    {
+      "source": "Seattle",
+      "target": "Palo Alto",
+      "length_km": 1130.327,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        10.327
+      ]
+    },
+    {
+      "source": "Seattle",
+      "target": "San Francisco",
+      "length_km": 1093.212,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        53.212
+      ]
+    },
+    {
+      "source": "Chicago",
+      "target": "Dallas",
+      "length_km": 1291.468,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        11.468
+      ]
+    },
+    {
+      "source": "Chicago",
+      "target": "Winnipeg",
+      "length_km": 1155.2,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        35.2
+      ]
+    },
+    {
+      "source": "Los Angeles",
+      "target": "Washington",
+      "length_km": 3692.153,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        12.153
+      ]
+    },
+    {
+      "source": "Los Angeles",
+      "target": "Palo Alto",
+      "length_km": 515.546,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        35.546
+      ]
+    },
+    {
+      "source": "Palo Alto",
+      "target": "San Francisco",
+      "length_km": 44.32,
+      "spans_km": [
+        44.32
+      ]
+    },
+    {
+      "source": "Medicine Hat",
+      "target": "Regina",
+      "length_km": 432.378,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        32.378
+      ]
+    },
+    {
+      "source": "Washington",
+      "target": "Atlanta",
+      "length_km": 871.926,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        71.926
+      ]
+    },
+    {
+      "source": "Atlanta",
+      "target": "Dallas",
+      "length_km": 1158.886,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        38.886
+      ]
+    },
+    {
+      "source": "Sudbury",
+      "target": "Thunder Bay",
+      "length_km": 660.815,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        20.815
+      ]
+    },
+    {
+      "source": "Thunder Bay",
+      "target": "Winnipeg",
+      "length_km": 592.694,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        32.694
+      ]
+    },
+    {
+      "source": "Winnipeg",
+      "target": "Saskatoon",
+      "length_km": 708.139,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        68.139
+      ]
+    },
+    {
+      "source": "Winnipeg",
+      "target": "Regina",
+      "length_km": 535.583,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        55.583
+      ]
+    }
+  ]
+}

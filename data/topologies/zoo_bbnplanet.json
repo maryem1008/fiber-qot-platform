@@ -1,0 +1,604 @@
+{
+  "topology_id": "zoo_bbnplanet",
+  "source": "zoo:Bbnplanet.graphml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Jackson",
+      "name": "Jackson",
+      "latitude": 32.29876,
+      "longitude": -90.18481
+    },
+    {
+      "id": "Atlanta",
+      "name": "Atlanta",
+      "latitude": 33.749,
+      "longitude": -84.38798
+    },
+    {
+      "id": "Austin",
+      "name": "Austin",
+      "latitude": 30.26715,
+      "longitude": -97.74306
+    },
+    {
+      "id": "Houston",
+      "name": "Houston",
+      "latitude": 29.76328,
+      "longitude": -95.36327
+    },
+    {
+      "id": "Detroit",
+      "name": "Detroit",
+      "latitude": 42.33143,
+      "longitude": -83.04575
+    },
+    {
+      "id": "Columbus",
+      "name": "Columbus",
+      "latitude": 39.96118,
+      "longitude": -82.99879
+    },
+    {
+      "id": "Cincinnati",
+      "name": "Cincinnati",
+      "latitude": 39.162,
+      "longitude": -84.45689
+    },
+    {
+      "id": "Cleveland",
+      "name": "Cleveland",
+      "latitude": 41.4995,
+      "longitude": -81.69541
+    },
+    {
+      "id": "Chicago",
+      "name": "Chicago",
+      "latitude": 41.85003,
+      "longitude": -87.65005
+    },
+    {
+      "id": "Minneapolis",
+      "name": "Minneapolis",
+      "latitude": 44.97997,
+      "longitude": -93.26384
+    },
+    {
+      "id": "Philadelphia",
+      "name": "Philadelphia",
+      "latitude": 39.95234,
+      "longitude": -75.16379
+    },
+    {
+      "id": "New York",
+      "name": "New York",
+      "latitude": 40.71427,
+      "longitude": -74.00597
+    },
+    {
+      "id": "Cambridge",
+      "name": "Cambridge",
+      "latitude": 42.3751,
+      "longitude": -71.10561
+    },
+    {
+      "id": "Boston",
+      "name": "Boston",
+      "latitude": 42.35843,
+      "longitude": -71.05977
+    },
+    {
+      "id": "Richmond",
+      "name": "Richmond",
+      "latitude": 37.55376,
+      "longitude": -77.46026
+    },
+    {
+      "id": "Washington, DC",
+      "name": "Washington, DC",
+      "latitude": 38.89511,
+      "longitude": -77.03637
+    },
+    {
+      "id": "Baltimore",
+      "name": "Baltimore",
+      "latitude": 39.29038,
+      "longitude": -76.61219
+    },
+    {
+      "id": "Denver",
+      "name": "Denver",
+      "latitude": 39.73915,
+      "longitude": -104.9847
+    },
+    {
+      "id": "Dallas",
+      "name": "Dallas",
+      "latitude": 32.78306,
+      "longitude": -96.80667
+    },
+    {
+      "id": "Sacramento",
+      "name": "Sacramento",
+      "latitude": 38.58157,
+      "longitude": -121.4944
+    },
+    {
+      "id": "Oakland",
+      "name": "Oakland",
+      "latitude": 37.80437,
+      "longitude": -122.2708
+    },
+    {
+      "id": "San Francisco",
+      "name": "San Francisco",
+      "latitude": 37.77493,
+      "longitude": -122.41942
+    },
+    {
+      "id": "Palo Alto",
+      "name": "Palo Alto",
+      "latitude": 37.44188,
+      "longitude": -122.14302
+    },
+    {
+      "id": "San Jose",
+      "name": "San Jose",
+      "latitude": 37.33939,
+      "longitude": -121.89496
+    },
+    {
+      "id": "Los Angeles",
+      "name": "Los Angeles",
+      "latitude": 34.05223,
+      "longitude": -118.24368
+    },
+    {
+      "id": "San Diego",
+      "name": "San Diego",
+      "latitude": 32.71533,
+      "longitude": -117.15726
+    },
+    {
+      "id": "Orange",
+      "name": "Orange",
+      "latitude": 33.78779,
+      "longitude": -117.85311
+    }
+  ],
+  "links": [
+    {
+      "source": "Jackson",
+      "target": "Atlanta",
+      "length_km": 563.891,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        3.891
+      ]
+    },
+    {
+      "source": "Atlanta",
+      "target": "Dallas",
+      "length_km": 1158.886,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        38.886
+      ]
+    },
+    {
+      "source": "Atlanta",
+      "target": "Washington, DC",
+      "length_km": 871.926,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        71.926
+      ]
+    },
+    {
+      "source": "Austin",
+      "target": "Dallas",
+      "length_km": 293.493,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        53.493
+      ]
+    },
+    {
+      "source": "Houston",
+      "target": "Dallas",
+      "length_km": 362.711,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        42.711
+      ]
+    },
+    {
+      "source": "Detroit",
+      "target": "Cleveland",
+      "length_km": 145.053,
+      "spans_km": [
+        80.0,
+        65.053
+      ]
+    },
+    {
+      "source": "Columbus",
+      "target": "Cleveland",
+      "length_km": 203.269,
+      "spans_km": [
+        80.0,
+        80.0,
+        43.269
+      ]
+    },
+    {
+      "source": "Cincinnati",
+      "target": "Cleveland",
+      "length_km": 349.746,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        29.746
+      ]
+    },
+    {
+      "source": "Cleveland",
+      "target": "Chicago",
+      "length_km": 495.995,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        15.995
+      ]
+    },
+    {
+      "source": "Cleveland",
+      "target": "New York",
+      "length_km": 649.915,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        9.915
+      ]
+    },
+    {
+      "source": "Chicago",
+      "target": "Denver",
+      "length_km": 1475.382,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        35.382
+      ]
+    },
+    {
+      "source": "Chicago",
+      "target": "Minneapolis",
+      "length_km": 571.37,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        11.37
+      ]
+    },
+    {
+      "source": "Chicago",
+      "target": "Boston",
+      "length_km": 1367.667,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        7.667
+      ]
+    },
+    {
+      "source": "Philadelphia",
+      "target": "New York",
+      "length_km": 129.649,
+      "spans_km": [
+        80.0,
+        49.649
+      ]
+    },
+    {
+      "source": "New York",
+      "target": "Washington, DC",
+      "length_km": 328.491,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        8.491
+      ]
+    },
+    {
+      "source": "New York",
+      "target": "Cambridge",
+      "length_km": 303.888,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        63.888
+      ]
+    },
+    {
+      "source": "Richmond",
+      "target": "Washington, DC",
+      "length_km": 153.678,
+      "spans_km": [
+        80.0,
+        73.678
+      ]
+    },
+    {
+      "source": "Washington, DC",
+      "target": "Baltimore",
+      "length_km": 57.2,
+      "spans_km": [
+        57.2
+      ]
+    },
+    {
+      "source": "Washington, DC",
+      "target": "San Jose",
+      "length_km": 3888.283,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        48.283
+      ]
+    },
+    {
+      "source": "Denver",
+      "target": "Oakland",
+      "length_km": 1511.519,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        71.519
+      ]
+    },
+    {
+      "source": "Dallas",
+      "target": "Los Angeles",
+      "length_km": 1990.973,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        70.973
+      ]
+    },
+    {
+      "source": "Sacramento",
+      "target": "Oakland",
+      "length_km": 109.873,
+      "spans_km": [
+        80.0,
+        29.873
+      ]
+    },
+    {
+      "source": "Oakland",
+      "target": "San Francisco",
+      "length_km": 13.464,
+      "spans_km": [
+        13.464
+      ]
+    },
+    {
+      "source": "Oakland",
+      "target": "San Jose",
+      "length_km": 61.404,
+      "spans_km": [
+        61.404
+      ]
+    },
+    {
+      "source": "Palo Alto",
+      "target": "San Jose",
+      "length_km": 24.701,
+      "spans_km": [
+        24.701
+      ]
+    },
+    {
+      "source": "San Jose",
+      "target": "Los Angeles",
+      "length_km": 492.171,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        12.171
+      ]
+    },
+    {
+      "source": "Los Angeles",
+      "target": "San Diego",
+      "length_km": 179.646,
+      "spans_km": [
+        80.0,
+        80.0,
+        19.646
+      ]
+    },
+    {
+      "source": "Los Angeles",
+      "target": "Orange",
+      "length_km": 46.512,
+      "spans_km": [
+        46.512
+      ]
+    }
+  ]
+}

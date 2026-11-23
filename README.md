@@ -32,6 +32,7 @@ On Linux ARM64, use `bash scripts/install_gnpy_arm64.sh`. That helper builds the
 make env-check     # report Python and GNPy versions
 make gnpy-help     # verify the GNPy CLI entry point
 make test          # run tests
+make phase1        # parse and convert Phase 1 topology sources
 ```
 
 ## Project structure

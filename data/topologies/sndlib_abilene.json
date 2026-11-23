@@ -1,0 +1,370 @@
+{
+  "topology_id": "sndlib_abilene",
+  "source": "sndlib:abilene.xml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "ATLAM5",
+      "name": "ATLAM5",
+      "latitude": 33.75,
+      "longitude": -84.3833
+    },
+    {
+      "id": "ATLAng",
+      "name": "ATLAng",
+      "latitude": 34.5,
+      "longitude": -85.5
+    },
+    {
+      "id": "CHINng",
+      "name": "CHINng",
+      "latitude": 41.8333,
+      "longitude": -87.6167
+    },
+    {
+      "id": "DNVRng",
+      "name": "DNVRng",
+      "latitude": 40.75,
+      "longitude": -105.0
+    },
+    {
+      "id": "HSTNng",
+      "name": "HSTNng",
+      "latitude": 29.770031,
+      "longitude": -95.517364
+    },
+    {
+      "id": "IPLSng",
+      "name": "IPLSng",
+      "latitude": 39.780622,
+      "longitude": -86.159535
+    },
+    {
+      "id": "KSCYng",
+      "name": "KSCYng",
+      "latitude": 38.961694,
+      "longitude": -96.596704
+    },
+    {
+      "id": "LOSAng",
+      "name": "LOSAng",
+      "latitude": 34.05,
+      "longitude": -118.25
+    },
+    {
+      "id": "NYCMng",
+      "name": "NYCMng",
+      "latitude": 40.7833,
+      "longitude": -73.9667
+    },
+    {
+      "id": "SNVAng",
+      "name": "SNVAng",
+      "latitude": 37.38575,
+      "longitude": -122.02553
+    },
+    {
+      "id": "STTLng",
+      "name": "STTLng",
+      "latitude": 47.6,
+      "longitude": -122.3
+    },
+    {
+      "id": "WASHng",
+      "name": "WASHng",
+      "latitude": 38.897303,
+      "longitude": -77.026842
+    }
+  ],
+  "links": [
+    {
+      "source": "ATLAng",
+      "target": "ATLAM5",
+      "length_km": 132.365,
+      "spans_km": [
+        80.0,
+        52.365
+      ]
+    },
+    {
+      "source": "HSTNng",
+      "target": "ATLAng",
+      "length_km": 1079.147,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        39.147
+      ]
+    },
+    {
+      "source": "IPLSng",
+      "target": "ATLAng",
+      "length_km": 590.076,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        30.076
+      ]
+    },
+    {
+      "source": "WASHng",
+      "target": "ATLAng",
+      "length_km": 899.236,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        19.236
+      ]
+    },
+    {
+      "source": "IPLSng",
+      "target": "CHINng",
+      "length_km": 259.099,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        19.099
+      ]
+    },
+    {
+      "source": "NYCMng",
+      "target": "CHINng",
+      "length_km": 1144.869,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        24.869
+      ]
+    },
+    {
+      "source": "KSCYng",
+      "target": "DNVRng",
+      "length_km": 744.015,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        24.015
+      ]
+    },
+    {
+      "source": "SNVAng",
+      "target": "DNVRng",
+      "length_km": 1513.999,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        73.999
+      ]
+    },
+    {
+      "source": "STTLng",
+      "target": "DNVRng",
+      "length_km": 1570.975,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        50.975
+      ]
+    },
+    {
+      "source": "KSCYng",
+      "target": "HSTNng",
+      "length_km": 1026.832,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        66.832
+      ]
+    },
+    {
+      "source": "LOSAng",
+      "target": "HSTNng",
+      "length_km": 2192.962,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        32.962
+      ]
+    },
+    {
+      "source": "KSCYng",
+      "target": "IPLSng",
+      "length_km": 901.263,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        21.263
+      ]
+    },
+    {
+      "source": "SNVAng",
+      "target": "LOSAng",
+      "length_km": 503.649,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        23.649
+      ]
+    },
+    {
+      "source": "WASHng",
+      "target": "NYCMng",
+      "length_km": 334.988,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        14.988
+      ]
+    },
+    {
+      "source": "STTLng",
+      "target": "SNVAng",
+      "length_km": 1135.994,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        15.994
+      ]
+    }
+  ]
+}

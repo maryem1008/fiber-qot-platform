@@ -1,0 +1,325 @@
+{
+  "topologies": [
+    {
+      "topology_id": "zoo_aarnet",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Aarnet.graphml",
+      "nodes": 19,
+      "links": 24,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_abilene",
+      "status": "rejected",
+      "reason": "coordinate_complete=True; node_count=11; preferred Zoo range is 15-60"
+    },
+    {
+      "topology_id": "zoo_attmpls",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "AttMpls.graphml",
+      "nodes": 25,
+      "links": 56,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_bics",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Bics.graphml",
+      "nodes": 33,
+      "links": 48,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_bteurope",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\BtEurope.graphml: node 11 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_cernet",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Cernet.graphml: node 10 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_cesnet201006",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Cesnet201006.graphml: node 12 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_colt",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Colt.graphml: node 60 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_crlnetworkservices",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "CrlNetworkServices.graphml",
+      "nodes": 33,
+      "links": 38,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_dfn",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Dfn.graphml: node 8 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_airtel",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Airtel.graphml: node 2 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_arpanet196912",
+      "status": "rejected",
+      "reason": "coordinate_complete=True; node_count=4; preferred Zoo range is 15-60"
+    },
+    {
+      "topology_id": "zoo_bellcanada",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Bellcanada.graphml",
+      "nodes": 48,
+      "links": 64,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_biznet",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Biznet.graphml: node 19 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_cogentco",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Cogentco.graphml: node 144 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_columbus",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Columbus.graphml: node 0 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_darkstrand",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Darkstrand.graphml",
+      "nodes": 28,
+      "links": 31,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_elibackbone",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "EliBackbone.graphml",
+      "nodes": 20,
+      "links": 30,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_forthnet",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Forthnet.graphml: node 4 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_garr201201",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Garr201201.graphml: node 0 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_hiberniaglobal",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\HiberniaGlobal.graphml: node 10 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_internode",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Internode.graphml: node 2 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_kdl",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Kdl.graphml: node 60 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_litnet",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Litnet.graphml: node 5 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_tatanld",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\TataNld.graphml: node 70 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_vtlwavenet2011",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\VtlWavenet2011.graphml: node 11 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_bbnplanet",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Bbnplanet.graphml",
+      "nodes": 27,
+      "links": 28,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_carnet",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Carnet.graphml: node 9 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_chinanet",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Chinanet.graphml: node 10 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_deltacom",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Deltacom.graphml: node 84 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_eunetworks",
+      "status": "rejected",
+      "reason": "zoo_eunetworks: topology is empty or disconnected"
+    },
+    {
+      "topology_id": "zoo_gambia",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Gambia.graphml: node 0 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_goodnet",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Goodnet.graphml",
+      "nodes": 17,
+      "links": 31,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_heanet",
+      "status": "rejected",
+      "reason": "coordinate_complete=True; node_count=7; preferred Zoo range is 15-60"
+    },
+    {
+      "topology_id": "zoo_sago",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Sago.graphml",
+      "nodes": 18,
+      "links": 17,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_switchl3",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\SwitchL3.graphml: node 10 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_palmetto",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Palmetto.graphml",
+      "nodes": 45,
+      "links": 64,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_pern",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Pern.graphml: node 0 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_agis",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Agis.graphml",
+      "nodes": 25,
+      "links": 30,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_spiralight",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Spiralight.graphml",
+      "nodes": 15,
+      "links": 16,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_iris",
+      "status": "rejected",
+      "reason": "'50'"
+    },
+    {
+      "topology_id": "zoo_cesnet200511",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Cesnet200511.graphml: node 10 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_switch",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Switch.graphml: node 0 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_geant2009",
+      "status": "converted",
+      "source": "zoo",
+      "source_file": "Geant2009.graphml",
+      "nodes": 34,
+      "links": 52,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "zoo_ulaknet",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Ulaknet.graphml: node 10 has no latitude/longitude"
+    },
+    {
+      "topology_id": "zoo_uunet",
+      "status": "rejected",
+      "reason": "C:\\Users\\lenovo\\QOT\\fiber-qot-platform\\data\\topologies\\Uunet.graphml: node 10 has no latitude/longitude"
+    },
+    {
+      "topology_id": "sndlib_germany50",
+      "status": "converted",
+      "source": "sndlib",
+      "source_file": "germany50.xml",
+      "nodes": 50,
+      "links": 88,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "sndlib_nobel-germany",
+      "status": "converted",
+      "source": "sndlib",
+      "source_file": "nobel-germany.xml",
+      "nodes": 17,
+      "links": 26,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "sndlib_india35",
+      "status": "converted",
+      "source": "sndlib",
+      "source_file": "india35.xml",
+      "nodes": 35,
+      "links": 80,
+      "coordinate_complete": true
+    },
+    {
+      "topology_id": "tunisia",
+      "status": "converted",
+      "source": "illustrative_synthetic",
+      "nodes": 12,
+      "links": 14,
+      "coordinate_complete": true
+    }
+  ]
+}

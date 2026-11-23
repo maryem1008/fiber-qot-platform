@@ -1,0 +1,818 @@
+{
+  "topology_id": "zoo_bics",
+  "source": "zoo:Bics.graphml",
+  "illustrative": false,
+  "nodes": [
+    {
+      "id": "Bratislava",
+      "name": "Bratislava",
+      "latitude": 48.14816,
+      "longitude": 17.10674
+    },
+    {
+      "id": "Vienna",
+      "name": "Vienna",
+      "latitude": 48.20849,
+      "longitude": 16.37208
+    },
+    {
+      "id": "Praha",
+      "name": "Praha",
+      "latitude": 50.08804,
+      "longitude": 14.42076
+    },
+    {
+      "id": "Rotterdam",
+      "name": "Rotterdam",
+      "latitude": 51.9225,
+      "longitude": 4.47917
+    },
+    {
+      "id": "Roma",
+      "name": "Roma",
+      "latitude": 41.89474,
+      "longitude": 12.4839
+    },
+    {
+      "id": "Budapest",
+      "name": "Budapest",
+      "latitude": 47.49801,
+      "longitude": 19.03991
+    },
+    {
+      "id": "Ljubjana",
+      "name": "Ljubjana",
+      "latitude": 46.05108,
+      "longitude": 14.50513
+    },
+    {
+      "id": "Zagreb",
+      "name": "Zagreb",
+      "latitude": 45.81444,
+      "longitude": 15.97798
+    },
+    {
+      "id": "Bucharest",
+      "name": "Bucharest",
+      "latitude": 44.43225,
+      "longitude": 26.10626
+    },
+    {
+      "id": "Istanbul",
+      "name": "Istanbul",
+      "latitude": 41.01384,
+      "longitude": 28.94966
+    },
+    {
+      "id": "Vaduz",
+      "name": "Vaduz",
+      "latitude": 47.14151,
+      "longitude": 9.52154
+    },
+    {
+      "id": "Strasbourg",
+      "name": "Strasbourg",
+      "latitude": 48.58333,
+      "longitude": 7.75
+    },
+    {
+      "id": "Luxembourg",
+      "name": "Luxembourg",
+      "latitude": 49.61167,
+      "longitude": 6.13
+    },
+    {
+      "id": "Zurich",
+      "name": "Zurich",
+      "latitude": 47.36667,
+      "longitude": 8.55
+    },
+    {
+      "id": "Brussels",
+      "name": "Brussels",
+      "latitude": 50.85045,
+      "longitude": 4.34878
+    },
+    {
+      "id": "Geneva",
+      "name": "Geneva",
+      "latitude": 46.20222,
+      "longitude": 6.14569
+    },
+    {
+      "id": "Milan",
+      "name": "Milan",
+      "latitude": 45.46427,
+      "longitude": 9.18951
+    },
+    {
+      "id": "Athens",
+      "name": "Athens",
+      "latitude": 37.97945,
+      "longitude": 23.71622
+    },
+    {
+      "id": "Sofia",
+      "name": "Sofia",
+      "latitude": 42.69751,
+      "longitude": 23.32415
+    },
+    {
+      "id": "Frankfurt",
+      "name": "Frankfurt",
+      "latitude": 50.11667,
+      "longitude": 8.68333
+    },
+    {
+      "id": "Amsterdam",
+      "name": "Amsterdam",
+      "latitude": 52.37403,
+      "longitude": 4.88969
+    },
+    {
+      "id": "London",
+      "name": "London",
+      "latitude": 51.50853,
+      "longitude": -0.12574
+    },
+    {
+      "id": "Paris",
+      "name": "Paris",
+      "latitude": 48.85341,
+      "longitude": 2.3488
+    },
+    {
+      "id": "Stockholm",
+      "name": "Stockholm",
+      "latitude": 59.33258,
+      "longitude": 18.0649
+    },
+    {
+      "id": "Warsaw",
+      "name": "Warsaw",
+      "latitude": 52.22977,
+      "longitude": 21.01178
+    },
+    {
+      "id": "Kiev",
+      "name": "Kiev",
+      "latitude": 50.45466,
+      "longitude": 30.5238
+    },
+    {
+      "id": "Dublin",
+      "name": "Dublin",
+      "latitude": 53.34399,
+      "longitude": -6.26719
+    },
+    {
+      "id": "Lisbon",
+      "name": "Lisbon",
+      "latitude": 38.71667,
+      "longitude": -9.13333
+    },
+    {
+      "id": "Madrid",
+      "name": "Madrid",
+      "latitude": 40.4165,
+      "longitude": -3.70256
+    },
+    {
+      "id": "Barcelona",
+      "name": "Barcelona",
+      "latitude": 41.38879,
+      "longitude": 2.15899
+    },
+    {
+      "id": "Marseille",
+      "name": "Marseille",
+      "latitude": 43.29695,
+      "longitude": 5.38107
+    },
+    {
+      "id": "Lyon",
+      "name": "Lyon",
+      "latitude": 45.75,
+      "longitude": 4.85
+    },
+    {
+      "id": "Basel",
+      "name": "Basel",
+      "latitude": 47.56667,
+      "longitude": 7.6
+    }
+  ],
+  "links": [
+    {
+      "source": "Bratislava",
+      "target": "Vienna",
+      "length_km": 54.884,
+      "spans_km": [
+        54.884
+      ]
+    },
+    {
+      "source": "Bratislava",
+      "target": "Praha",
+      "length_km": 291.064,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        51.064
+      ]
+    },
+    {
+      "source": "Bratislava",
+      "target": "Budapest",
+      "length_km": 161.415,
+      "spans_km": [
+        80.0,
+        80.0,
+        1.415
+      ]
+    },
+    {
+      "source": "Vienna",
+      "target": "Milan",
+      "length_km": 625.424,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        65.424
+      ]
+    },
+    {
+      "source": "Vienna",
+      "target": "Frankfurt",
+      "length_km": 597.629,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        37.629
+      ]
+    },
+    {
+      "source": "Praha",
+      "target": "Warsaw",
+      "length_km": 517.401,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        37.401
+      ]
+    },
+    {
+      "source": "Praha",
+      "target": "Frankfurt",
+      "length_km": 409.119,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        9.119
+      ]
+    },
+    {
+      "source": "Rotterdam",
+      "target": "Amsterdam",
+      "length_km": 57.492,
+      "spans_km": [
+        57.492
+      ]
+    },
+    {
+      "source": "Rotterdam",
+      "target": "Brussels",
+      "length_km": 119.549,
+      "spans_km": [
+        80.0,
+        39.549
+      ]
+    },
+    {
+      "source": "Roma",
+      "target": "Milan",
+      "length_km": 477.109,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        77.109
+      ]
+    },
+    {
+      "source": "Roma",
+      "target": "Zurich",
+      "length_km": 683.235,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        43.235
+      ]
+    },
+    {
+      "source": "Budapest",
+      "target": "Bucharest",
+      "length_km": 643.439,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        3.439
+      ]
+    },
+    {
+      "source": "Budapest",
+      "target": "Sofia",
+      "length_km": 630.654,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        70.654
+      ]
+    },
+    {
+      "source": "Budapest",
+      "target": "Zagreb",
+      "length_km": 299.387,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        59.387
+      ]
+    },
+    {
+      "source": "Ljubjana",
+      "target": "Zagreb",
+      "length_km": 116.903,
+      "spans_km": [
+        80.0,
+        36.903
+      ]
+    },
+    {
+      "source": "Bucharest",
+      "target": "Kiev",
+      "length_km": 747.207,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        27.207
+      ]
+    },
+    {
+      "source": "Bucharest",
+      "target": "Istanbul",
+      "length_km": 445.39,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        45.39
+      ]
+    },
+    {
+      "source": "Istanbul",
+      "target": "Athens",
+      "length_km": 561.511,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        1.511
+      ]
+    },
+    {
+      "source": "Vaduz",
+      "target": "Zurich",
+      "length_km": 77.481,
+      "spans_km": [
+        77.481
+      ]
+    },
+    {
+      "source": "Strasbourg",
+      "target": "Basel",
+      "length_km": 113.595,
+      "spans_km": [
+        80.0,
+        33.595
+      ]
+    },
+    {
+      "source": "Strasbourg",
+      "target": "Frankfurt",
+      "length_km": 183.41,
+      "spans_km": [
+        80.0,
+        80.0,
+        23.41
+      ]
+    },
+    {
+      "source": "Strasbourg",
+      "target": "Luxembourg",
+      "length_km": 164.269,
+      "spans_km": [
+        80.0,
+        80.0,
+        4.269
+      ]
+    },
+    {
+      "source": "Luxembourg",
+      "target": "Brussels",
+      "length_km": 187.143,
+      "spans_km": [
+        80.0,
+        80.0,
+        27.143
+      ]
+    },
+    {
+      "source": "Zurich",
+      "target": "Milan",
+      "length_km": 217.142,
+      "spans_km": [
+        80.0,
+        80.0,
+        57.142
+      ]
+    },
+    {
+      "source": "Zurich",
+      "target": "Frankfurt",
+      "length_km": 305.942,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        65.942
+      ]
+    },
+    {
+      "source": "Zurich",
+      "target": "Geneva",
+      "length_km": 224.21,
+      "spans_km": [
+        80.0,
+        80.0,
+        64.21
+      ]
+    },
+    {
+      "source": "Brussels",
+      "target": "Frankfurt",
+      "length_km": 317.299,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        77.299
+      ]
+    },
+    {
+      "source": "Brussels",
+      "target": "Amsterdam",
+      "length_km": 173.481,
+      "spans_km": [
+        80.0,
+        80.0,
+        13.481
+      ]
+    },
+    {
+      "source": "Brussels",
+      "target": "London",
+      "length_km": 320.314,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        0.314
+      ]
+    },
+    {
+      "source": "Brussels",
+      "target": "Paris",
+      "length_km": 264.308,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        24.308
+      ]
+    },
+    {
+      "source": "Geneva",
+      "target": "Basel",
+      "length_km": 187.702,
+      "spans_km": [
+        80.0,
+        80.0,
+        27.702
+      ]
+    },
+    {
+      "source": "Geneva",
+      "target": "Paris",
+      "length_km": 409.993,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        9.993
+      ]
+    },
+    {
+      "source": "Geneva",
+      "target": "Lyon",
+      "length_km": 112.041,
+      "spans_km": [
+        80.0,
+        32.041
+      ]
+    },
+    {
+      "source": "Milan",
+      "target": "Marseille",
+      "length_km": 386.815,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        66.815
+      ]
+    },
+    {
+      "source": "Athens",
+      "target": "Sofia",
+      "length_km": 525.674,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        45.674
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Amsterdam",
+      "length_km": 364.235,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        44.235
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Stockholm",
+      "length_km": 1186.195,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        66.195
+      ]
+    },
+    {
+      "source": "Frankfurt",
+      "target": "Warsaw",
+      "length_km": 889.788,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        9.788
+      ]
+    },
+    {
+      "source": "Amsterdam",
+      "target": "London",
+      "length_km": 356.931,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        36.931
+      ]
+    },
+    {
+      "source": "London",
+      "target": "Dublin",
+      "length_km": 463.535,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        63.535
+      ]
+    },
+    {
+      "source": "London",
+      "target": "Lisbon",
+      "length_km": 1585.537,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        65.537
+      ]
+    },
+    {
+      "source": "London",
+      "target": "Paris",
+      "length_km": 343.771,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        23.771
+      ]
+    },
+    {
+      "source": "Paris",
+      "target": "Lyon",
+      "length_km": 393.207,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        73.207
+      ]
+    },
+    {
+      "source": "Paris",
+      "target": "Madrid",
+      "length_km": 1052.447,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        12.447
+      ]
+    },
+    {
+      "source": "Warsaw",
+      "target": "Kiev",
+      "length_km": 688.97,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        48.97
+      ]
+    },
+    {
+      "source": "Madrid",
+      "target": "Barcelona",
+      "length_km": 504.242,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        24.242
+      ]
+    },
+    {
+      "source": "Barcelona",
+      "target": "Marseille",
+      "length_km": 339.286,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        19.286
+      ]
+    },
+    {
+      "source": "Marseille",
+      "target": "Lyon",
+      "length_km": 275.995,
+      "spans_km": [
+        80.0,
+        80.0,
+        80.0,
+        35.995
+      ]
+    }
+  ]
+}

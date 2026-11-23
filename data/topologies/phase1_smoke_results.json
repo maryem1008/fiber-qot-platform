@@ -1,0 +1,190 @@
+{
+  "runs": [
+    {
+      "topology_id": "aarnet",
+      "status": "gnpy_load_ok",
+      "nodes": 486,
+      "edges": 510
+    },
+    {
+      "topology_id": "abilene",
+      "status": "gnpy_load_ok",
+      "nodes": 392,
+      "edges": 407
+    },
+    {
+      "topology_id": "atlanta",
+      "status": "gnpy_load_ok",
+      "nodes": 5452,
+      "edges": 5474
+    },
+    {
+      "topology_id": "attmpls",
+      "status": "gnpy_load_ok",
+      "nodes": 1384,
+      "edges": 1440
+    },
+    {
+      "topology_id": "bics",
+      "status": "gnpy_load_ok",
+      "nodes": 616,
+      "edges": 664
+    },
+    {
+      "topology_id": "crlnetworkservices",
+      "status": "gnpy_load_ok",
+      "nodes": 744,
+      "edges": 782
+    },
+    {
+      "topology_id": "france",
+      "status": "gnpy_load_ok",
+      "nodes": 9950,
+      "edges": 9995
+    },
+    {
+      "topology_id": "sndlib_abilene",
+      "status": "gnpy_load_ok",
+      "nodes": 392,
+      "edges": 407
+    },
+    {
+      "topology_id": "sndlib_atlanta",
+      "status": "gnpy_load_ok",
+      "nodes": 5452,
+      "edges": 5474
+    },
+    {
+      "topology_id": "sndlib_france",
+      "status": "gnpy_load_ok",
+      "nodes": 9950,
+      "edges": 9995
+    },
+    {
+      "topology_id": "sndlib_germany50",
+      "status": "gnpy_load_ok",
+      "nodes": 406,
+      "edges": 494
+    },
+    {
+      "topology_id": "sndlib_india35",
+      "status": "gnpy_load_ok",
+      "nodes": 2198,
+      "edges": 2278
+    },
+    {
+      "topology_id": "sndlib_nobel-germany",
+      "status": "gnpy_load_ok",
+      "nodes": 150,
+      "edges": 176
+    },
+    {
+      "topology_id": "tunisia",
+      "status": "gnpy_load_ok",
+      "nodes": 84,
+      "edges": 98
+    },
+    {
+      "topology_id": "zoo_aarnet",
+      "status": "gnpy_load_ok",
+      "nodes": 486,
+      "edges": 510
+    },
+    {
+      "topology_id": "zoo_abilene",
+      "status": "gnpy_load_ok",
+      "nodes": 392,
+      "edges": 406
+    },
+    {
+      "topology_id": "zoo_agis",
+      "status": "gnpy_load_ok",
+      "nodes": 862,
+      "edges": 892
+    },
+    {
+      "topology_id": "zoo_arpanet196912",
+      "status": "gnpy_load_ok",
+      "nodes": 64,
+      "edges": 68
+    },
+    {
+      "topology_id": "zoo_attmpls",
+      "status": "gnpy_load_ok",
+      "nodes": 1384,
+      "edges": 1440
+    },
+    {
+      "topology_id": "zoo_bbnplanet",
+      "status": "gnpy_load_ok",
+      "nodes": 528,
+      "edges": 556
+    },
+    {
+      "topology_id": "zoo_bellcanada",
+      "status": "gnpy_load_ok",
+      "nodes": 1074,
+      "edges": 1138
+    },
+    {
+      "topology_id": "zoo_bics",
+      "status": "gnpy_load_ok",
+      "nodes": 616,
+      "edges": 664
+    },
+    {
+      "topology_id": "zoo_crlnetworkservices",
+      "status": "gnpy_load_ok",
+      "nodes": 744,
+      "edges": 782
+    },
+    {
+      "topology_id": "zoo_darkstrand",
+      "status": "gnpy_load_ok",
+      "nodes": 438,
+      "edges": 469
+    },
+    {
+      "topology_id": "zoo_elibackbone",
+      "status": "gnpy_load_ok",
+      "nodes": 646,
+      "edges": 676
+    },
+    {
+      "topology_id": "zoo_geant2009",
+      "status": "gnpy_load_ok",
+      "nodes": 1120,
+      "edges": 1172
+    },
+    {
+      "topology_id": "zoo_goodnet",
+      "status": "gnpy_load_ok",
+      "nodes": 1318,
+      "edges": 1349
+    },
+    {
+      "topology_id": "zoo_heanet",
+      "status": "gnpy_load_ok",
+      "nodes": 58,
+      "edges": 69
+    },
+    {
+      "topology_id": "zoo_palmetto",
+      "status": "gnpy_load_ok",
+      "nodes": 266,
+      "edges": 330
+    },
+    {
+      "topology_id": "zoo_sago",
+      "status": "gnpy_load_ok",
+      "nodes": 80,
+      "edges": 97
+    },
+    {
+      "topology_id": "zoo_spiralight",
+      "status": "gnpy_load_ok",
+      "nodes": 80,
+      "edges": 96
+    }
+  ]
+}
