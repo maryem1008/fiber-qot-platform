@@ -56,6 +56,21 @@ The CP1 report is in `docs/report/CP1_PHASE1_REPORT.md`. It records the selected
 topologies, the successful Tunisia GNPy run, exact installed transceiver OSNR requirements, and known
 configuration warnings. Phase 2 has not started. Wait for the owner's explicit `go`.
 
+## Phase 2 checkpoint status
+
+Phase 2 benchmark and smoke generation code are implemented. The CP2 report is at
+`docs/report/CP2_PHASE2_REPORT.md`.
+
+- 100 benchmark simulations succeeded at 1.239 seconds per run.
+- Sequential 100k extrapolation: 34.42 hours.
+- 100-row smoke request produced 19 successful GNPy rows and 71 failures.
+- All failures were `IndexError: list index out of range`.
+- Successful smoke rows passed a required-column NaN check.
+- GSNR smoke mean/min/max: 13.535 / 5.010 / 23.022 dB.
+- Full 100k generation is not complete; route robustness and failure handling must be fixed before scaling.
+
+Phase 2 remains at CP2. Do not continue to Phase 3 until the owner replies `go`.
+
 ## Exact starting point for the next agent
 
 1. Read this file, `README.md`, `docs/phase0-environment.md`, `docs/learning_notes.md`, `docs/ATTRIBUTION.md`, and the master prompt Phase 1 pages.

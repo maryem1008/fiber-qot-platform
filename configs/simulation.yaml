@@ -1,0 +1,27 @@
+random_seed: 20261123
+benchmark_runs: 100
+target_lightpaths: 100000
+chunk_size: 1000
+max_shortest_paths: 3
+
+sampling:
+  channel_count: [1, 80]
+  channel_spacing_ghz: [50, 75, 100]
+  baud_rate_gbd: [32, 44, 66]
+  launch_power_dbm: [-3, 3]
+  amplifier_nf_offset_db: [-1, 1]
+  span_loss_offset_db: [-1, 1]
+  extra_connector_loss_db: [0, 1]
+  design_margin_db: 2
+  noisy_gsnr_std_db: [0.2, 0.5]
+
+reference:
+  launch_power_dbm: 0
+  channel_count: 76
+  channel_spacing_ghz: 50
+  baud_rate_gbd: 32
+  amplifier_nf_db: 6
+
+transceiver:
+  type_variety: Voyager
+  modes: ["mode 1", "mode 2", "mode 3", "mode 4"]

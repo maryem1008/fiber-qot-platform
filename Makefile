@@ -1,4 +1,4 @@
-.PHONY: env-check gnpy-help install-arm64 test lint phase1 phase1-smoke
+.PHONY: env-check gnpy-help install-arm64 test lint phase1 phase1-smoke phase2-benchmark phase2-smoke
 
 PYTHON ?= .venv/Scripts/python.exe
 
@@ -27,3 +27,9 @@ phase1:
 
 phase1-smoke:
 	PYTHONPATH=src $(PYTHON) scripts/phase1_smoke.py
+
+phase2-benchmark:
+	PYTHONPATH=src $(PYTHON) scripts/phase2_benchmark.py
+
+phase2-smoke:
+	PYTHONPATH=src $(PYTHON) scripts/phase2_generate.py --runs 100
