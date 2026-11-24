@@ -12,26 +12,28 @@ This is an honest compute and route-robustness checkpoint, not a claim of 100,00
 - Average: 1.239 seconds/run.
 - Sequential 100k extrapolation: 34.42 hours.
 - Smoke generation requested: 100 rows.
-- Smoke successful: 19 rows.
-- Smoke failures: 71.
+- Smoke successful: 90 rows.
+- Smoke failures: 0.
+- Bounded 1,000-run pass: 990 successful, 0 failed.
 - Smoke output: `data/generated/phase2_smoke.parquet`.
 
 ## Smoke statistics
 
-- Topologies represented: 10.
+- Topologies represented: 18.
 - Modes represented: 4.
-- Mean GSNR: 13.535 dB.
-- Minimum GSNR: 5.010 dB.
+- Mean GSNR: 12.384 dB.
+- Minimum GSNR: 4.510 dB.
 - Maximum GSNR: 23.022 dB.
-- Feasible: 5; infeasible: 14.
+- Feasible: 18; infeasible: 72.
 
 All successful rows passed a required-column NaN check.
 
 ## Problems
 
-All 71 failures were `IndexError: list index out of range`. The failures occurred in topology-specific
-source/destination/routing paths and must be fixed before generation scale. A 100k run would require
-parallel execution or a longer uninterrupted run, and no result is extrapolated into this smoke dataset.
+The prior smoke failures were `IndexError: list index out of range` caused by incomplete reverse GNPy
+routing. The converter now creates separate forward and reverse Fiber/EDFA elements and the rerun
+produced 90 rows with 0 failures. A 100k run would require parallel execution or a longer uninterrupted
+run, and no result is extrapolated into this smoke dataset.
 
 ## Deliverables
 

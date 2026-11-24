@@ -63,10 +63,9 @@ Phase 2 benchmark and smoke generation code are implemented. The CP2 report is a
 
 - 100 benchmark simulations succeeded at 1.239 seconds per run.
 - Sequential 100k extrapolation: 34.42 hours.
-- 100-row smoke request produced 19 successful GNPy rows and 71 failures.
-- All failures were `IndexError: list index out of range`.
+- 100-row smoke request produced 90 successful GNPy rows and 0 failures after converter rerun.
 - Successful smoke rows passed a required-column NaN check.
-- GSNR smoke mean/min/max: 13.535 / 5.010 / 23.022 dB.
+- GSNR smoke mean/min/max: 12.384 / 4.510 / 23.022 dB.
 - Full 100k generation is not complete; route robustness and failure handling must be fixed before scaling.
 
 Phase 2 remains at CP2. Do not continue to Phase 3 until the owner replies `go`.

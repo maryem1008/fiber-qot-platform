@@ -50,6 +50,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--runs", type=int, default=100)
     parser.add_argument("--seed", type=int, default=20261123)
+    parser.add_argument("--chunk-size", type=int, default=1000)
     args = parser.parse_args()
 
     random.seed(args.seed)
@@ -57,6 +58,7 @@ def main() -> int:
     modes = load_mode_config()
     mode_names = list(modes)
     rows = []
+    span_rows = []
     failures = []
 
     topologies = selected_topologies()
@@ -90,7 +92,9 @@ def main() -> int:
                     power,
                     2.0,
                 )
+                span_profiles = row.pop("_span_profiles", [])
                 rows.append(row)
+                span_rows.extend(span_profiles)
             except Exception as exc:
                 failures.append(
                     {
@@ -111,6 +115,11 @@ def main() -> int:
     if rows:
         pd.DataFrame(rows).to_parquet(
             output / "phase2_smoke.parquet",
+            index=False,
+        )
+    if span_rows:
+        pd.DataFrame(span_rows).to_parquet(
+            output / "phase2_smoke_spans.parquet",
             index=False,
         )
     print(

@@ -2,8 +2,8 @@
 
 ## Status
 
-Phase 2 full dataset generation was not completed. The benchmark and bounded smoke outputs below are real
-GNPy-generated results, not an estimate of a larger dataset.
+Phase 2 full 100,000-row dataset generation was not completed within the available compute limit. The
+benchmark and bounded outputs below are real GNPy-generated results, not estimates of unrun rows.
 
 ## Sources
 
@@ -22,16 +22,27 @@ GNPy-generated results, not an estimate of a larger dataset.
 ## Smoke dataset
 
 - Requested rows: 100.
-- Successful rows: 19.
-- Failed simulations: 71.
-- Topologies represented: 10.
-- GSNR mean/min/max: 13.535 / 5.010 / 23.022 dB.
-- Feasible/infeasible under the loaded mode and 2 dB margin: 5 / 14.
-- All 19 successful rows have no required-column NaN values.
-- `IndexError: list index out of range` accounted for all recorded smoke failures.
+- Successful rows: 90.
+- Failed simulations: 0.
+- Topologies represented: 18.
+- GSNR mean/min/max: 12.384 / 4.510 / 23.022 dB.
+- Feasible/infeasible under the loaded mode and 2 dB margin: 18 / 72.
+- All 90 successful rows have no required-column NaN values.
 
-The 71 failures require routing robustness fixes before full generation. They are retained in
-`data/generated/phase2_smoke.json`; they are not represented as dataset rows.
+The prior 19/71 routing issue was fixed by generating separate forward and reverse Fiber/EDFA
+elements in each GNPy link. The rerun retained all 90 attempted rows after this correction.
+
+## Bounded 1,000-run dataset
+
+- Requested rows: 1,000.
+- Successful rows: 990.
+- Failed simulations: 0.
+- Topologies represented: 18.
+- Modes represented: 4.
+- GSNR mean/min/max: 12.489 / 2.822 / 24.401 dB.
+- Feasible/infeasible under the loaded mode and 2 dB margin: 141 / 849.
+- The 990 rows have no NaN values in required path columns.
+- The corresponding per-span table is written separately.
 
 ## Label convention
 

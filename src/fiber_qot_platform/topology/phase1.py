@@ -259,10 +259,28 @@ def to_gnpy_network(topology: dict) -> dict:
         right = f"roadm_{link['target']}"
         for span_index, span_km in enumerate(link["spans_km"]):
             fiber_uid = f"fiber_{index}_{span_index}"
+            reverse_fiber_uid = f"fiber_reverse_{index}_{span_index}"
             edfa_uid = f"edfa_{index}_{span_index}"
+            reverse_edfa_uid = f"edfa_reverse_{index}_{span_index}"
             elements.append(
                 {
                     "uid": fiber_uid,
+                    "type": "Fiber",
+                    "type_variety": "SSMF",
+                    "params": {
+                        "length": span_km,
+                        "length_units": "km",
+                        "loss_coef": 0.2,
+                        "att_in": 0.0,
+                        "con_in": 0.5,
+                        "con_out": 0.5,
+                    },
+                    "metadata": {"location": {"latitude": 0.0, "longitude": 0.0}},
+                }
+            )
+            elements.append(
+                {
+                    "uid": reverse_fiber_uid,
                     "type": "Fiber",
                     "type_variety": "SSMF",
                     "params": {
@@ -285,9 +303,20 @@ def to_gnpy_network(topology: dict) -> dict:
                     "metadata": {"location": {"latitude": 0.0, "longitude": 0.0}},
                 }
             )
+            elements.append(
+                {
+                    "uid": reverse_edfa_uid,
+                    "type": "Edfa",
+                    "type_variety": "std_medium_gain",
+                    "operational": {"gain_target": 16.0, "tilt_target": 0.0, "out_voa": 0.0},
+                    "metadata": {"location": {"latitude": 0.0, "longitude": 0.0}},
+                }
+            )
         for span_index in range(len(link["spans_km"])):
             fiber_uid = f"fiber_{index}_{span_index}"
+            reverse_fiber_uid = f"fiber_reverse_{index}_{span_index}"
             edfa_uid = f"edfa_{index}_{span_index}"
+            reverse_edfa_uid = f"edfa_reverse_{index}_{span_index}"
             previous = left if span_index == 0 else f"edfa_{index}_{span_index - 1}"
             connections.extend(
                 [
@@ -298,8 +327,27 @@ def to_gnpy_network(topology: dict) -> dict:
             if span_index == len(link["spans_km"]) - 1:
                 connections.append({"from_node": edfa_uid, "to_node": right})
 
+            reverse_previous = (
+                right if span_index == 0 else f"edfa_reverse_{index}_{span_index - 1}"
+            )
+            connections.extend(
+                [
+                    {"from_node": reverse_previous, "to_node": reverse_fiber_uid},
+                    {"from_node": reverse_fiber_uid, "to_node": reverse_edfa_uid},
+                ]
+            )
+            if span_index == len(link["spans_km"]) - 1:
+                connections.append({"from_node": reverse_edfa_uid, "to_node": left})
+
+    unique_connections = []
+    seen_connections = set()
+    for connection in connections:
+        key = (connection["from_node"], connection["to_node"])
+        if key not in seen_connections:
+            seen_connections.add(key)
+            unique_connections.append(connection)
     return {
         "network_name": f"{topology['topology_id']} - Phase 1 GNPy network",
         "elements": elements,
-        "connections": connections,
+        "connections": unique_connections,
     }

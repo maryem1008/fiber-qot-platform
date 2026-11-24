@@ -1,3 +1,4 @@
+import hashlib
 import json
 from pathlib import Path
 
@@ -165,7 +166,6 @@ def run_one(
     if gsnr_signal is None:
         raise RuntimeError("GNPy did not return a signal-bandwidth GSNR")
 
-    gsnr_noisy = gsnr_signal + float(np.random.default_rng().normal(0.0, 0.35))
     feasible = gsnr_signal >= mode["OSNR"] + margin_db
 
     topology = load_topology_unified(unified_path)
@@ -178,8 +178,37 @@ def run_one(
     )
     total_length = nx.path_weight(route_graph, route, "weight")
     span_lengths = [float(fiber.params.length * 1e-3) for fiber in fibers]
+    path_id = hashlib.sha1(
+        (
+            f"{topology_id}|{source}|{destination}|{mode_name}|{channels}|{spacing_hz}|{power_dbm}"
+        ).encode()
+    ).hexdigest()
+    noise_seed = int(path_id[:8], 16)
+    gsnr_noisy = gsnr_signal + float(np.random.default_rng(noise_seed).normal(0.0, 0.35))
+    span_profiles = []
+    previous_gsnr = gsnr_signal
+    for span_index, fiber in enumerate(fibers):
+        span_length = span_lengths[span_index]
+        span_profiles.append(
+            {
+                "path_id": path_id,
+                "span_index": span_index,
+                "length_km": span_length,
+                "loss_db": float(fiber.loss),
+                "geometry": [],
+                "power_in_dbm": power_dbm,
+                "power_out_dbm": power_dbm - float(fiber.loss),
+                "cum_ase_noise": None,
+                "cum_nli_noise": 0.0,
+                "cum_gsnr_db": gsnr_signal,
+                "cum_osnr_db": osnr_01nm,
+                "gsnr_drop_db": max(0.0, previous_gsnr - gsnr_signal),
+            }
+        )
+        previous_gsnr = gsnr_signal
 
-    return {
+    result = {
+        "path_id": path_id,
         "topology_id": topology_id,
         "source": source,
         "destination": destination,
@@ -212,3 +241,5 @@ def run_one(
         "gsnr_db_noisy": gsnr_noisy,
         "feasible": feasible,
     }
+    result["_span_profiles"] = span_profiles
+    return result
