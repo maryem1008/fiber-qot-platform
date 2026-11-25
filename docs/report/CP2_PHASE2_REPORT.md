@@ -24,7 +24,8 @@ This is an honest compute and route-robustness checkpoint, not a claim of 100,00
 - Mean GSNR: 12.384 dB.
 - Minimum GSNR: 4.510 dB.
 - Maximum GSNR: 23.022 dB.
-- Feasible: 18; infeasible: 72.
+- Historical feasible/infeasible: 18 / 72 under the previous bandwidth-inconsistent convention; these
+  counts are not valid under the corrected 0.1 nm convention and have not yet been recomputed.
 
 All successful rows passed a required-column NaN check.
 

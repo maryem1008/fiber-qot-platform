@@ -11,7 +11,11 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from fiber_qot_platform.simulation.phase2 import load_mode_config, run_one  # noqa: E402
+from fiber_qot_platform.simulation.phase2 import (  # noqa: E402
+    load_mode_config,
+    load_simulation_config,
+    run_one,
+)
 
 
 def selected_topologies() -> list[tuple[str, Path]]:
@@ -56,6 +60,8 @@ def main() -> int:
     random.seed(args.seed)
     np.random.seed(args.seed)
     modes = load_mode_config()
+    simulation_config = load_simulation_config()
+    design_margin_db = float(simulation_config["sampling"].get("design_margin_db", 2.0))
     mode_names = list(modes)
     rows = []
     span_rows = []
@@ -90,7 +96,7 @@ def main() -> int:
                     channels,
                     spacing,
                     power,
-                    2.0,
+                    design_margin_db,
                 )
                 span_profiles = row.pop("_span_profiles", [])
                 rows.append(row)

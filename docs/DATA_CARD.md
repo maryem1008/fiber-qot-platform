@@ -5,6 +5,10 @@
 Phase 2 full 100,000-row dataset generation was not completed within the available compute limit. The
 benchmark and bounded outputs below are real GNPy-generated results, not estimates of unrun rows.
 
+The feasibility counts in the historical smoke and 1,000-run sections below were computed with the
+previous, bandwidth-inconsistent convention and are retained only as historical results. They are not
+valid labels under the corrected convention, and the old generated files have not been regenerated.
+
 ## Sources
 
 - Internet Topology Zoo GraphML networks from Phase 1.
@@ -26,7 +30,7 @@ benchmark and bounded outputs below are real GNPy-generated results, not estimat
 - Failed simulations: 0.
 - Topologies represented: 18.
 - GSNR mean/min/max: 12.384 / 4.510 / 23.022 dB.
-- Feasible/infeasible under the loaded mode and 2 dB margin: 18 / 72.
+- Legacy feasible/infeasible under the old convention: 18 / 72.
 - All 90 successful rows have no required-column NaN values.
 
 The prior 19/71 routing issue was fixed by generating separate forward and reverse Fiber/EDFA
@@ -40,16 +44,21 @@ elements in each GNPy link. The rerun retained all 90 attempted rows after this 
 - Topologies represented: 18.
 - Modes represented: 4.
 - GSNR mean/min/max: 12.489 / 2.822 / 24.401 dB.
-- Feasible/infeasible under the loaded mode and 2 dB margin: 141 / 849.
+- Legacy feasible/infeasible under the old convention: 141 / 849.
 - The 990 rows have no NaN values in required path columns.
 - The corresponding per-span table is written separately.
 
 ## Label convention
 
 - `gsnr_db`: mean GNPy signal-bandwidth GSNR.
-- `gsnr_db_01nm`: mean GNPy 0.1 nm GSNR.
+- `gsnr_db_01nm`: mean GNPy GSNR in the 0.1 nm reference bandwidth; this is the primary regression target.
 - `osnr_01nm_db`: mean GNPy 0.1 nm OSNR.
+- `required_osnr_01nm_db`: the selected transceiver mode's OSNR requirement, referenced to 0.1 nm.
+- `margin_db`: `gsnr_db_01nm - required_osnr_01nm_db`.
+- `design_margin_db`: required design margin loaded from `configs/simulation.yaml`.
+- `feasible`: `margin_db >= design_margin_db`.
 - `gsnr_db_noisy`: `gsnr_db` plus simulated zero-mean Gaussian noise with a 0.35 dB standard deviation.
-- `feasible`: `gsnr_db >= required_gsnr_db + design_margin_db`.
 
-The noisy target is simulated measurement uncertainty and is not real measurement noise.
+The prior implementation compared signal-bandwidth `gsnr_db` directly against a mode OSNR threshold
+defined in 0.1 nm. The corrected convention uses `gsnr_db_01nm`. The noisy target is simulated
+measurement uncertainty and is not real measurement noise.

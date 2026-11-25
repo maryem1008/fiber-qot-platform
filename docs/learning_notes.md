@@ -29,6 +29,19 @@ mode requirements loaded from configuration, not guessed GSNR thresholds.
 GNPy OSNR is reported relative to 0.1 nm. GSNR combines ASE and nonlinear interference and can be reported in 0.1
 nm or signal bandwidth; the project documents this distinction in later labels.
 
+### Phase 2 — Feasibility bandwidth evidence (GNPy 3.0.1)
+
+The installed `gnpy/topology/request.py` assigns each equipment mode's `OSNR` to
+`required_osnr_db_01nm` and calculates the receiver margin from `snr_01nm` (with penalties and system margin).
+`gnpy/core/elements.py` recalculates both signal-bandwidth and 0.1 nm values; its `update_snr()` uses 12.5 GHz
+for 0.1 nm values. `gnpy/core/info.py` defines `opt_gsnr_db = gsnr_db - 10*log10(12.5e9 / baud_rate)`.
+
+This was checked against an actual GNPy 3.0.1 Tunisia Bizerte–Sfax simulation at 32 GBd: signal-bandwidth GSNR
+was 18.4516927553 dB and 0.1 nm GSNR was 22.5340924085 dB. Their 4.0823996531 dB difference matches
+`10*log10(32e9 / 12.5e9)` (4.0823996531 dB). Therefore, comparing the signal-bandwidth GSNR directly with a
+mode's equipment `OSNR` threshold mixes bandwidth conventions. The dataset feasibility margin must instead be
+computed from `gsnr_db_01nm - required_osnr_01nm_db`, with the configured design margin applied to that result.
+
 ### Interview questions
 
 1. **Why split sources into a unified schema?** It separates source parsing from GNPy conversion and downstream ML.

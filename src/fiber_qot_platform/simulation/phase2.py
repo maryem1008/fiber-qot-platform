@@ -4,6 +4,7 @@ from pathlib import Path
 
 import networkx as nx
 import numpy as np
+import yaml
 from gnpy.core.elements import Edfa, Fiber, Transceiver
 from gnpy.core.utils import dbm2watt
 from gnpy.tools.json_io import load_equipments_and_configs, load_network
@@ -11,6 +12,7 @@ from gnpy.tools.worker_utils import designed_network, transmission_simulation
 from gnpy.topology.request import PathRequest
 
 ROOT = Path(__file__).resolve().parents[3]
+SIMULATION_CONFIG_PATH = ROOT / "configs" / "simulation.yaml"
 EQUIPMENT_PATH = (
     ROOT / ".venv" / "Lib" / "site-packages" / "gnpy" / "example-data" / "eqpt_config.json"
 )
@@ -30,6 +32,22 @@ def derive_nli_snr_db(gsnr_db: float, osnr_db: float) -> float | None:
     osnr_lin = 10 ** (osnr_db / 10)
     nli_inverse = max(1e-12, 1 / gsnr_lin - 1 / osnr_lin)
     return 10 * np.log10(1 / nli_inverse)
+
+
+def load_simulation_config(config_path: Path = SIMULATION_CONFIG_PATH) -> dict:
+    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    if not isinstance(config, dict):
+        raise ValueError(f"{config_path}: expected a YAML mapping")
+    return config
+
+
+def feasibility_margin(
+    gsnr_db_01nm: float,
+    required_osnr_01nm_db: float,
+    design_margin_db: float,
+) -> tuple[float, bool]:
+    margin_db = gsnr_db_01nm - required_osnr_01nm_db
+    return margin_db, margin_db >= design_margin_db
 
 
 def load_mode_config() -> dict:
@@ -81,9 +99,7 @@ def service_request(
     channels: int,
     spacing_hz: float,
     power_dbm: float,
-    margin_db: float,
 ) -> PathRequest:
-    del margin_db
     return PathRequest(
         request_id=f"{source}-{destination}-{mode_name}",
         source=source,
@@ -121,11 +137,15 @@ def run_one(
     channels: int,
     spacing_hz: float,
     power_dbm: float,
-    margin_db: float,
+    design_margin_db: float | None = None,
 ) -> dict:
     gnpy_path = unified_path.with_name(f"{unified_path.stem}_gnpy.json")
     equipment = load_equipments_and_configs(EQUIPMENT_PATH, [], [])
     network = load_network(gnpy_path, equipment)
+    if design_margin_db is None:
+        design_margin_db = float(
+            load_simulation_config().get("sampling", {}).get("design_margin_db", 2.0)
+        )
     request = service_request(
         f"trx_{source}",
         f"trx_{destination}",
@@ -134,7 +154,6 @@ def run_one(
         channels,
         spacing_hz,
         power_dbm,
-        margin_db,
     )
     designed, req, ref_req = designed_network(
         equipment,
@@ -163,10 +182,15 @@ def run_one(
     osnr_signal = mean_db(transceiver.osnr_ase)
     snr_nli_01nm = mean_db(getattr(transceiver, "osnr_nli", None))
 
-    if gsnr_signal is None:
-        raise RuntimeError("GNPy did not return a signal-bandwidth GSNR")
+    if gsnr_signal is None or gsnr_01nm is None:
+        raise RuntimeError("GNPy did not return GSNR in both signal and 0.1 nm bandwidths")
 
-    feasible = gsnr_signal >= mode["OSNR"] + margin_db
+    required_osnr_01nm_db = float(mode["OSNR"])
+    margin_db, feasible = feasibility_margin(
+        gsnr_01nm,
+        required_osnr_01nm_db,
+        design_margin_db,
+    )
 
     topology = load_topology_unified(unified_path)
     route_graph = graph_for(topology)
@@ -232,9 +256,11 @@ def run_one(
         "total_power_dbm": power_dbm + 10 * np.log10(channels),
         "fiber_type": "SSMF",
         "modulation": mode_name,
-        "required_gsnr_db": mode["OSNR"],
+        "required_osnr_01nm_db": required_osnr_01nm_db,
         "gsnr_db": gsnr_signal,
         "gsnr_db_01nm": gsnr_01nm,
+        "margin_db": margin_db,
+        "design_margin_db": design_margin_db,
         "osnr_01nm_db": osnr_01nm,
         "osnr_db": osnr_signal,
         "snr_nli_db": snr_nli_01nm,

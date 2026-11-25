@@ -5,12 +5,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from fiber_qot_platform.simulation.phase2 import load_mode_config, run_one  # noqa: E402
+from fiber_qot_platform.simulation.phase2 import (  # noqa: E402
+    load_mode_config,
+    load_simulation_config,
+    run_one,
+)
 
 
 def main() -> int:
     topology = ROOT / "data" / "topologies" / "tunisia.json"
     modes = load_mode_config()
+    simulation_config = load_simulation_config()
+    design_margin_db = float(simulation_config["sampling"].get("design_margin_db", 2.0))
     mode_name = "mode 1"
     mode = modes[mode_name]
     start = time.perf_counter()
@@ -28,7 +34,7 @@ def main() -> int:
                 76,
                 50e9,
                 0.0,
-                2.0,
+                design_margin_db,
             )
             successful += 1
         except Exception as exc:
