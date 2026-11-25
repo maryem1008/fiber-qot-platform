@@ -8,6 +8,24 @@ benchmark and bounded outputs below are real GNPy-generated results, not estimat
 The feasibility counts in the historical smoke and 1,000-run sections below were computed with the
 previous, bandwidth-inconsistent convention and are retained only as historical results. They are not
 valid labels under the corrected convention, and the old generated files have not been regenerated.
+The redesigned sampler has not yet been used to generate a dataset; the pilot is still pending.
+
+## Sampling design
+
+The current sampler distributes requested rows evenly across topologies and uses independent seeded draws for
+connected source/destination pairs, among up to three shortest simple routes, GNPy modes, compatible channel
+spacing, legal channel counts within the configured frequency band, continuous launch power, physical-parameter
+offsets, and per-row synthetic noise standard deviation. The selected ROADMs are passed to GNPy as strict route
+constraints. This describes the sampler implementation; it is not a claim that the pilot or full dataset has run.
+
+Baud rate comes from the selected installed GNPy mode. The GNPy network currently models SSMF only; fiber type
+is therefore not sampled. The per-scenario NF offset is applied to GNPy's variable-gain NF model; the span-loss
+and extra-connector offsets are combined and split evenly across each fiber span's input and output connector
+attenuations. These are synthetic perturbations applied consistently to a run's network.
+
+The configured launch-power interval is [-3, 3] dBm and values are rounded to 0.01 dB, giving at most 601
+distinct rounded values. The test therefore checks for at least 550 distinct values, rather than the impossible
+requirement of more than 1,000.
 
 ## Sources
 
@@ -57,8 +75,13 @@ elements in each GNPy link. The rerun retained all 90 attempted rows after this 
 - `margin_db`: `gsnr_db_01nm - required_osnr_01nm_db`.
 - `design_margin_db`: required design margin loaded from `configs/simulation.yaml`.
 - `feasible`: `margin_db >= design_margin_db`.
-- `gsnr_db_noisy`: `gsnr_db` plus simulated zero-mean Gaussian noise with a 0.35 dB standard deviation.
+- `noise_std_db`: per-scenario synthetic noise standard deviation sampled from configuration.
+- `gsnr_db_noisy`: `gsnr_db` plus synthetic zero-mean Gaussian noise using that row's `noise_std_db`.
 
 The prior implementation compared signal-bandwidth `gsnr_db` directly against a mode OSNR threshold
 defined in 0.1 nm. The corrected convention uses `gsnr_db_01nm`. The noisy target is simulated
 measurement uncertainty and is not real measurement noise.
+
+GNPy propagation metrics are simulator outputs. Feasibility margin and topology/path statistics are derived
+from those outputs and the selected scenario. Added amplifier-NF, span-loss, and connector-loss offsets and
+the noisy target are synthetic scenario variations, not field measurements.

@@ -1,11 +1,8 @@
 import argparse
 import json
-import random
 import sys
 from pathlib import Path
 
-import networkx as nx
-import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,6 +12,9 @@ from fiber_qot_platform.simulation.phase2 import (  # noqa: E402
     load_mode_config,
     load_simulation_config,
     run_many,
+)
+from fiber_qot_platform.simulation.sampling import (  # noqa: E402
+    sample_scenarios_with_stats,
 )
 
 
@@ -33,83 +33,46 @@ def selected_topologies() -> list[tuple[str, Path]]:
     return sorted(accepted.items())
 
 
-def candidate_pairs(topology: dict, limit: int = 40) -> list[tuple[str, str]]:
-    graph = nx.Graph()
-    for node in topology["nodes"]:
-        graph.add_node(node["id"])
-    graph.add_edges_from((link["source"], link["target"]) for link in topology["links"])
-    pairs = []
-    nodes = list(graph.nodes)
-    for source in nodes:
-        for destination in nodes:
-            if source >= destination:
-                continue
-            if nx.has_path(graph, source, destination):
-                pairs.append((source, destination))
-    random.shuffle(pairs)
-    return pairs[:limit]
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--runs", type=int, default=100)
-    parser.add_argument("--seed", type=int, default=20261123)
+    parser.add_argument("--seed", type=int)
     parser.add_argument("--chunk-size", type=int, default=1000)
     parser.add_argument("--workers", type=int, default=1)
     args = parser.parse_args()
 
-    random.seed(args.seed)
-    np.random.seed(args.seed)
     modes = load_mode_config()
     simulation_config = load_simulation_config()
-    design_margin_db = float(simulation_config["sampling"].get("design_margin_db", 2.0))
-    mode_names = list(modes)
-    tasks = []
+    simulation_config["transceiver"]["mode_parameters"] = modes
     failures = []
 
-    topologies = selected_topologies()
-    if not topologies:
+    selected = selected_topologies()
+    if not selected:
         raise RuntimeError("No accepted Phase 1 topologies found")
-    per_topology = max(1, args.runs // len(topologies))
-    for topology_id, unified_path in topologies:
+    topology_data = []
+    for _, unified_path in selected:
         topology = json.loads(unified_path.read_text(encoding="utf-8"))
-        pairs = candidate_pairs(topology)
-        if not pairs:
-            failures.append({"topology_id": topology_id, "reason": "no candidate pairs"})
-            continue
-
-        for index in range(per_topology):
-            source, destination = pairs[index % len(pairs)]
-            mode_name = mode_names[index % len(mode_names)]
-            channels = 1 + (index * 19) % 80
-            spacing_options = [50e9, 75e9] if mode_name in ("mode 1",) else [75e9, 100e9]
-            spacing = spacing_options[index % len(spacing_options)]
-            power = -3.0 + (index * 0.75) % 6.0
-            tasks.append(
-                {
-                    "topology_id": topology_id,
-                    "unified_path": unified_path,
-                    "source": source,
-                    "destination": destination,
-                    "mode_name": mode_name,
-                    "mode": modes[mode_name],
-                    "channels": channels,
-                    "spacing_hz": spacing,
-                    "power_dbm": power,
-                    "design_margin_db": design_margin_db,
-                }
-            )
-
+        topology["unified_path"] = str(unified_path)
+        topology_data.append(topology)
+    seed = args.seed if args.seed is not None else int(simulation_config["random_seed"])
+    scenarios, rejected = sample_scenarios_with_stats(
+        topology_data,
+        args.runs,
+        seed,
+        simulation_config,
+    )
+    tasks = [scenario.to_run_task() for scenario in scenarios]
     outcomes = run_many(tasks, workers=args.workers)
     rows = []
     span_rows = []
-    for task, outcome in zip(tasks, outcomes, strict=True):
+    for scenario, outcome in zip(scenarios, outcomes, strict=True):
         if outcome["failure"] is not None:
             failures.append(
                 {
-                    "topology_id": task["topology_id"],
-                    "source": task["source"],
-                    "destination": task["destination"],
+                    "scenario_id": scenario.scenario_id,
+                    "topology_id": scenario.topology_id,
+                    "source": scenario.source,
+                    "destination": scenario.destination,
                     "reason": (f"{outcome['failure']['type']}: {outcome['failure']['reason']}"),
                 }
             )
@@ -139,8 +102,18 @@ def main() -> int:
         json.dumps(
             {
                 "requested_runs": args.runs,
+                "attempted_runs": len(tasks),
                 "successful_rows": len(rows),
-                "failures": len(failures),
+                "failed_runs": len(failures),
+                "rejected_scenarios": rejected,
+                "duplicate_scenario_ids": len(scenarios)
+                - len({scenario.scenario_id for scenario in scenarios}),
+                "unique_scenario_ratio": len(
+                    {scenario.parameter_signature for scenario in scenarios}
+                )
+                / len(scenarios)
+                if scenarios
+                else 1.0,
                 "output": str(json_path),
             },
             indent=2,

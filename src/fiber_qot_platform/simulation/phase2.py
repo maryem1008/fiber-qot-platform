@@ -9,7 +9,7 @@ import gnpy
 import networkx as nx
 import numpy as np
 import yaml
-from gnpy.core.elements import Edfa, Fiber, Transceiver
+from gnpy.core.elements import Edfa, Fiber, Roadm, Transceiver
 from gnpy.core.utils import dbm2watt
 from gnpy.tools.json_io import (
     load_equipments_and_configs,
@@ -41,11 +41,16 @@ def derive_nli_snr_db(gsnr_db: float, osnr_db: float) -> float | None:
     return 10 * np.log10(1 / nli_inverse)
 
 
-def load_simulation_config(config_path: Path = SIMULATION_CONFIG_PATH) -> dict:
-    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+@lru_cache(maxsize=8)
+def _load_simulation_config_cached(config_path: str) -> dict:
+    config = yaml.safe_load(Path(config_path).read_text(encoding="utf-8"))
     if not isinstance(config, dict):
         raise ValueError(f"{config_path}: expected a YAML mapping")
     return config
+
+
+def load_simulation_config(config_path: Path = SIMULATION_CONFIG_PATH) -> dict:
+    return deepcopy(_load_simulation_config_cached(str(config_path.resolve())))
 
 
 def feasibility_margin(
@@ -126,6 +131,31 @@ def graph_for(topology: dict) -> nx.Graph:
     return graph
 
 
+def apply_scenario_offsets(
+    network,
+    amplifier_nf_offset_db: float,
+    span_loss_offset_db: float,
+    extra_connector_loss_db: float,
+) -> None:
+    connector_delta_db = (span_loss_offset_db + extra_connector_loss_db) / 2
+    for element in network:
+        if isinstance(element, Fiber):
+            element.params.con_in += connector_delta_db
+            element.params.con_out += connector_delta_db
+            if element.params.con_in < 0 or element.params.con_out < 0:
+                raise ValueError("scenario offsets produce negative fiber connector attenuation")
+        elif isinstance(element, Edfa) and amplifier_nf_offset_db:
+            nf_model = element.params.nf_model
+            if nf_model is None or not all(hasattr(nf_model, name) for name in ("nf1", "nf2")):
+                raise ValueError(
+                    f"{element.uid}: GNPy NF model does not support a uniform dB offset"
+                )
+            element.params.nf_model = nf_model._replace(
+                nf1=nf_model.nf1 + amplifier_nf_offset_db,
+                nf2=nf_model.nf2 + amplifier_nf_offset_db,
+            )
+
+
 def service_request(
     source: str,
     destination: str,
@@ -134,7 +164,12 @@ def service_request(
     channels: int,
     spacing_hz: float,
     power_dbm: float,
+    route_nodes: tuple[str, ...] | None,
+    f_min_hz: float,
+    f_max_hz: float,
 ) -> PathRequest:
+    route_uids = [f"roadm_{node}" for node in route_nodes[1:-1]] if route_nodes else []
+    route_uids.append(destination)
     return PathRequest(
         request_id=f"{source}-{destination}-{mode_name}",
         source=source,
@@ -143,16 +178,16 @@ def service_request(
         trx_type="Voyager",
         trx_mode=mode_name,
         baud_rate=mode["baud_rate"],
-        nodes_list=[destination],
-        loose_list=["STRICT"],
+        nodes_list=route_uids,
+        loose_list=["STRICT"] * len(route_uids),
         format=mode_name,
         spacing=spacing_hz,
         nb_channel=channels,
         power=dbm2watt(power_dbm),
         tx_power=dbm2watt(power_dbm),
         OSNR=mode["OSNR"],
-        f_min=191350000000000.0,
-        f_max=196100000000000.0,
+        f_min=f_min_hz,
+        f_max=f_max_hz,
         bit_rate=mode["bit_rate"],
         tx_osnr=mode["tx_osnr"],
         min_spacing=mode["min_spacing"],
@@ -175,6 +210,15 @@ def run_one(
     design_margin_db: float | None = None,
     use_cache: bool = True,
     noise_seed: int | None = None,
+    noise_std_db: float | None = None,
+    route_nodes: tuple[str, ...] | None = None,
+    scenario_id: str | None = None,
+    seed_index: int | None = None,
+    scenario_seed: int | None = None,
+    route_rank: int | None = None,
+    amplifier_nf_offset_db: float = 0.0,
+    span_loss_offset_db: float = 0.0,
+    extra_connector_loss_db: float = 0.0,
 ) -> dict:
     gnpy_path = unified_path.with_name(f"{unified_path.stem}_gnpy.json")
     equipment = load_equipment(use_cache)
@@ -183,6 +227,7 @@ def run_one(
         design_margin_db = float(
             load_simulation_config().get("sampling", {}).get("design_margin_db", 2.0)
         )
+    simulation_config = load_simulation_config()
     request = service_request(
         f"trx_{source}",
         f"trx_{destination}",
@@ -191,6 +236,15 @@ def run_one(
         channels,
         spacing_hz,
         power_dbm,
+        route_nodes,
+        float(simulation_config["reference"]["f_min_hz"]),
+        float(simulation_config["reference"]["f_max_hz"]),
+    )
+    apply_scenario_offsets(
+        network,
+        amplifier_nf_offset_db,
+        span_loss_offset_db,
+        extra_connector_loss_db,
     )
     designed, req, ref_req = designed_network(
         equipment,
@@ -231,22 +285,40 @@ def run_one(
 
     topology = load_topology_unified(unified_path)
     route_graph = graph_for(topology)
-    route = nx.shortest_path(
-        route_graph,
-        source,
-        destination,
-        weight="weight",
+    route = (
+        list(route_nodes)
+        if route_nodes
+        else nx.shortest_path(
+            route_graph,
+            source,
+            destination,
+            weight="weight",
+        )
     )
+    simulated_route = [item.uid.removeprefix("roadm_") for item in path if isinstance(item, Roadm)]
+    if route_nodes and simulated_route != list(route_nodes):
+        raise RuntimeError(
+            f"GNPy route {simulated_route} does not match sampled route {list(route_nodes)}"
+        )
     total_length = nx.path_weight(route_graph, route, "weight")
     span_lengths = [float(fiber.params.length * 1e-3) for fiber in fibers]
-    path_id = hashlib.sha1(
-        (
-            f"{topology_id}|{source}|{destination}|{mode_name}|{channels}|{spacing_hz}|{power_dbm}"
-        ).encode()
-    ).hexdigest()
+    path_id = (
+        scenario_id
+        or hashlib.sha1(
+            (
+                f"{topology_id}|{source}|{destination}|{route}|{mode_name}|{channels}|"
+                f"{spacing_hz}|{power_dbm}|{amplifier_nf_offset_db}|{span_loss_offset_db}|"
+                f"{extra_connector_loss_db}"
+            ).encode()
+        ).hexdigest()
+    )
     if noise_seed is None:
         noise_seed = int(path_id[:8], 16)
-    gsnr_noisy = gsnr_signal + float(np.random.default_rng(noise_seed).normal(0.0, 0.35))
+    noise_rng = np.random.default_rng(noise_seed)
+    if noise_std_db is None:
+        noise_range = simulation_config["sampling"]["noisy_gsnr_std_db"]
+        noise_std_db = float(noise_rng.uniform(float(noise_range[0]), float(noise_range[1])))
+    gsnr_noisy = gsnr_signal + float(noise_rng.normal(0.0, noise_std_db))
     span_profiles = []
     previous_gsnr = gsnr_signal
     for span_index, fiber in enumerate(fibers):
@@ -271,11 +343,16 @@ def run_one(
 
     result = {
         "path_id": path_id,
+        "scenario_id": scenario_id or path_id,
+        "seed_index": seed_index,
+        "scenario_seed": scenario_seed if scenario_seed is not None else noise_seed,
+        "route_rank": route_rank,
         "topology_id": topology_id,
         "source": source,
         "destination": destination,
         "hops": max(0, len(route) - 1),
         "route": route,
+        "simulated_route": simulated_route,
         "total_length_km": float(total_length),
         "n_spans": len(span_lengths),
         "n_amps": len(amplifiers),
@@ -294,6 +371,9 @@ def run_one(
         "total_power_dbm": power_dbm + 10 * np.log10(channels),
         "fiber_type": "SSMF",
         "modulation": mode_name,
+        "amplifier_nf_offset_db": amplifier_nf_offset_db,
+        "span_loss_offset_db": span_loss_offset_db,
+        "extra_connector_loss_db": extra_connector_loss_db,
         "required_osnr_01nm_db": required_osnr_01nm_db,
         "gsnr_db": gsnr_signal,
         "gsnr_db_01nm": gsnr_01nm,
@@ -302,6 +382,7 @@ def run_one(
         "osnr_01nm_db": osnr_01nm,
         "osnr_db": osnr_signal,
         "snr_nli_db": snr_nli_01nm,
+        "noise_std_db": noise_std_db,
         "gsnr_db_noisy": gsnr_noisy,
         "feasible": feasible,
     }

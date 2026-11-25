@@ -1,11 +1,16 @@
 import json
 import math
+from itertools import islice
 from pathlib import Path
 
+import networkx as nx
 import pytest
 
 from fiber_qot_platform.simulation.phase2 import (
+    apply_scenario_offsets,
     feasibility_margin,
+    graph_for,
+    load_equipment,
     load_mode_config,
     load_simulation_config,
     mean_db,
@@ -45,6 +50,15 @@ def test_real_gnpy_run_uses_matching_gsnr_bandwidth_convention() -> None:
     mode = modes["mode 1"]
     config = load_simulation_config()
     design_margin_db = float(config["sampling"]["design_margin_db"])
+    topology = json.loads(
+        (ROOT / "data" / "topologies" / "tunisia.json").read_text(encoding="utf-8")
+    )
+    graph = graph_for(topology)
+    route_options = list(
+        islice(nx.shortest_simple_paths(graph, "Bizerte", "Sfax", weight="weight"), 3)
+    )
+    route = route_options[-1]
+    assert len(route_options) == 3
     row = run_one(
         "tunisia",
         ROOT / "data" / "topologies" / "tunisia.json",
@@ -56,9 +70,18 @@ def test_real_gnpy_run_uses_matching_gsnr_bandwidth_convention() -> None:
         50e9,
         0.0,
         design_margin_db,
+        route_nodes=tuple(route),
+        route_rank=3,
+        amplifier_nf_offset_db=0.2,
+        span_loss_offset_db=0.4,
+        extra_connector_loss_db=0.2,
     )
-    expected_difference_db = 10 * math.log10(mode["baud_rate"] / 12.5e9)
+    reference_bandwidth_hz = config["reference"]["osnr_reference_bandwidth_hz"]
+    expected_difference_db = 10 * math.log10(mode["baud_rate"] / reference_bandwidth_hz)
 
+    assert row["simulated_route"] == route
+    assert row["route"] == route
+    assert row["route_rank"] == 3
     assert row["gsnr_db_01nm"] - row["gsnr_db"] == pytest.approx(
         expected_difference_db,
         abs=0.1,
@@ -67,6 +90,24 @@ def test_real_gnpy_run_uses_matching_gsnr_bandwidth_convention() -> None:
     assert row["margin_db"] == pytest.approx(row["gsnr_db_01nm"] - mode["OSNR"])
     assert row["feasible"] is (row["margin_db"] >= design_margin_db)
     assert "required_gsnr_db" not in row
+
+
+def test_gnpy_scenario_offsets_change_supported_parameters() -> None:
+    from gnpy.tools.json_io import load_network
+
+    equipment = load_equipment(use_cache=False)
+    network = load_network(ROOT / "data" / "topologies" / "tunisia_gnpy.json", equipment)
+    fiber = next(element for element in network if type(element).__name__ == "Fiber")
+    amplifier = next(element for element in network if type(element).__name__ == "Edfa")
+    base_con_in = fiber.params.con_in
+    base_con_out = fiber.params.con_out
+    base_nf1 = amplifier.params.nf_model.nf1
+
+    apply_scenario_offsets(network, 0.2, 0.4, 0.2)
+
+    assert fiber.params.con_in == pytest.approx(base_con_in + 0.3)
+    assert fiber.params.con_out == pytest.approx(base_con_out + 0.3)
+    assert amplifier.params.nf_model.nf1 == pytest.approx(base_nf1 + 0.2)
 
 
 def test_cached_networks_match_uncached_for_twenty_scenarios() -> None:

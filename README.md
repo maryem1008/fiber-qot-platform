@@ -36,6 +36,16 @@ make test          # run tests
 make phase1        # parse and convert Phase 1 topology sources
 ```
 
+### Phase 2 scenario sampling
+
+The Phase 2 generator samples exactly the requested number of scenarios, splits them evenly across converted
+topologies, and uses a fixed seed from `configs/simulation.yaml` unless `--seed` is supplied. Modes, baud rates,
+spacing limits, channel counts, launch powers, route ranks, and synthetic noise levels are sampled independently
+from their configured domains. Routes are constrained through their selected intermediate ROADMs in GNPy.
+
+Run a bounded generation with `python scripts/phase2_generate.py --runs 100 --workers 2`. The `--runs` option
+defaults to 100; do not use the 100,000-row target until the project pilot has passed its go/no-go checkpoint.
+
 ## Project structure
 
 - `configs/`: versioned project and simulation configuration.

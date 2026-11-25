@@ -59,6 +59,28 @@ including profiler overhead. `designed_network()` accumulated 0.629 seconds; GNP
 `build_network()` accumulated 0.615 seconds, with `set_egress_amplifier()` accounting for 0.576 seconds.
 This is a single profiled run, not a general performance estimate.
 
+### Phase 2 — Sampler and route constraints evidence
+
+Replaying the previous sampler's formulas for 5,555 indices produced 80 unique combinations per topology and 8
+distinct launch-power values. The `candidate_pairs(..., limit=40)` implementation caps the selected 18-topology
+set at 720 candidate pairs. These are counts from the old deterministic formulas, not GNPy run results.
+
+GNPy 3.0.1 `request.py::compute_constrained_path()` reads ordered intermediate UIDs from `PathRequest.nodes_list`;
+its route examples construct `nodes_list` from the requested ROADMs followed by the destination transceiver and set
+each corresponding `loose_list` entry to `STRICT`. The Phase 2 request can therefore constrain all intermediate
+ROADMs in the sampled route and verify the resulting route sequence.
+
+The configured launch-power interval is [-3, 3] dBm. Rounded to 0.01 dB, it contains only 601 possible values,
+so a requirement for more than 1,000 distinct rounded powers in 5,000 samples is mathematically impossible. The
+owner approved preserving the configured interval and using an acceptance threshold of at least 550 distinct
+launch powers instead.
+
+The installed `std_medium_gain` uses a GNPy `Model_vg` namedtuple with `nf1` and `nf2`; the GNPy EDFA NF
+calculation combines those terms in linear power before converting back to dB. A common dB shift to both terms
+therefore applies a common NF offset for this model. GNPy Fiber span loss includes `con_in`, `con_out`, and
+`att_in`; the run-level span and connector offsets will be applied to non-negative input/output connector
+attenuations. These are configured simulation perturbations, not measured properties.
+
 ### Interview questions
 
 1. **Why split sources into a unified schema?** It separates source parsing from GNPy conversion and downstream ML.
