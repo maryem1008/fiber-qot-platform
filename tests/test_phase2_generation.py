@@ -1,3 +1,4 @@
+import json
 import math
 from pathlib import Path
 
@@ -8,6 +9,7 @@ from fiber_qot_platform.simulation.phase2 import (
     load_mode_config,
     load_simulation_config,
     mean_db,
+    run_many,
     run_one,
 )
 
@@ -65,3 +67,68 @@ def test_real_gnpy_run_uses_matching_gsnr_bandwidth_convention() -> None:
     assert row["margin_db"] == pytest.approx(row["gsnr_db_01nm"] - mode["OSNR"])
     assert row["feasible"] is (row["margin_db"] >= design_margin_db)
     assert "required_gsnr_db" not in row
+
+
+def test_cached_networks_match_uncached_for_twenty_scenarios() -> None:
+    modes = load_mode_config()
+    nodes = [
+        node["id"]
+        for node in json.loads(
+            (ROOT / "data" / "topologies" / "tunisia.json").read_text(encoding="utf-8")
+        )["nodes"]
+    ]
+    scenarios = [
+        {
+            "topology_id": "tunisia",
+            "unified_path": ROOT / "data" / "topologies" / "tunisia.json",
+            "source": nodes[index % len(nodes)],
+            "destination": nodes[(index * 5 + 1) % len(nodes)],
+            "mode_name": "mode 1",
+            "mode": modes["mode 1"],
+            "channels": 1 + index % 10,
+            "spacing_hz": 50e9,
+            "power_dbm": -2.0 + index / 10,
+            "design_margin_db": 2.0,
+            "noise_seed": index,
+        }
+        for index in range(20)
+    ]
+    uncached = [run_one(**scenario, use_cache=False) for scenario in scenarios]
+    cached = [run_one(**scenario, use_cache=True) for scenario in scenarios]
+
+    for uncached_row, cached_row in zip(uncached, cached, strict=True):
+        assert cached_row["gsnr_db"] == pytest.approx(uncached_row["gsnr_db"], abs=1e-9)
+        assert cached_row["gsnr_db_01nm"] == pytest.approx(
+            uncached_row["gsnr_db_01nm"],
+            abs=1e-9,
+        )
+
+
+def test_parallel_results_match_single_worker_results() -> None:
+    modes = load_mode_config()
+    tasks = [
+        {
+            "topology_id": "tunisia",
+            "unified_path": ROOT / "data" / "topologies" / "tunisia.json",
+            "source": "Bizerte",
+            "destination": "Sfax",
+            "mode_name": "mode 1",
+            "mode": modes["mode 1"],
+            "channels": 12 + index,
+            "spacing_hz": 50e9,
+            "power_dbm": -1.0,
+            "design_margin_db": 2.0,
+        }
+        for index in range(2)
+    ]
+    single_worker = run_many(tasks, workers=1)
+    two_workers = run_many(tasks, workers=2)
+
+    for single_outcome, parallel_outcome in zip(single_worker, two_workers, strict=True):
+        assert single_outcome["failure"] is None
+        assert parallel_outcome["failure"] is None
+        single = single_outcome["row"]
+        parallel = parallel_outcome["row"]
+        assert parallel["gsnr_db"] == pytest.approx(single["gsnr_db"], abs=1e-9)
+        assert parallel["gsnr_db_01nm"] == pytest.approx(single["gsnr_db_01nm"], abs=1e-9)
+        assert parallel["gsnr_db_noisy"] == pytest.approx(single["gsnr_db_noisy"], abs=1e-9)

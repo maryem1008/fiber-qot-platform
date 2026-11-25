@@ -42,6 +42,23 @@ was 18.4516927553 dB and 0.1 nm GSNR was 22.5340924085 dB. Their 4.0823996531 dB
 mode's equipment `OSNR` threshold mixes bandwidth conventions. The dataset feasibility margin must instead be
 computed from `gsnr_db_01nm - required_osnr_01nm_db`, with the configured design margin applied to that result.
 
+### Phase 2 — GNPy loading and profiling evidence
+
+The current Makefile defaults to `.venv/Scripts/python.exe`, and the current equipment path embeds the Windows
+`.venv/Lib/site-packages` layout. In this environment `gnpy.__file__` resolves to the installed package, whose
+directory contains `example-data/eqpt_config.json`; package-relative resolution avoids assuming an OS-specific
+virtual-environment layout.
+
+GNPy 3.0.1 `load_network()` reads and converts the network JSON on every call. `network_from_json()` mutates the
+input element dictionaries (including popping `type` and `type_variety`), while `designed_network()` inserts and
+designs elements in its graph. Any cached parsed network template must therefore be copied before constructing
+and designing each run's network.
+
+A `cProfile` run of one Tunisia Bizerte–Sfax scenario on Windows, CPython 3.12.10, GNPy 3.0.1 took 1.050 seconds
+including profiler overhead. `designed_network()` accumulated 0.629 seconds; GNPy `design_network()` /
+`build_network()` accumulated 0.615 seconds, with `set_egress_amplifier()` accounting for 0.576 seconds.
+This is a single profiled run, not a general performance estimate.
+
 ### Interview questions
 
 1. **Why split sources into a unified schema?** It separates source parsing from GNPy conversion and downstream ML.

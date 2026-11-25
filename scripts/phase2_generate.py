@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from fiber_qot_platform.simulation.phase2 import (  # noqa: E402
     load_mode_config,
     load_simulation_config,
-    run_one,
+    run_many,
 )
 
 
@@ -55,6 +55,7 @@ def main() -> int:
     parser.add_argument("--runs", type=int, default=100)
     parser.add_argument("--seed", type=int, default=20261123)
     parser.add_argument("--chunk-size", type=int, default=1000)
+    parser.add_argument("--workers", type=int, default=1)
     args = parser.parse_args()
 
     random.seed(args.seed)
@@ -63,8 +64,7 @@ def main() -> int:
     simulation_config = load_simulation_config()
     design_margin_db = float(simulation_config["sampling"].get("design_margin_db", 2.0))
     mode_names = list(modes)
-    rows = []
-    span_rows = []
+    tasks = []
     failures = []
 
     topologies = selected_topologies()
@@ -85,31 +85,38 @@ def main() -> int:
             spacing_options = [50e9, 75e9] if mode_name in ("mode 1",) else [75e9, 100e9]
             spacing = spacing_options[index % len(spacing_options)]
             power = -3.0 + (index * 0.75) % 6.0
-            try:
-                row = run_one(
-                    topology_id,
-                    unified_path,
-                    source,
-                    destination,
-                    mode_name,
-                    modes[mode_name],
-                    channels,
-                    spacing,
-                    power,
-                    design_margin_db,
-                )
-                span_profiles = row.pop("_span_profiles", [])
-                rows.append(row)
-                span_rows.extend(span_profiles)
-            except Exception as exc:
-                failures.append(
-                    {
-                        "topology_id": topology_id,
-                        "source": source,
-                        "destination": destination,
-                        "reason": f"{type(exc).__name__}: {exc}",
-                    }
-                )
+            tasks.append(
+                {
+                    "topology_id": topology_id,
+                    "unified_path": unified_path,
+                    "source": source,
+                    "destination": destination,
+                    "mode_name": mode_name,
+                    "mode": modes[mode_name],
+                    "channels": channels,
+                    "spacing_hz": spacing,
+                    "power_dbm": power,
+                    "design_margin_db": design_margin_db,
+                }
+            )
+
+    outcomes = run_many(tasks, workers=args.workers)
+    rows = []
+    span_rows = []
+    for task, outcome in zip(tasks, outcomes, strict=True):
+        if outcome["failure"] is not None:
+            failures.append(
+                {
+                    "topology_id": task["topology_id"],
+                    "source": task["source"],
+                    "destination": task["destination"],
+                    "reason": (f"{outcome['failure']['type']}: {outcome['failure']['reason']}"),
+                }
+            )
+            continue
+        row = outcome["row"]
+        span_rows.extend(row.pop("_span_profiles", []))
+        rows.append(row)
 
     output = ROOT / "data" / "generated"
     output.mkdir(parents=True, exist_ok=True)

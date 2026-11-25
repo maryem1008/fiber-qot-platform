@@ -1,10 +1,11 @@
 import json
 from pathlib import Path
 
+import gnpy
 from gnpy.tools.json_io import load_equipments_and_configs, load_network
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = ROOT / ".venv" / "Lib" / "site-packages" / "gnpy" / "example-data"
+PACKAGE = Path(gnpy.__file__).resolve().parent / "example-data"
 EQUIPMENT = PACKAGE / "eqpt_config.json"
 
 

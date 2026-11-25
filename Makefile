@@ -1,6 +1,6 @@
 .PHONY: env-check gnpy-help install-arm64 test lint phase1 phase1-smoke phase2-benchmark phase2-smoke
 
-PYTHON ?= .venv/Scripts/python.exe
+PYTHON ?= python
 
 # Show the selected interpreter and installed GNPy package version.
 env-check:

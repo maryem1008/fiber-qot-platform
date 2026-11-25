@@ -1,21 +1,28 @@
 import hashlib
 import json
+from concurrent.futures import ProcessPoolExecutor
+from copy import deepcopy
+from functools import lru_cache
 from pathlib import Path
 
+import gnpy
 import networkx as nx
 import numpy as np
 import yaml
 from gnpy.core.elements import Edfa, Fiber, Transceiver
 from gnpy.core.utils import dbm2watt
-from gnpy.tools.json_io import load_equipments_and_configs, load_network
+from gnpy.tools.json_io import (
+    load_equipments_and_configs,
+    load_gnpy_json,
+    load_network,
+    network_from_json,
+)
 from gnpy.tools.worker_utils import designed_network, transmission_simulation
 from gnpy.topology.request import PathRequest
 
 ROOT = Path(__file__).resolve().parents[3]
 SIMULATION_CONFIG_PATH = ROOT / "configs" / "simulation.yaml"
-EQUIPMENT_PATH = (
-    ROOT / ".venv" / "Lib" / "site-packages" / "gnpy" / "example-data" / "eqpt_config.json"
-)
+EQUIPMENT_PATH = Path(gnpy.__file__).resolve().parent / "example-data" / "eqpt_config.json"
 
 
 def mean_db(value):
@@ -50,8 +57,29 @@ def feasibility_margin(
     return margin_db, margin_db >= design_margin_db
 
 
-def load_mode_config() -> dict:
-    equipment = load_equipments_and_configs(EQUIPMENT_PATH, [], [])
+@lru_cache(maxsize=1)
+def _load_equipment_cached() -> dict:
+    return load_equipments_and_configs(EQUIPMENT_PATH, [], [])
+
+
+@lru_cache(maxsize=32)
+def _load_network_json_cached(path: str) -> dict:
+    return load_gnpy_json(Path(path))
+
+
+def load_equipment(use_cache: bool = True) -> dict:
+    if use_cache:
+        return _load_equipment_cached()
+    return load_equipments_and_configs(EQUIPMENT_PATH, [], [])
+
+
+def clear_simulation_caches() -> None:
+    _load_equipment_cached.cache_clear()
+    _load_network_json_cached.cache_clear()
+
+
+def load_mode_config(use_cache: bool = True) -> dict:
+    equipment = load_equipment(use_cache)
     transceivers = equipment.get("Transceiver", {})
     voyager = transceivers.get("Voyager")
     if voyager is None:
@@ -68,6 +96,13 @@ def load_mode_config() -> dict:
             "roll_off": float(mode_values.get("roll_off", 0.15)),
         }
     return modes
+
+
+def _load_run_network(path: Path, equipment: dict, use_cache: bool):
+    if not use_cache:
+        return load_network(path, equipment)
+    network_data = deepcopy(_load_network_json_cached(str(path.resolve())))
+    return network_from_json(network_data, equipment)
 
 
 def load_topology_unified(path: Path) -> dict:
@@ -138,10 +173,12 @@ def run_one(
     spacing_hz: float,
     power_dbm: float,
     design_margin_db: float | None = None,
+    use_cache: bool = True,
+    noise_seed: int | None = None,
 ) -> dict:
     gnpy_path = unified_path.with_name(f"{unified_path.stem}_gnpy.json")
-    equipment = load_equipments_and_configs(EQUIPMENT_PATH, [], [])
-    network = load_network(gnpy_path, equipment)
+    equipment = load_equipment(use_cache)
+    network = _load_run_network(gnpy_path, equipment, use_cache)
     if design_margin_db is None:
         design_margin_db = float(
             load_simulation_config().get("sampling", {}).get("design_margin_db", 2.0)
@@ -207,7 +244,8 @@ def run_one(
             f"{topology_id}|{source}|{destination}|{mode_name}|{channels}|{spacing_hz}|{power_dbm}"
         ).encode()
     ).hexdigest()
-    noise_seed = int(path_id[:8], 16)
+    if noise_seed is None:
+        noise_seed = int(path_id[:8], 16)
     gsnr_noisy = gsnr_signal + float(np.random.default_rng(noise_seed).normal(0.0, 0.35))
     span_profiles = []
     previous_gsnr = gsnr_signal
@@ -269,3 +307,32 @@ def run_one(
     }
     result["_span_profiles"] = span_profiles
     return result
+
+
+def _initialize_worker() -> None:
+    load_equipment()
+    load_mode_config()
+
+
+def _run_task(task: dict) -> dict:
+    try:
+        return {"row": run_one(**task), "failure": None}
+    except Exception as exc:
+        return {
+            "row": None,
+            "failure": {"type": type(exc).__name__, "reason": str(exc)},
+        }
+
+
+def run_many(tasks: list[dict], workers: int = 1) -> list[dict]:
+    if workers < 1:
+        raise ValueError("workers must be at least 1")
+    indexed_tasks = []
+    for task_index, task in enumerate(tasks):
+        indexed_task = dict(task)
+        indexed_task.setdefault("noise_seed", task_index)
+        indexed_tasks.append(indexed_task)
+    if workers == 1:
+        return [_run_task(task) for task in indexed_tasks]
+    with ProcessPoolExecutor(max_workers=workers, initializer=_initialize_worker) as executor:
+        return list(executor.map(_run_task, indexed_tasks))
