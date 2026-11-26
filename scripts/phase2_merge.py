@@ -18,8 +18,17 @@ def main() -> int:
     args = parser.parse_args()
 
     run_directory = _run_directory(ROOT / "data" / "generated", args.run_id)
-    paths_path, spans_path = merge_run_directory(run_directory)
-    print(json.dumps({"paths": str(paths_path), "spans": str(spans_path)}, indent=2))
+    paths_path, spans_path, null_counts = merge_run_directory(run_directory)
+    print(
+        json.dumps(
+            {
+                "paths": str(paths_path),
+                "spans": str(spans_path),
+                "required_column_null_counts": null_counts,
+            },
+            indent=2,
+        )
+    )
     return 0
 
 

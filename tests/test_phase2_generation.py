@@ -8,6 +8,7 @@ import pytest
 
 from fiber_qot_platform.simulation.phase2 import (
     apply_scenario_offsets,
+    derive_nli_snr_db,
     feasibility_margin,
     graph_for,
     load_equipment,
@@ -29,6 +30,23 @@ def test_gnpymodes_are_loaded_from_configuration() -> None:
 
 def test_mean_db_handles_scalar_and_array_values() -> None:
     assert mean_db(20.0) == 20.0
+
+
+@pytest.mark.parametrize(
+    ("gsnr_db", "osnr_db", "expected"),
+    [(20.0, 25.0, True), (20.0, 20.0, False), (20.0, 19.0, False)],
+)
+def test_derived_nli_snr_preserves_invalid_inverse_difference(
+    gsnr_db: float,
+    osnr_db: float,
+    expected: bool,
+) -> None:
+    result = derive_nli_snr_db(gsnr_db, osnr_db)
+    assert (result is not None) is expected
+    if result is not None:
+        gsnr_inverse = 10 ** (-gsnr_db / 10)
+        osnr_inverse = 10 ** (-osnr_db / 10)
+        assert 10 ** (-result / 10) == pytest.approx(gsnr_inverse - osnr_inverse)
 
 
 @pytest.mark.parametrize(
@@ -89,6 +107,21 @@ def test_real_gnpy_run_uses_matching_gsnr_bandwidth_convention() -> None:
     assert row["required_osnr_01nm_db"] == mode["OSNR"]
     assert row["margin_db"] == pytest.approx(row["gsnr_db_01nm"] - mode["OSNR"])
     assert row["feasible"] is (row["margin_db"] >= design_margin_db)
+    for bandwidth_suffix, gsnr_key, osnr_key in (
+        ("", "gsnr_db", "osnr_db"),
+        ("_01nm", "gsnr_db_01nm", "osnr_01nm_db"),
+    ):
+        nli_key = f"snr_nli{bandwidth_suffix}_db"
+        expected_nli = derive_nli_snr_db(row[gsnr_key], row[osnr_key])
+        assert (
+            row[nli_key] == pytest.approx(expected_nli)
+            if expected_nli is not None
+            else row[nli_key] is None
+        )
+        assert row[f"{nli_key}_available"] is (expected_nli is not None)
+        assert row[f"{nli_key}_invalid"] is (
+            expected_nli is None and row[gsnr_key] is not None and row[osnr_key] is not None
+        )
     assert "required_gsnr_db" not in row
 
 
@@ -187,6 +220,30 @@ def test_cached_networks_match_uncached_for_twenty_scenarios() -> None:
             and len(profile["geometry"]) == 2
             for profile in profiles
         )
+        for profile in profiles:
+            for suffix in ("", "_01nm"):
+                nli_key = f"cum_snr_nli_db{suffix}"
+                gsnr_key = f"cum_gsnr_db{suffix}"
+                osnr_key = f"cum_osnr_ase_db{suffix}"
+                expected_nli = derive_nli_snr_db(profile[gsnr_key], profile[osnr_key])
+                assert (
+                    profile[nli_key] == pytest.approx(expected_nli)
+                    if expected_nli is not None
+                    else profile[nli_key] is None
+                )
+                assert profile[f"{nli_key}_available"] is (expected_nli is not None)
+                assert profile[f"{nli_key}_invalid"] is (
+                    expected_nli is None
+                    and profile[gsnr_key] is not None
+                    and profile[osnr_key] is not None
+                )
+        for suffix in ("", "_01nm"):
+            path_nli_key = f"snr_nli{suffix}_db"
+            span_nli_key = f"cum_snr_nli_db{suffix}"
+            if uncached_row[path_nli_key] is None:
+                assert profiles[-1][span_nli_key] is None
+            else:
+                assert profiles[-1][span_nli_key] == pytest.approx(uncached_row[path_nli_key])
         assert cached_row["gsnr_db"] == pytest.approx(uncached_row["gsnr_db"], abs=1e-9)
         assert cached_row["gsnr_db_01nm"] == pytest.approx(
             uncached_row["gsnr_db_01nm"],

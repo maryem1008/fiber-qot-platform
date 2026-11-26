@@ -24,12 +24,39 @@ def _fake_outcomes(tasks: list[dict], workers: int = 1) -> list[dict]:
                 }
             )
         else:
+            path_row = dict.fromkeys(phase2_generate.PATH_REQUIRED_COLUMNS, 0)
+            path_row.update(
+                {
+                    "path_id": scenario_id,
+                    "scenario_id": scenario_id,
+                    "feasible": False,
+                    "snr_nli_db": None if index == 1 else 30.0,
+                    "snr_nli_db_available": index != 1,
+                    "snr_nli_db_invalid": index == 1,
+                    "snr_nli_01nm_db": None if index == 1 else 34.0,
+                    "snr_nli_01nm_db_available": index != 1,
+                    "snr_nli_01nm_db_invalid": index == 1,
+                }
+            )
+            span_row = dict.fromkeys(phase2_generate.SPAN_REQUIRED_COLUMNS, 0)
+            span_row.update(
+                {
+                    "path_id": scenario_id,
+                    "span_index": 0,
+                    "cum_snr_nli_db": None if index == 1 else 30.0,
+                    "cum_snr_nli_db_available": index != 1,
+                    "cum_snr_nli_db_invalid": index == 1,
+                    "cum_snr_nli_db_01nm": None if index == 1 else 34.0,
+                    "cum_snr_nli_db_01nm_available": index != 1,
+                    "cum_snr_nli_db_01nm_invalid": index == 1,
+                }
+            )
             outcomes.append(
                 {
                     "row": {
-                        "scenario_id": scenario_id,
+                        **path_row,
                         "sample_value": index,
-                        "_span_profiles": [{"path_id": scenario_id, "span_index": 0}],
+                        "_span_profiles": [span_row],
                     },
                     "failure": None,
                 }
@@ -114,6 +141,8 @@ def test_generation_resumes_completed_chunks_identically(
     assert resumed_manifest["failed"] == 36
     assert resumed_manifest["rejected"] == expected_rejected
     assert resumed_manifest["duplicate_scenario_ids"] == 0
+    assert resumed_manifest["required_column_null_counts"]["paths"]["snr_nli_db"] == 1
+    assert resumed_manifest["required_column_null_counts"]["spans"]["cum_snr_nli_db"] == 1
 
     pd.testing.assert_frame_equal(
         pd.read_parquet(resumed_dir / "paths.parquet"),
@@ -142,3 +171,21 @@ def test_generation_resumes_completed_chunks_identically(
         runner=fail_if_run,
     )
     assert unchanged_manifest == resumed_manifest
+
+    all_failed_manifest = phase2_generate.generate_run(
+        "all-failed",
+        1,
+        41,
+        1,
+        1,
+        config,
+        tmp_path,
+        runner=_fake_outcomes,
+    )
+    assert all_failed_manifest["successful"] == 0
+    assert all_failed_manifest["failed"] == 1
+    empty_paths = pd.read_parquet(tmp_path / "all-failed" / "paths.parquet")
+    empty_spans = pd.read_parquet(tmp_path / "all-failed" / "spans.parquet")
+    assert set(phase2_generate.PATH_REQUIRED_COLUMNS) <= set(empty_paths.columns)
+    assert set(phase2_generate.SPAN_REQUIRED_COLUMNS) <= set(empty_spans.columns)
+    assert all_failed_manifest["required_column_null_counts"]["paths"]["snr_nli_db"] == 0

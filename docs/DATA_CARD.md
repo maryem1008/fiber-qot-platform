@@ -74,6 +74,10 @@ elements in each GNPy link. The rerun retained all 90 attempted rows after this 
 - `gsnr_db_01nm`: mean GNPy GSNR in the 0.1 nm reference bandwidth; this is the primary regression target.
 - `osnr_01nm_db`: mean GNPy 0.1 nm OSNR.
 - `required_osnr_01nm_db`: the selected transceiver mode's OSNR requirement, referenced to 0.1 nm.
+- `snr_nli_db`: derived signal-bandwidth NLI SNR using `1/GSNR = 1/OSNR_ASE + 1/SNR_NLI`.
+- `snr_nli_01nm_db`: the same derived NLI SNR equation using only the 0.1 nm values.
+- `snr_nli_*_available` and `snr_nli_*_invalid`: distinguish a valid derived NLI value from an unavailable
+  input or a non-positive inverse-SNR difference; invalid NLI values remain null, not clipped.
 - `margin_db`: `gsnr_db_01nm - required_osnr_01nm_db`.
 - `design_margin_db`: required design margin loaded from `configs/simulation.yaml`.
 - Path structure comes from the simulated GNPy path: `total_length_km` sums its Fiber lengths, `hops` is the
@@ -91,6 +95,10 @@ measurement uncertainty and is not real measurement noise.
 GNPy propagation metrics are simulator outputs. Feasibility margin and topology/path statistics are derived
 from those outputs and the selected scenario. Added amplifier-NF, span-loss, and connector-loss offsets and
 the noisy target are synthetic scenario variations, not field measurements.
+
+The run manifest reports per-column null counts for both merged tables. NLI values are nullable by design when
+their inputs are unavailable or the inverse-SNR subtraction is non-positive; availability and invalidity flags
+explain those cases.
 
 ## Per-span table schema
 

@@ -37,15 +37,16 @@ def mean_db(value):
     return float(np.mean(array))
 
 
-def derive_nli_snr_db(gsnr_db: float, osnr_db: float) -> float | None:
+def derive_nli_snr_db(gsnr_db: float | None, osnr_db: float | None) -> float | None:
     if gsnr_db is None or osnr_db is None or not np.isfinite(gsnr_db + osnr_db):
         return None
     gsnr_lin = 10 ** (gsnr_db / 10)
     osnr_lin = 10 ** (osnr_db / 10)
     nli_inverse = 1 / gsnr_lin - 1 / osnr_lin
-    if nli_inverse <= 0:
+    if not np.isfinite(nli_inverse) or nli_inverse <= 0:
         return None
-    return float(10 * np.log10(1 / nli_inverse))
+    result = float(10 * np.log10(1 / nli_inverse))
+    return result if np.isfinite(result) else None
 
 
 def _finite_mean(value) -> float | None:
@@ -597,10 +598,10 @@ def run_one(
     gsnr_signal = mean_db(transceiver.snr)
     osnr_01nm = mean_db(transceiver.osnr_ase_01nm)
     osnr_signal = mean_db(transceiver.osnr_ase)
-    snr_nli_01nm = mean_db(getattr(transceiver, "osnr_nli", None))
-
     if gsnr_signal is None or gsnr_01nm is None:
         raise RuntimeError("GNPy did not return GSNR in both signal and 0.1 nm bandwidths")
+    snr_nli_signal = derive_nli_snr_db(gsnr_signal, osnr_signal)
+    snr_nli_01nm = derive_nli_snr_db(gsnr_01nm, osnr_01nm)
 
     required_osnr_01nm_db = float(mode["OSNR"])
     margin_db, feasible = feasibility_margin(
@@ -677,7 +678,16 @@ def run_one(
         "design_margin_db": design_margin_db,
         "osnr_01nm_db": osnr_01nm,
         "osnr_db": osnr_signal,
-        "snr_nli_db": snr_nli_01nm,
+        "snr_nli_db": snr_nli_signal,
+        "snr_nli_db_available": snr_nli_signal is not None,
+        "snr_nli_db_invalid": (
+            snr_nli_signal is None and gsnr_signal is not None and osnr_signal is not None
+        ),
+        "snr_nli_01nm_db": snr_nli_01nm,
+        "snr_nli_01nm_db_available": snr_nli_01nm is not None,
+        "snr_nli_01nm_db_invalid": (
+            snr_nli_01nm is None and gsnr_01nm is not None and osnr_01nm is not None
+        ),
         "noise_std_db": noise_std_db,
         "gsnr_db_noisy": gsnr_noisy,
         "feasible": feasible,

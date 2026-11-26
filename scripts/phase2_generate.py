@@ -27,6 +27,44 @@ from fiber_qot_platform.simulation.sampling import (  # noqa: E402
     sample_scenarios_with_stats,
 )
 
+PATH_REQUIRED_COLUMNS = (
+    "path_id",
+    "scenario_id",
+    "gsnr_db",
+    "gsnr_db_01nm",
+    "osnr_db",
+    "osnr_01nm_db",
+    "required_osnr_01nm_db",
+    "margin_db",
+    "feasible",
+    "snr_nli_db",
+    "snr_nli_db_available",
+    "snr_nli_db_invalid",
+    "snr_nli_01nm_db",
+    "snr_nli_01nm_db_available",
+    "snr_nli_01nm_db_invalid",
+)
+SPAN_REQUIRED_COLUMNS = (
+    "path_id",
+    "span_index",
+    "cum_ase_noise_w",
+    "cum_nli_noise_w",
+    "cum_gsnr_db",
+    "cum_gsnr_db_available",
+    "cum_gsnr_db_01nm",
+    "cum_gsnr_db_01nm_available",
+    "cum_osnr_ase_db",
+    "cum_osnr_ase_db_available",
+    "cum_osnr_ase_db_01nm",
+    "cum_osnr_ase_db_01nm_available",
+    "cum_snr_nli_db",
+    "cum_snr_nli_db_available",
+    "cum_snr_nli_db_invalid",
+    "cum_snr_nli_db_01nm",
+    "cum_snr_nli_db_01nm_available",
+    "cum_snr_nli_db_01nm_invalid",
+)
+
 
 def selected_topologies() -> list[tuple[str, Path]]:
     manifest = json.loads(
@@ -146,6 +184,17 @@ def _read_jsonl(path: Path) -> list[dict]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line]
 
 
+def _validate_required_columns(
+    frame: pd.DataFrame,
+    required_columns: tuple[str, ...],
+    table_name: str,
+) -> dict[str, int]:
+    missing_columns = sorted(set(required_columns) - set(frame.columns))
+    if missing_columns:
+        raise RuntimeError(f"{table_name}: missing required columns {missing_columns}")
+    return {str(column): int(frame[column].isna().sum()) for column in frame.columns}
+
+
 def _write_aggregate_failures(run_directory: Path, chunk_summaries: list[dict]) -> None:
     failure_records = []
     for summary in sorted(chunk_summaries, key=lambda item: item["chunk_number"]):
@@ -177,7 +226,7 @@ def _chunk_summaries(run_directory: Path, chunk_count: int) -> list[dict]:
     return summaries
 
 
-def merge_run_directory(run_directory: Path) -> tuple[Path, Path]:
+def merge_run_directory(run_directory: Path) -> tuple[Path, Path, dict[str, dict[str, int]]]:
     run_directory = run_directory.resolve()
     manifest_path = run_directory / "manifest.json"
     if not manifest_path.is_file():
@@ -229,12 +278,16 @@ def merge_run_directory(run_directory: Path) -> tuple[Path, Path]:
         raise RuntimeError(
             f"{run_directory}: completed run did not attempt every requested scenario"
         )
+    null_counts = {
+        "paths": _validate_required_columns(paths_frame, PATH_REQUIRED_COLUMNS, "paths"),
+        "spans": _validate_required_columns(spans_frame, SPAN_REQUIRED_COLUMNS, "spans"),
+    }
     output_paths = run_directory / "paths.parquet"
     output_spans = run_directory / "spans.parquet"
     _atomic_write_parquet(paths_frame, output_paths)
     _atomic_write_parquet(spans_frame, output_spans)
     _atomic_write_jsonl(run_directory / "failures.jsonl", failure_records)
-    return output_paths, output_spans
+    return output_paths, output_spans, null_counts
 
 
 def _manifest_counts(
@@ -387,6 +440,7 @@ def generate_run(
         and (run_directory / "paths.parquet").is_file()
         and (run_directory / "spans.parquet").is_file()
         and (run_directory / "failures.jsonl").is_file()
+        and "required_column_null_counts" in existing_manifest
     ):
         return existing_manifest
 
@@ -439,8 +493,12 @@ def generate_run(
             rows.append(row)
 
         paths = _chunk_paths(run_directory, chunk_number)
-        _atomic_write_parquet(pd.DataFrame(rows), paths["paths"])
-        _atomic_write_parquet(pd.DataFrame(span_rows), paths["spans"])
+        paths_frame = pd.DataFrame(rows) if rows else pd.DataFrame(columns=PATH_REQUIRED_COLUMNS)
+        spans_frame = (
+            pd.DataFrame(span_rows) if span_rows else pd.DataFrame(columns=SPAN_REQUIRED_COLUMNS)
+        )
+        _atomic_write_parquet(paths_frame, paths["paths"])
+        _atomic_write_parquet(spans_frame, paths["spans"])
         _atomic_write_jsonl(paths["failures"], failures)
         failure_reason_counts = dict(Counter(item["reason"] for item in failures))
         elapsed_seconds = time.perf_counter() - started
@@ -469,7 +527,7 @@ def generate_run(
         _atomic_write_json(manifest_path, manifest)
         _write_aggregate_failures(run_directory, chunk_summaries)
 
-    merge_run_directory(run_directory)
+    _, _, null_counts = merge_run_directory(run_directory)
     manifest = _manifest_counts(
         identity,
         existing_manifest,
@@ -480,6 +538,7 @@ def generate_run(
         chunk_count,
         workers,
     )
+    manifest["required_column_null_counts"] = null_counts
     _atomic_write_json(manifest_path, manifest)
     return manifest
 

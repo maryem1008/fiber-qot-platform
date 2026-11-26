@@ -189,6 +189,22 @@ counts. The 600-scenario interruption/resume test uses the real deterministic sa
 runner; it verifies six 100-scenario chunks, skips the first two on resume, and compares resumed versus
 uninterrupted path/span Parquet rows and failure logs.
 
+### Phase 2 — Path NLI-label evidence
+
+The GNPy 3.0.1 source shows `Transceiver._calc_snr()` copies `SpectralInformation.snr_nli_db` to
+`raw_osnr_nli`, while `update_snr()` applies transmitter/ROADM penalties to ASE OSNR and GSNR but does not update
+that raw NLI-only value. In a real 12-channel, -1 dBm Bizerte–Sfax run, `transceiver.osnr_nli` was present:
+the existing path field reported 28.1846046799 dB, while deriving signal-band NLI SNR from the path GSNR and
+ASE OSNR gave 28.1713447518 dB. The prompt's concern that the attribute may be empty was not reproduced in
+this case; it is nevertheless the wrong value to label as path-level NLI SNR because it excludes the final
+transceiver penalty convention. Also, `phase2_generate.py` currently has no required-column or null-count
+validation. WI-8 uses the same-bandwidth equation for both path NLI columns, preserves invalid results as
+null with explicit flags, and report null counts in the run manifest.
+
+The post-change one-row GNPy generator check emitted 30.8919 dB signal-band `snr_nli_db` and 34.9743 dB
+`snr_nli_01nm_db`; both availability flags were true. Its manifest reported zero nulls for every column in the
+one path row and six span rows, and the standalone merge/validation command succeeded.
+
 ### Interview questions
 
 1. **Why split sources into a unified schema?** It separates source parsing from GNPy conversion and downstream ML.
