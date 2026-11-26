@@ -137,6 +137,16 @@ amplifier's 15 dB minimum. Allowing GNPy to select amplifier varieties eliminate
 in the measured run. The packaged Roadm default warning is emitted separately at equipment load and is not
 included in these per-topology design counts.
 
+### Phase 2 — Path-feature consistency evidence
+
+The current implementation calculates total path length from the unified NetworkX graph but takes span lengths
+from the GNPy-propagated Fiber elements. On a real GNPy Tunisia Bizerte–Sfax route-rank-3 run, both calculations
+returned 973.733 km, and the intended and simulated route sequences matched. This sample did not reproduce a
+length discrepancy, but the code used separate path representations, so other topologies/routes could disagree.
+The same run reported seven ROADMs for a seven-node route; the source and destination are included in that count.
+Path features will be computed from the actual simulated GNPy elements, with `n_roadms` explicitly defined as
+the number of traversed Roadm elements including endpoints.
+
 ### Interview questions
 
 1. **Why split sources into a unified schema?** It separates source parsing from GNPy conversion and downstream ML.

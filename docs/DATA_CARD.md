@@ -76,6 +76,10 @@ elements in each GNPy link. The rerun retained all 90 attempted rows after this 
 - `required_osnr_01nm_db`: the selected transceiver mode's OSNR requirement, referenced to 0.1 nm.
 - `margin_db`: `gsnr_db_01nm - required_osnr_01nm_db`.
 - `design_margin_db`: required design margin loaded from `configs/simulation.yaml`.
+- Path structure comes from the simulated GNPy path: `total_length_km` sums its Fiber lengths, `hops` is the
+  number of transitions between traversed ROADMs, `n_spans` counts traversed Fiber elements, and `n_amps`
+  counts traversed Edfa elements. `n_roadms` counts actual GNPy Roadm elements, including the source and
+  destination ROADMs.
 - `feasible`: `margin_db >= design_margin_db`.
 - `noise_std_db`: per-scenario synthetic noise standard deviation sampled from configuration.
 - `gsnr_db_noisy`: `gsnr_db` plus synthetic zero-mean Gaussian noise using that row's `noise_std_db`.

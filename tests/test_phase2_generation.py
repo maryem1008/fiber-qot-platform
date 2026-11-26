@@ -128,16 +128,14 @@ def test_gnpy_amplifier_nf_offset_applies_after_network_design() -> None:
 
 def test_cached_networks_match_uncached_for_twenty_scenarios() -> None:
     modes = load_mode_config()
-    nodes = [
-        node["id"]
-        for node in json.loads(
-            (ROOT / "data" / "topologies" / "tunisia.json").read_text(encoding="utf-8")
-        )["nodes"]
-    ]
+    topology_path = ROOT / "data" / "topologies" / "tunisia.json"
+    topology = json.loads(topology_path.read_text(encoding="utf-8"))
+    nodes = [node["id"] for node in topology["nodes"]]
+    graph = graph_for(topology)
     scenarios = [
         {
             "topology_id": "tunisia",
-            "unified_path": ROOT / "data" / "topologies" / "tunisia.json",
+            "unified_path": topology_path,
             "source": nodes[index % len(nodes)],
             "destination": nodes[(index * 5 + 1) % len(nodes)],
             "mode_name": "mode 1",
@@ -147,13 +145,29 @@ def test_cached_networks_match_uncached_for_twenty_scenarios() -> None:
             "power_dbm": -2.0 + index / 10,
             "design_margin_db": 2.0,
             "noise_seed": index,
+            "route_nodes": tuple(
+                nx.shortest_path(
+                    graph,
+                    nodes[index % len(nodes)],
+                    nodes[(index * 5 + 1) % len(nodes)],
+                    weight="weight",
+                )
+            ),
         }
         for index in range(20)
     ]
     uncached = [run_one(**scenario, use_cache=False) for scenario in scenarios]
     cached = [run_one(**scenario, use_cache=True) for scenario in scenarios]
 
-    for uncached_row, cached_row in zip(uncached, cached, strict=True):
+    for scenario, uncached_row, cached_row in zip(scenarios, uncached, cached, strict=True):
+        span_lengths = [profile["length_km"] for profile in uncached_row["_span_profiles"]]
+        assert uncached_row["route"] == list(scenario["route_nodes"])
+        assert uncached_row["simulated_route"] == list(scenario["route_nodes"])
+        assert uncached_row["n_roadms"] == len(scenario["route_nodes"])
+        assert uncached_row["hops"] == len(scenario["route_nodes"]) - 1
+        assert uncached_row["total_length_km"] == pytest.approx(sum(span_lengths), abs=1e-6)
+        assert uncached_row["n_spans"] == len(span_lengths)
+        assert uncached_row["n_amps"] >= uncached_row["n_spans"]
         assert cached_row["gsnr_db"] == pytest.approx(uncached_row["gsnr_db"], abs=1e-9)
         assert cached_row["gsnr_db_01nm"] == pytest.approx(
             uncached_row["gsnr_db_01nm"],

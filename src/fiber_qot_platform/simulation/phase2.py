@@ -1,5 +1,4 @@
 import hashlib
-import json
 from concurrent.futures import ProcessPoolExecutor
 from copy import deepcopy
 from functools import lru_cache
@@ -108,10 +107,6 @@ def _load_run_network(path: Path, equipment: dict, use_cache: bool):
         return load_network(path, equipment)
     network_data = deepcopy(_load_network_json_cached(str(path.resolve())))
     return network_from_json(network_data, equipment)
-
-
-def load_topology_unified(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def graph_for(topology: dict) -> nx.Graph:
@@ -288,25 +283,15 @@ def run_one(
         design_margin_db,
     )
 
-    topology = load_topology_unified(unified_path)
-    route_graph = graph_for(topology)
-    route = (
-        list(route_nodes)
-        if route_nodes
-        else nx.shortest_path(
-            route_graph,
-            source,
-            destination,
-            weight="weight",
-        )
-    )
-    simulated_route = [item.uid.removeprefix("roadm_") for item in path if isinstance(item, Roadm)]
+    roadms = [item for item in path if isinstance(item, Roadm)]
+    simulated_route = [item.uid.removeprefix("roadm_") for item in roadms]
     if route_nodes and simulated_route != list(route_nodes):
         raise RuntimeError(
             f"GNPy route {simulated_route} does not match sampled route {list(route_nodes)}"
         )
-    total_length = nx.path_weight(route_graph, route, "weight")
     span_lengths = [float(fiber.params.length * 1e-3) for fiber in fibers]
+    total_length = sum(span_lengths)
+    route = simulated_route
     path_id = (
         scenario_id
         or hashlib.sha1(
@@ -355,13 +340,13 @@ def run_one(
         "topology_id": topology_id,
         "source": source,
         "destination": destination,
-        "hops": max(0, len(route) - 1),
+        "hops": max(0, len(simulated_route) - 1),
         "route": route,
         "simulated_route": simulated_route,
         "total_length_km": float(total_length),
         "n_spans": len(span_lengths),
         "n_amps": len(amplifiers),
-        "n_roadms": len(route),
+        "n_roadms": len(roadms),
         "span_len_mean_km": float(np.mean(span_lengths)) if span_lengths else 0.0,
         "span_len_max_km": float(np.max(span_lengths)) if span_lengths else 0.0,
         "span_len_std_km": float(np.std(span_lengths)) if span_lengths else 0.0,
