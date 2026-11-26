@@ -91,3 +91,41 @@ measurement uncertainty and is not real measurement noise.
 GNPy propagation metrics are simulator outputs. Feasibility margin and topology/path statistics are derived
 from those outputs and the selected scenario. Added amplifier-NF, span-loss, and connector-loss offsets and
 the noisy target are synthetic scenario variations, not field measurements.
+
+## Per-span table schema
+
+Each spans-table row represents one traversed GNPy Fiber and its following Edfa. Cumulative metrics are sampled
+from GNPy's evolving `SpectralInformation` after that amplifier. The final row's cumulative GSNR and ASE OSNR
+are taken from the final GNPy transceiver state, so they agree with the corresponding path-row values. Noise
+powers are sums across the propagated channels, in watts; they are GNPy spectral-information values and do not
+include separate transmitter or ROADM OSNR penalties. Power values are total WDM power across channels in dBm,
+not per-channel launch power. The `_available` fields distinguish an unavailable value from a measured zero or
+other numeric value. NLI SNR is derived from cumulative GSNR and ASE OSNR in the same bandwidth.
+
+| Column | Meaning / provenance |
+| --- | --- |
+| `path_id` | Identifier of the associated path row. |
+| `span_index` | Zero-based position of this Fiber span in the simulated path. |
+| `link_span_index` | Zero-based span position in the corresponding topology link; remains the link's original index when traversed in reverse. |
+| `length_km`, `length_km_available` | GNPy Fiber length in km and availability flag. |
+| `loss_db`, `loss_db_available` | GNPy Fiber loss in dB and availability flag. |
+| `geometry` | Two `{latitude, longitude}` points delimiting the span, interpolated by fractional span position between the topology link endpoints. |
+| `geometry_source` | Always `interpolated_great_circle`; this is synthetic geometry, not the physical fiber route. |
+| `geometry_available` | Whether the interpolated points were produced. |
+| `power_in_dbm`, `power_in_dbm_available` | Total WDM power immediately before the Fiber. |
+| `power_after_fiber_dbm`, `power_after_fiber_dbm_available` | Total WDM power immediately after the Fiber and before its Edfa. |
+| `power_out_dbm`, `power_out_dbm_available` | Total WDM power immediately after the following Edfa. |
+| `amplifier_gain_db`, `amplifier_gain_db_available` | Mean GNPy effective gain of the following Edfa. |
+| `amplifier_nf_db`, `amplifier_nf_db_available` | Mean GNPy noise figure of the following Edfa. |
+| `cum_ase_noise_w`, `cum_ase_noise_w_available` | Sum of GNPy ASE noise powers over channels after the Edfa. |
+| `cum_nli_noise_w`, `cum_nli_noise_w_available` | Sum of GNPy NLI noise powers over channels after the Edfa. |
+| `cum_gsnr_db`, `cum_gsnr_db_available` | Cumulative GNPy GSNR in signal bandwidth after the Edfa, including transmitter and traversed ROADM OSNR penalties. |
+| `cum_gsnr_db_01nm`, `cum_gsnr_db_01nm_available` | Cumulative GNPy GSNR referenced to 0.1 nm after the Edfa; the final span equals the path-level `gsnr_db_01nm`. |
+| `cum_osnr_ase_db`, `cum_osnr_ase_db_available` | Cumulative ASE OSNR in signal bandwidth after the Edfa, with transmitter and traversed ROADM OSNR penalties. |
+| `cum_osnr_ase_db_01nm`, `cum_osnr_ase_db_01nm_available` | Cumulative ASE OSNR referenced to 0.1 nm after the Edfa; the final span equals the path-level `osnr_01nm_db`. |
+| `cum_snr_nli_db`, `cum_snr_nli_db_available`, `cum_snr_nli_db_invalid` | NLI SNR derived in signal bandwidth from `1/GSNR = 1/OSNR_ASE + 1/SNR_NLI`. Null and unavailable if the inputs are unavailable; null and invalid if their inverse-SNR difference is non-positive or numerically invalid. |
+| `cum_snr_nli_db_01nm`, `cum_snr_nli_db_01nm_available`, `cum_snr_nli_db_01nm_invalid` | Same NLI derivation, using only the 0.1 nm bandwidth values. |
+| `gsnr_drop_db`, `gsnr_drop_db_available` | Previous cumulative 0.1 nm GSNR minus this span's cumulative 0.1 nm GSNR. For the first span, the reference is the GNPy source transceiver's transmitted OSNR (`snr_01nm`) before the network. A negative value is retained if observed. |
+
+These are the current in-memory columns emitted for each span; the generator's parquet output preserves these
+columns without substituting estimated or placeholder values for unavailable simulator metrics.

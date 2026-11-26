@@ -160,7 +160,8 @@ def test_cached_networks_match_uncached_for_twenty_scenarios() -> None:
     cached = [run_one(**scenario, use_cache=True) for scenario in scenarios]
 
     for scenario, uncached_row, cached_row in zip(scenarios, uncached, cached, strict=True):
-        span_lengths = [profile["length_km"] for profile in uncached_row["_span_profiles"]]
+        profiles = uncached_row["_span_profiles"]
+        span_lengths = [profile["length_km"] for profile in profiles]
         assert uncached_row["route"] == list(scenario["route_nodes"])
         assert uncached_row["simulated_route"] == list(scenario["route_nodes"])
         assert uncached_row["n_roadms"] == len(scenario["route_nodes"])
@@ -168,6 +169,24 @@ def test_cached_networks_match_uncached_for_twenty_scenarios() -> None:
         assert uncached_row["total_length_km"] == pytest.approx(sum(span_lengths), abs=1e-6)
         assert uncached_row["n_spans"] == len(span_lengths)
         assert uncached_row["n_amps"] >= uncached_row["n_spans"]
+        assert profiles[-1]["cum_gsnr_db"] == pytest.approx(uncached_row["gsnr_db"], abs=1e-6)
+        assert profiles[-1]["cum_gsnr_db_01nm"] == pytest.approx(
+            uncached_row["gsnr_db_01nm"],
+            abs=1e-6,
+        )
+        assert all(
+            later["cum_gsnr_db_01nm"] <= earlier["cum_gsnr_db_01nm"] + 1e-6
+            for earlier, later in zip(profiles, profiles[1:])
+        )
+        assert any(abs(profile["gsnr_drop_db"]) > 1e-9 for profile in profiles)
+        assert all(
+            profile["power_out_dbm"] > profile["power_after_fiber_dbm"] for profile in profiles
+        )
+        assert all(
+            profile["geometry_source"] == "interpolated_great_circle"
+            and len(profile["geometry"]) == 2
+            for profile in profiles
+        )
         assert cached_row["gsnr_db"] == pytest.approx(uncached_row["gsnr_db"], abs=1e-9)
         assert cached_row["gsnr_db_01nm"] == pytest.approx(
             uncached_row["gsnr_db_01nm"],

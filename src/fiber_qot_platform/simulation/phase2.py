@@ -1,4 +1,6 @@
 import hashlib
+import json
+import re
 from concurrent.futures import ProcessPoolExecutor
 from copy import deepcopy
 from functools import lru_cache
@@ -9,15 +11,19 @@ import networkx as nx
 import numpy as np
 import yaml
 from gnpy.core.elements import Edfa, Fiber, Roadm, Transceiver
-from gnpy.core.utils import dbm2watt
+from gnpy.core.exceptions import EquipmentConfigError
+from gnpy.core.info import carriers_to_spectral_information, create_input_spectral_information
+from gnpy.core.network import design_network
+from gnpy.core.parameters import TransceiverRole
+from gnpy.core.utils import db2lin, dbm2watt, lin2db, snr_sum, watt2dbm
 from gnpy.tools.json_io import (
     load_equipments_and_configs,
     load_gnpy_json,
     load_network,
     network_from_json,
 )
-from gnpy.tools.worker_utils import designed_network, transmission_simulation
-from gnpy.topology.request import PathRequest
+from gnpy.tools.worker_utils import designed_network
+from gnpy.topology.request import PathRequest, compute_constrained_path, filter_si
 
 ROOT = Path(__file__).resolve().parents[3]
 SIMULATION_CONFIG_PATH = ROOT / "configs" / "simulation.yaml"
@@ -32,12 +38,293 @@ def mean_db(value):
 
 
 def derive_nli_snr_db(gsnr_db: float, osnr_db: float) -> float | None:
-    if gsnr_db is None or osnr_db is None:
+    if gsnr_db is None or osnr_db is None or not np.isfinite(gsnr_db + osnr_db):
         return None
     gsnr_lin = 10 ** (gsnr_db / 10)
     osnr_lin = 10 ** (osnr_db / 10)
-    nli_inverse = max(1e-12, 1 / gsnr_lin - 1 / osnr_lin)
-    return 10 * np.log10(1 / nli_inverse)
+    nli_inverse = 1 / gsnr_lin - 1 / osnr_lin
+    if nli_inverse <= 0:
+        return None
+    return float(10 * np.log10(1 / nli_inverse))
+
+
+def _finite_mean(value) -> float | None:
+    if value is None:
+        return None
+    array = np.asarray(value, dtype=float)
+    if array.size == 0 or not np.all(np.isfinite(array)):
+        return None
+    return float(np.mean(array))
+
+
+def _snr_after_penalties(values, bandwidth_hz: float, penalties: list) -> float | None:
+    inverse_penalty = 0
+    for penalty in penalties:
+        if penalty is not None:
+            inverse_penalty = inverse_penalty + db2lin(-np.asarray(penalty))
+    added_snr_db = -lin2db(inverse_penalty)
+    return _finite_mean(snr_sum(values, bandwidth_hz, added_snr_db))
+
+
+def _great_circle_point(
+    start: tuple[float, float],
+    end: tuple[float, float],
+    fraction: float,
+) -> dict[str, float]:
+    start_latitude, start_longitude = np.deg2rad(start)
+    end_latitude, end_longitude = np.deg2rad(end)
+    start_vector = np.array(
+        [
+            np.cos(start_latitude) * np.cos(start_longitude),
+            np.cos(start_latitude) * np.sin(start_longitude),
+            np.sin(start_latitude),
+        ]
+    )
+    end_vector = np.array(
+        [
+            np.cos(end_latitude) * np.cos(end_longitude),
+            np.cos(end_latitude) * np.sin(end_longitude),
+            np.sin(end_latitude),
+        ]
+    )
+    angle = float(np.arccos(np.clip(np.dot(start_vector, end_vector), -1.0, 1.0)))
+    if angle < 1e-12:
+        vector = start_vector
+    elif abs(np.sin(angle)) < 1e-12:
+        raise ValueError("great-circle geometry is ambiguous for antipodal link endpoints")
+    else:
+        vector = (
+            np.sin((1 - fraction) * angle) / np.sin(angle) * start_vector
+            + np.sin(fraction * angle) / np.sin(angle) * end_vector
+        )
+        vector /= np.linalg.norm(vector)
+    latitude = np.rad2deg(np.arcsin(vector[2]))
+    longitude = np.rad2deg(np.arctan2(vector[1], vector[0]))
+    return {"latitude": float(latitude), "longitude": float(longitude)}
+
+
+def _fiber_geometry(fiber_uid: str, topology: dict) -> tuple[list[dict[str, float]], int]:
+    match = re.fullmatch(r"fiber_(reverse_)?(\d+)_(\d+)", fiber_uid)
+    if match is None:
+        raise ValueError(f"{fiber_uid}: does not identify a Phase 1 link span")
+    reverse, link_index_text, span_index_text = match.groups()
+    link_index = int(link_index_text)
+    link_span_index = int(span_index_text)
+    link = topology["links"][link_index]
+    span_count = len(link["spans_km"])
+    if link_span_index >= span_count:
+        raise ValueError(f"{fiber_uid}: span index is outside its unified topology link")
+    nodes = {node["id"]: node for node in topology["nodes"]}
+    start_id, end_id = (
+        (link["target"], link["source"])
+        if reverse
+        else (
+            link["source"],
+            link["target"],
+        )
+    )
+    start = (nodes[start_id]["latitude"], nodes[start_id]["longitude"])
+    end = (nodes[end_id]["latitude"], nodes[end_id]["longitude"])
+    start_fraction = link_span_index / span_count
+    end_fraction = (link_span_index + 1) / span_count
+    return [
+        _great_circle_point(start, end, start_fraction),
+        _great_circle_point(start, end, end_fraction),
+    ], link_span_index
+
+
+def _propagate_with_span_metrics(
+    path: list,
+    request: PathRequest,
+    equipment: dict,
+    topology: dict,
+    path_id: str,
+) -> tuple[object, list[dict]]:
+    if request.initial_spectrum is not None:
+        spectral_info = carriers_to_spectral_information(
+            initial_spectrum=request.initial_spectrum,
+            power=request.power,
+        )
+    else:
+        spectral_info = create_input_spectral_information(
+            f_min=request.f_min,
+            f_max=request.f_max,
+            roll_off=request.roll_off,
+            baud_rate=request.baud_rate,
+            spacing=request.spacing,
+            tx_osnr=request.tx_osnr,
+            tx_power=request.tx_power,
+            required_osnr_db_01nm=request.required_osnr_db_01nm,
+            penalties=request.penalties,
+            rx_channel_power_min_dbm=request.rx_channel_power_min_dbm,
+            rx_channel_power_max_dbm=request.rx_channel_power_max_dbm,
+            detailed_rx=request.detailed_rx,
+            delta_pdb=request.offset_db,
+        )
+    spectral_info = filter_si(path, equipment, spectral_info)
+    roadm_osnr = []
+    spectral_info = path[0](spectral_info, role=TransceiverRole.EMITTER)
+    span_profiles = []
+    current_span = None
+
+    for previous, element, next_element in zip(path[:-2], path[1:-1], path[2:]):
+        if isinstance(element, Fiber):
+            if current_span is not None:
+                raise RuntimeError(f"{element.uid}: encountered a second Fiber before an Edfa")
+            geometry, link_span_index = _fiber_geometry(element.uid, topology)
+            current_span = {
+                "fiber": element,
+                "link_span_index": link_span_index,
+                "power_in_dbm": float(spectral_info.ptot_dbm),
+            }
+        if isinstance(element, Roadm):
+            spectral_info = element(
+                spectral_info,
+                degree=next_element.uid,
+                from_degree=previous.uid,
+            )
+            roadm_osnr.append(
+                element.get_impairment(
+                    "roadm-osnr",
+                    spectral_info.frequency,
+                    from_degree=previous.uid,
+                    degree=next_element.uid,
+                )
+            )
+        else:
+            spectral_info = element(spectral_info)
+        if isinstance(element, Fiber):
+            current_span["power_after_fiber_dbm"] = float(spectral_info.ptot_dbm)
+        elif isinstance(element, Edfa) and current_span is not None:
+            penalties = [*roadm_osnr, spectral_info.tx_osnr]
+            fiber = current_span["fiber"]
+            gsnr_db = _snr_after_penalties(
+                spectral_info.gsnr_db, spectral_info.baud_rate, penalties
+            )
+            gsnr_db_01nm = _snr_after_penalties(
+                spectral_info.opt_gsnr_db,
+                12.5e9,
+                penalties,
+            )
+            osnr_db = _snr_after_penalties(
+                spectral_info.snr_lin_db,
+                spectral_info.baud_rate,
+                penalties,
+            )
+            osnr_db_01nm = _snr_after_penalties(
+                spectral_info.opt_snr_lin_db,
+                12.5e9,
+                penalties,
+            )
+            nli_snr_db = derive_nli_snr_db(gsnr_db, osnr_db)
+            nli_snr_db_01nm = derive_nli_snr_db(gsnr_db_01nm, osnr_db_01nm)
+            amplifier_gain_db = _finite_mean(element.effective_gain)
+            amplifier_nf_db = _finite_mean(element.nf)
+            ase_noise_w = _finite_mean(np.sum(spectral_info.ase))
+            nli_noise_w = _finite_mean(np.sum(spectral_info.nli))
+            span_profiles.append(
+                {
+                    "path_id": path_id,
+                    "span_index": len(span_profiles),
+                    "link_span_index": current_span["link_span_index"],
+                    "length_km": float(fiber.params.length * 1e-3),
+                    "length_km_available": True,
+                    "loss_db": float(fiber.loss),
+                    "loss_db_available": True,
+                    "geometry": geometry,
+                    "geometry_source": "interpolated_great_circle",
+                    "geometry_available": True,
+                    "power_in_dbm": current_span["power_in_dbm"],
+                    "power_in_dbm_available": True,
+                    "power_after_fiber_dbm": current_span["power_after_fiber_dbm"],
+                    "power_after_fiber_dbm_available": True,
+                    "power_out_dbm": float(spectral_info.ptot_dbm),
+                    "power_out_dbm_available": True,
+                    "amplifier_gain_db": amplifier_gain_db,
+                    "amplifier_gain_db_available": amplifier_gain_db is not None,
+                    "amplifier_nf_db": amplifier_nf_db,
+                    "amplifier_nf_db_available": amplifier_nf_db is not None,
+                    "cum_ase_noise_w": ase_noise_w,
+                    "cum_ase_noise_w_available": ase_noise_w is not None,
+                    "cum_nli_noise_w": nli_noise_w,
+                    "cum_nli_noise_w_available": nli_noise_w is not None,
+                    "cum_gsnr_db": gsnr_db,
+                    "cum_gsnr_db_available": gsnr_db is not None,
+                    "cum_gsnr_db_01nm": gsnr_db_01nm,
+                    "cum_gsnr_db_01nm_available": gsnr_db_01nm is not None,
+                    "cum_osnr_ase_db": osnr_db,
+                    "cum_osnr_ase_db_available": osnr_db is not None,
+                    "cum_osnr_ase_db_01nm": osnr_db_01nm,
+                    "cum_osnr_ase_db_01nm_available": osnr_db_01nm is not None,
+                    "cum_snr_nli_db": nli_snr_db,
+                    "cum_snr_nli_db_available": nli_snr_db is not None,
+                    "cum_snr_nli_db_01nm": nli_snr_db_01nm,
+                    "cum_snr_nli_db_01nm_available": nli_snr_db_01nm is not None,
+                    "cum_snr_nli_db_invalid": (
+                        nli_snr_db is None and gsnr_db is not None and osnr_db is not None
+                    ),
+                    "cum_snr_nli_db_01nm_invalid": (
+                        nli_snr_db_01nm is None
+                        and gsnr_db_01nm is not None
+                        and osnr_db_01nm is not None
+                    ),
+                }
+            )
+            current_span = None
+
+    if current_span is not None:
+        raise RuntimeError(f"{current_span['fiber'].uid}: no following Edfa was found")
+    spectral_info = path[-1](spectral_info, role=TransceiverRole.RECEIVER)
+    path[0].update_snr(spectral_info.tx_osnr)
+    roadm_osnr.append(spectral_info.tx_osnr)
+    path[-1].update_snr(*roadm_osnr)
+    path[-1].update_rx_snr(spectral_info)
+    path[-1].calc_feasibility(spectral_info)
+
+    if span_profiles:
+        transceiver = path[-1]
+        final_values = {
+            "cum_gsnr_db": _finite_mean(transceiver.snr),
+            "cum_gsnr_db_01nm": _finite_mean(transceiver.snr_01nm),
+            "cum_osnr_ase_db": _finite_mean(transceiver.osnr_ase),
+            "cum_osnr_ase_db_01nm": _finite_mean(transceiver.osnr_ase_01nm),
+        }
+        last_profile = span_profiles[-1]
+        for name, value in final_values.items():
+            last_profile[name] = value
+            last_profile[f"{name}_available"] = value is not None
+        last_profile["cum_snr_nli_db"] = derive_nli_snr_db(
+            final_values["cum_gsnr_db"],
+            final_values["cum_osnr_ase_db"],
+        )
+        last_profile["cum_snr_nli_db_01nm"] = derive_nli_snr_db(
+            final_values["cum_gsnr_db_01nm"],
+            final_values["cum_osnr_ase_db_01nm"],
+        )
+        for name in ("cum_snr_nli_db", "cum_snr_nli_db_01nm"):
+            last_profile[f"{name}_available"] = last_profile[name] is not None
+        last_profile["cum_snr_nli_db_invalid"] = (
+            last_profile["cum_snr_nli_db"] is None
+            and final_values["cum_gsnr_db"] is not None
+            and final_values["cum_osnr_ase_db"] is not None
+        )
+        last_profile["cum_snr_nli_db_01nm_invalid"] = (
+            last_profile["cum_snr_nli_db_01nm"] is None
+            and final_values["cum_gsnr_db_01nm"] is not None
+            and final_values["cum_osnr_ase_db_01nm"] is not None
+        )
+
+    previous_gsnr = mean_db(path[0].snr_01nm)
+    for profile in span_profiles:
+        current_gsnr = profile["cum_gsnr_db_01nm"]
+        profile["gsnr_drop_db"] = (
+            previous_gsnr - current_gsnr
+            if previous_gsnr is not None and current_gsnr is not None
+            else None
+        )
+        profile["gsnr_drop_db_available"] = profile["gsnr_drop_db"] is not None
+        previous_gsnr = current_gsnr
+    return spectral_info, span_profiles
 
 
 @lru_cache(maxsize=8)
@@ -256,13 +543,52 @@ def run_one(
         args_power=power_dbm,
     )
     apply_amplifier_nf_offset(designed, amplifier_nf_offset_db)
-    path, propagations, _, infos = transmission_simulation(
-        equipment,
-        designed,
-        req,
-        ref_req,
-    )
-    del propagations
+    path = compute_constrained_path(designed, req)
+    if not path:
+        raise RuntimeError(
+            "GNPy could not compute a constrained path from "
+            f"{request.source} to {request.destination}"
+        )
+    power_mode = equipment["Span"]["default"].power_mode
+    reference_power_dbm = watt2dbm(ref_req.power)
+    request_power_dbm = watt2dbm(req.power)
+    power_range = [0]
+    if power_mode:
+        try:
+            power_start, power_stop, power_step = equipment["SI"]["default"].power_range_db
+            power_count = (
+                abs(int(round((power_stop - power_start) / power_step))) + 1
+                if power_step != 0
+                else 1
+            )
+            power_range = list(np.linspace(power_start, power_stop, power_count))
+        except TypeError as exc:
+            message = (
+                "invalid power range definition in eqpt_config, "
+                "expected power_range_db: [lower, upper, step]"
+            )
+            raise EquipmentConfigError(message) from exc
+    topology_data = json.loads(unified_path.read_text(encoding="utf-8"))
+    span_profiles = []
+    for power_offset_db in power_range:
+        ref_req.power = dbm2watt(reference_power_dbm + power_offset_db)
+        req.power = dbm2watt(request_power_dbm + power_offset_db)
+        if len(power_range) > 1:
+            design_network(
+                ref_req,
+                designed.subgraph(path),
+                equipment,
+                set_connector_losses=False,
+                verbose=False,
+            )
+            apply_amplifier_nf_offset(path, amplifier_nf_offset_db)
+        _, span_profiles = _propagate_with_span_metrics(
+            path,
+            req,
+            equipment,
+            topology_data,
+            scenario_id or f"{topology_id}:{source}:{destination}",
+        )
     transceiver = [item for item in path if isinstance(item, Transceiver)][-1]
     fibers = [item for item in path if isinstance(item, Fiber)]
     amplifiers = [item for item in path if isinstance(item, Edfa)]
@@ -302,6 +628,8 @@ def run_one(
             ).encode()
         ).hexdigest()
     )
+    for profile in span_profiles:
+        profile["path_id"] = path_id
     if noise_seed is None:
         noise_seed = int(path_id[:8], 16)
     noise_rng = np.random.default_rng(noise_seed)
@@ -309,28 +637,6 @@ def run_one(
         noise_range = simulation_config["sampling"]["noisy_gsnr_std_db"]
         noise_std_db = float(noise_rng.uniform(float(noise_range[0]), float(noise_range[1])))
     gsnr_noisy = gsnr_signal + float(noise_rng.normal(0.0, noise_std_db))
-    span_profiles = []
-    previous_gsnr = gsnr_signal
-    for span_index, fiber in enumerate(fibers):
-        span_length = span_lengths[span_index]
-        span_profiles.append(
-            {
-                "path_id": path_id,
-                "span_index": span_index,
-                "length_km": span_length,
-                "loss_db": float(fiber.loss),
-                "geometry": [],
-                "power_in_dbm": power_dbm,
-                "power_out_dbm": power_dbm - float(fiber.loss),
-                "cum_ase_noise": None,
-                "cum_nli_noise": 0.0,
-                "cum_gsnr_db": gsnr_signal,
-                "cum_osnr_db": osnr_01nm,
-                "gsnr_drop_db": max(0.0, previous_gsnr - gsnr_signal),
-            }
-        )
-        previous_gsnr = gsnr_signal
-
     result = {
         "path_id": path_id,
         "scenario_id": scenario_id or path_id,

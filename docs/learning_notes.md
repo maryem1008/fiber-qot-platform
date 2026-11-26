@@ -144,8 +144,36 @@ from the GNPy-propagated Fiber elements. On a real GNPy Tunisia Bizerte–Sfax r
 returned 973.733 km, and the intended and simulated route sequences matched. This sample did not reproduce a
 length discrepancy, but the code used separate path representations, so other topologies/routes could disagree.
 The same run reported seven ROADMs for a seven-node route; the source and destination are included in that count.
-Path features will be computed from the actual simulated GNPy elements, with `n_roadms` explicitly defined as
+Path features are computed from the actual simulated GNPy elements, with `n_roadms` explicitly defined as
 the number of traversed Roadm elements including endpoints.
+
+### Phase 2 — Per-span GNPy output evidence (GNPy 3.0.1)
+
+Inspection of installed `gnpy/tools/worker_utils.py::transmission_simulation()` confirms its return tuple is
+`(path, propagations, powers_dbm, infos)`: `propagations` is a list of complete propagated path copies, one per
+power-sweep iteration, while `powers_dbm` is the sweep input list and `infos` is the final
+`SpectralInformation`. It is not a per-element power table.
+
+A real 2-channel Tunisia Bizerte–Sfax route-rank-3 run was inspected after propagation. Fiber elements expose
+`loss`, `pch_out_dbm`, and `pch_out_db`; Edfa elements expose `pin_db`, `pout_db`, `pch_out_dbm`,
+`effective_gain`, and `nf`; ROADMs expose `pch_out_dbm` and `loss_pch_db`. None of those three classes exposes
+per-element `snr`, `snr_01nm`, `osnr_ase`, or `osnr_ase_01nm`. The returned `SpectralInformation` does expose
+per-channel `ase`, `nli`, `snr_lin_db`, `opt_snr_lin_db`, `gsnr_db`, `opt_gsnr_db`, `snr_nli_db`, and
+`opt_snr_nli_db`. In that run, the means were 17.3869 dB OSNR ASE (signal bandwidth), 21.4693 dB OSNR ASE
+(0.1 nm), 16.2667 dB GSNR (signal bandwidth), and 20.3491 dB GSNR (0.1 nm). Intermediate cumulative SNR
+therefore has to be sampled from GNPy's evolving spectral information during propagation; it cannot honestly be
+read from a Fiber, Edfa, or Roadm attribute after the run. Total ASE and NLI powers can be obtained from the
+spectral information's real `ase` and `nli` arrays.
+
+The span tracer follows GNPy's `request.propagate()` order: emitter, frequency filtering, each element (collecting
+ROADM OSNR penalties), receiver, then the transceiver's existing SNR update. In a real 12-channel, -1 dBm,
+Bizerte–Sfax route-rank-1 run, it produced five Fiber/Edfa span rows; the final span's 0.1 nm GSNR was
+23.1693537699 dB, matching the path result. On the first span, total WDM power changed from 1.6388 dBm after
+the Fiber to 18.8330 dBm after its Edfa. The final cumulative GSNR drop was 0.7232 dB. Focused real-GNPy
+checks across 20 scenarios also passed for last-span/path GSNR agreement, non-increasing cumulative 0.1 nm GSNR,
+non-zero GSNR drops, and amplifier output power above post-Fiber power. For the same route/scenario, the custom
+tracer's path-level signal-band GSNR, 0.1 nm GSNR, and 0.1 nm ASE OSNR matched the installed GNPy
+`transmission_simulation()` outputs exactly (0.0 dB difference for each).
 
 ### Interview questions
 
