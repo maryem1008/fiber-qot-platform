@@ -12,6 +12,7 @@ plan; its old issue list and 100,000-row benchmark estimate are historical and a
 - The redesigned sampler, corrected labels, real per-span capture, and resumable generator are implemented.
 - The 2,000-scenario pilot completed with 2,000 successful rows, no failures or rejections, and no duplicate
   scenario IDs. The pilot report recommends no-go pending controlled physical diagnostics.
+- The report and plots are committed and pushed; generated Parquet output remains ignored and uncommitted.
 - The old 100-row and 1,000-row outputs used the former sampler and bandwidth-inconsistent feasibility
   convention; their historical feasibility counts are not current labels.
 - No 100,000-row dataset has been generated. Do not start that run or Phase 3 before the pilot report and
@@ -29,5 +30,5 @@ plan; its old issue list and 100,000-row benchmark estimate are historical and a
 
 ## Next checkpoint
 
-Commit and push the measured pilot report and plots, then stop for the user's direction. Do not start the
-100,000-row generation or Phase 3 while the recommendation remains no-go.
+Stop and wait for the user's direction. Do not start the 100,000-row generation or Phase 3 while the
+recommendation remains no-go.

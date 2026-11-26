@@ -7,6 +7,7 @@
 - Phase 1 topology conversion is complete. Phase 2 work items WI-1 through WI-10 are committed on the branch.
 - The 2,000-scenario pilot completed: 2,000 successful, 0 failed, 0 rejected, 0 duplicate IDs, two workers.
 - The pilot report recommends NO-GO for 100,000 rows until controlled launch-power and channel-load checks are done.
+- The branch and pilot report are pushed to `origin`; pilot Parquet data remains ignored and uncommitted.
 - Do not run the 100,000-row generation or begin Phase 3.
 
 ## Phase 2 work-item commits
@@ -26,6 +27,8 @@
 
 These are short hashes for reference; verify the current branch history before continuing.
 
+Pilot report and plots: commit `0df51a6`.
+
 ## Evidence and known adaptations
 
 - GNPy 3.0.1 compares mode OSNR requirements in the 0.1 nm reference bandwidth. The primary regression
@@ -40,8 +43,7 @@ These are short hashes for reference; verify the current branch history before c
 
 ## Next checkpoint
 
-1. Review, commit, and push the measured pilot report and four plots.
-2. Stop and wait for the user's direction. Do not start the 100,000-row run or Phase 3; the pilot recommendation
-   is NO-GO until controlled launch-power and channel-load diagnostics are addressed.
+Stop and wait for the user's direction. Do not start the 100,000-row run or Phase 3; the pilot recommendation
+is NO-GO until controlled launch-power and channel-load diagnostics are addressed.
 
 Do not run 100,000 scenarios or start Phase 3.
