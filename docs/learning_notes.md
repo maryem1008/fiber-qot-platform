@@ -205,6 +205,12 @@ The post-change one-row GNPy generator check emitted 30.8919 dB signal-band `snr
 `snr_nli_01nm_db`; both availability flags were true. Its manifest reported zero nulls for every column in the
 one path row and six span rows, and the standalone merge/validation command succeeded.
 
+### Phase 2 — CI/test selection evidence
+
+The WI-9 local non-GNPy selection (`pytest -m "not gnpy"`) passed 9 tests and deselected 12 marked tests.
+The selection covers pure topology/sampler tests, generator resume logic with a stubbed simulation runner, and
+the source portability scan; the workflow is manual-only with no push or pull-request trigger.
+
 ### Interview questions
 
 1. **Why split sources into a unified schema?** It separates source parsing from GNPy conversion and downstream ML.

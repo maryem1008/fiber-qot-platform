@@ -18,11 +18,6 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from fiber_qot_platform.simulation.phase2 import (  # noqa: E402
-    load_mode_config,
-    load_simulation_config,
-    run_many,
-)
 from fiber_qot_platform.simulation.sampling import (  # noqa: E402
     sample_scenarios_with_stats,
 )
@@ -340,6 +335,7 @@ def generate_run(
     output_root: Path,
     force: bool = False,
     runner=None,
+    gnpy_version: str | None = None,
 ) -> dict:
     if runs < 1:
         raise ValueError("runs must be at least 1")
@@ -382,7 +378,8 @@ def generate_run(
         capture_output=True,
         text=True,
     ).stdout.strip()
-    gnpy_version = importlib.metadata.version("gnpy")
+    if gnpy_version is None:
+        gnpy_version = importlib.metadata.version("gnpy")
     chunk_count = (runs + chunk_size - 1) // chunk_size
     identity = {
         "run_id": run_id,
@@ -458,7 +455,10 @@ def generate_run(
     existing_manifest = manifest
     _write_aggregate_failures(run_directory, chunk_summaries)
     completed_numbers = {summary["chunk_number"] for summary in chunk_summaries}
-    run_tasks = runner or run_many
+    if runner is None:
+        from fiber_qot_platform.simulation.phase2 import run_many
+
+        runner = run_many
     for chunk_number in range(1, chunk_count + 1):
         if chunk_number in completed_numbers:
             continue
@@ -466,7 +466,7 @@ def generate_run(
         chunk_scenarios = scenarios[start : start + chunk_size]
         tasks = [scenario.to_run_task() for scenario in chunk_scenarios]
         started = time.perf_counter()
-        outcomes = run_tasks(tasks, workers=workers)
+        outcomes = runner(tasks, workers=workers)
         if len(outcomes) != len(chunk_scenarios):
             raise RuntimeError(
                 f"chunk {chunk_number}: runner returned {len(outcomes)} outcomes "
@@ -544,6 +544,8 @@ def generate_run(
 
 
 def main() -> int:
+    from fiber_qot_platform.simulation.phase2 import load_mode_config, load_simulation_config
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--runs", type=int, default=100)
     parser.add_argument("--seed", type=int)

@@ -49,6 +49,8 @@ and a manifest. Re-run the same command and run ID to resume completed chunks; c
 An existing run ID with different seed/configuration is rejected. Use `--force` only to restart that run ID
 from scratch. The generator also writes merged `paths.parquet` and `spans.parquet`; to rebuild them manually,
 run `python scripts/phase2_merge.py --run-id trial-01`. `make phase2-smoke` uses the run ID `smoke`.
+After the work-item validations, `make phase2-pilot` requests exactly 2,000 scenarios with two workers by
+default; override the count of workers with `PHASE2_WORKERS`. Do not run that target before the pilot checkpoint.
 
 The `--runs` option defaults to 100; do not use the 100,000-row target until the project pilot has passed its
 go/no-go checkpoint.

@@ -45,6 +45,9 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra"
+markers = [
+  "gnpy: requires the installed GNPy simulator and equipment data",
+]
 
 [tool.ruff]
 line-length = 100

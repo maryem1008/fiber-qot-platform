@@ -71,6 +71,18 @@ def sampling_config() -> dict:
     return config
 
 
+def compact_sampling_topologies() -> list[dict]:
+    nodes = [{"id": f"node-{index}"} for index in range(4)]
+    links = [
+        {"source": nodes[left]["id"], "target": nodes[right]["id"], "length_km": 10.0}
+        for left in range(len(nodes))
+        for right in range(left + 1, len(nodes))
+    ]
+    return [
+        {"topology_id": f"complete-{index}", "nodes": nodes, "links": links} for index in range(2)
+    ]
+
+
 def test_sampler_returns_exact_count_and_is_seed_deterministic() -> None:
     topologies = load_topologies()
     config = sampling_config()
@@ -86,7 +98,7 @@ def test_sampler_returns_exact_count_and_is_seed_deterministic() -> None:
 
 
 def test_sampler_distribution_and_channel_bandwidth_are_valid() -> None:
-    topologies = load_topologies()
+    topologies = compact_sampling_topologies()
     config = sampling_config()
     scenarios, rejected = sample_scenarios_with_stats(
         topologies,

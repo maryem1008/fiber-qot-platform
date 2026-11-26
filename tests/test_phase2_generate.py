@@ -4,11 +4,20 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from fiber_qot_platform.simulation.phase2 import load_mode_config, load_simulation_config
-from fiber_qot_platform.simulation.sampling import sample_scenarios_with_stats
 from scripts import phase2_generate
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+class FakeScenario:
+    def __init__(self, index: int) -> None:
+        self.scenario_id = f"scenario-{index:04d}"
+        self.topology_id = "tunisia"
+        self.source = "Bizerte"
+        self.destination = "Sfax"
+
+    def to_run_task(self) -> dict:
+        return {"scenario_id": self.scenario_id, "seed_index": int(self.scenario_id[-4:])}
 
 
 def _fake_outcomes(tasks: list[dict], workers: int = 1) -> list[dict]:
@@ -68,15 +77,16 @@ def test_generation_resumes_completed_chunks_identically(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    config = load_simulation_config()
-    config["transceiver"]["mode_parameters"] = load_mode_config()
+    config = {"test_config": "chunk-resume"}
+    monkeypatch.setattr(
+        phase2_generate,
+        "sample_scenarios_with_stats",
+        lambda topologies, n, seed, config: ([FakeScenario(i) for i in range(n)], 3),
+    )
     selected = [
         ("tunisia", ROOT / "data" / "topologies" / "tunisia.json"),
     ]
     monkeypatch.setattr(phase2_generate, "selected_topologies", lambda: selected)
-    topology = json.loads(selected[0][1].read_text(encoding="utf-8"))
-    topology["unified_path"] = str(selected[0][1])
-    _, expected_rejected = sample_scenarios_with_stats([topology], 600, 41, config)
     interrupted_calls = 0
 
     def interrupt_after_two_chunks(tasks: list[dict], workers: int) -> list[dict]:
@@ -96,6 +106,7 @@ def test_generation_resumes_completed_chunks_identically(
             config,
             tmp_path,
             runner=interrupt_after_two_chunks,
+            gnpy_version="test-stub",
         )
 
     resumed_dir = tmp_path / "resumed"
@@ -121,6 +132,7 @@ def test_generation_resumes_completed_chunks_identically(
         config,
         tmp_path,
         runner=resumed_runner,
+        gnpy_version="test-stub",
     )
     uninterrupted_manifest = phase2_generate.generate_run(
         "uninterrupted",
@@ -131,6 +143,7 @@ def test_generation_resumes_completed_chunks_identically(
         config,
         tmp_path,
         runner=_fake_outcomes,
+        gnpy_version="test-stub",
     )
 
     assert resumed_calls == [100, 100, 100, 100]
@@ -139,7 +152,7 @@ def test_generation_resumes_completed_chunks_identically(
     assert resumed_manifest["attempted"] == 600
     assert resumed_manifest["successful"] == 564
     assert resumed_manifest["failed"] == 36
-    assert resumed_manifest["rejected"] == expected_rejected
+    assert resumed_manifest["rejected"] == 3
     assert resumed_manifest["duplicate_scenario_ids"] == 0
     assert resumed_manifest["required_column_null_counts"]["paths"]["snr_nli_db"] == 1
     assert resumed_manifest["required_column_null_counts"]["spans"]["cum_snr_nli_db"] == 1
@@ -169,6 +182,7 @@ def test_generation_resumes_completed_chunks_identically(
         config,
         tmp_path,
         runner=fail_if_run,
+        gnpy_version="test-stub",
     )
     assert unchanged_manifest == resumed_manifest
 
@@ -181,6 +195,7 @@ def test_generation_resumes_completed_chunks_identically(
         config,
         tmp_path,
         runner=_fake_outcomes,
+        gnpy_version="test-stub",
     )
     assert all_failed_manifest["successful"] == 0
     assert all_failed_manifest["failed"] == 1

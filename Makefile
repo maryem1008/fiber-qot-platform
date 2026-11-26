@@ -1,6 +1,7 @@
-.PHONY: env-check gnpy-help install-arm64 test lint phase1 phase1-smoke phase2-benchmark phase2-smoke
+.PHONY: env-check gnpy-help install-arm64 test lint phase1 phase1-smoke phase2-benchmark phase2-smoke phase2-pilot
 
 PYTHON ?= python
+PHASE2_WORKERS ?= 2
 
 # Show the selected interpreter and installed GNPy package version.
 env-check:
@@ -33,3 +34,7 @@ phase2-benchmark:
 
 phase2-smoke:
 	PYTHONPATH=src $(PYTHON) scripts/phase2_generate.py --runs 100 --run-id smoke
+
+phase2-pilot:
+	PYTHONPATH=src $(PYTHON) scripts/phase2_generate.py \
+		--runs 2000 --chunk-size 500 --workers $(PHASE2_WORKERS) --run-id cp2b-pilot

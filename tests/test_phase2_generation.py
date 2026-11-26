@@ -6,7 +6,10 @@ from pathlib import Path
 import networkx as nx
 import pytest
 
-from fiber_qot_platform.simulation.phase2 import (
+pytest.importorskip("gnpy")
+pytestmark = pytest.mark.gnpy
+
+from fiber_qot_platform.simulation.phase2 import (  # noqa: E402
     apply_scenario_offsets,
     derive_nli_snr_db,
     feasibility_margin,
