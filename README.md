@@ -1,9 +1,12 @@
 
 # fiber-qot-platform
 
-An open-data and simulation-based project for optical Quality of Transmission (QoT) estimation. The planned platform will compare machine-learning estimates of GSNR/OSNR with GNPy simulations and visualize lightpath feasibility. No operator network data or measured QoT data is included.
+A topology-based and simulation-based project for optical Quality of Transmission (QoT) estimation. The planned platform will compare machine-learning estimates of GSNR/OSNR with GNPy simulations and visualize lightpath feasibility. No operator network data or measured QoT data is included.
 
-**Status:** Phase 1 topology discovery and conversion are underway. Phase 0 was verified on Ubuntu 24.04 ARM64 with CPython 3.12.3. No topology has been converted yet, and no trained model, measured result, or finished application is claimed. See [`docs/CONTINUATION.md`](docs/CONTINUATION.md) for the exact handoff state.
+**Status:** Phase 1 topology conversion is complete. Phase 2 dataset-quality work WI-1 through WI-10 is
+implemented on `fix/phase2-dataset-quality`; the 2,000-scenario pilot is pending. The 100,000-row generation
+and Phase 3 have not started. No trained model, measured QoT result, or finished application is claimed.
+See [`docs/CONTINUATION.md`](docs/CONTINUATION.md) for the handoff.
 
 ## Environment
 
@@ -70,4 +73,6 @@ GNPy output is a simulated physical reference, not a field measurement. The Tuni
 
 ## License and data
 
-Project source files are intended to use the MIT License. Dataset and library licenses will be recorded separately in [`docs/ATTRIBUTION.md`](docs/ATTRIBUTION.md). No external topology or Kaggle dataset has been added at this stage.
+Project source files are intended to use the MIT License. Dataset and library terms are tracked separately in
+[`docs/ATTRIBUTION.md`](docs/ATTRIBUTION.md); the terms for the checked-in Zoo and SNDlib topology inputs are
+not fully verified, so no blanket redistribution permission is claimed.

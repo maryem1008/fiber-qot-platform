@@ -65,6 +65,13 @@ Replaying the previous sampler's formulas for 5,555 indices produced 80 unique c
 distinct launch-power values. The `candidate_pairs(..., limit=40)` implementation caps the selected 18-topology
 set at 720 candidate pairs. These are counts from the old deterministic formulas, not GNPy run results.
 
+The duplicates came from using the same row index to cycle through several lists. The pair index repeated every
+40 rows; 40 is divisible by both the four modes and two spacings, so a given pair kept the same mode and spacing.
+The power formula also repeated every 40 rows, while the channel formula alternated between only two values for
+that pair (its period is 80). Thus each pair produced only two distinct rows before the pattern repeated, yielding
+80 combinations per topology and only eight launch-power values. This is why the redesigned sampler draws each
+parameter independently rather than deriving them from one repeating index.
+
 GNPy 3.0.1 `request.py::compute_constrained_path()` reads ordered intermediate UIDs from `PathRequest.nodes_list`;
 its route examples construct `nodes_list` from the requested ROADMs followed by the destination transceiver and set
 each corresponding `loose_list` entry to `STRICT`. The Phase 2 request can therefore constrain all intermediate

@@ -12,21 +12,30 @@ This file records third-party software and data sources used by the project. Ver
 
 ## Data
 
-No external topology, Kaggle dataset, or operator measurement data has been downloaded or included yet. Candidate dataset search and licensing/access notes are recorded in [`external_data_search.md`](external_data_search.md). Source-specific citation and license details must be added before a dataset is used or redistributed.
+The repository includes Phase 1 topology inputs and derived topology files. It contains no operator
+measurement data. Candidate external QoT dataset search and access notes are recorded in
+[`external_data_search.md`](external_data_search.md); no candidate dataset from that search was downloaded.
 
-## Phase 1 topology data
+## Phase 1 topology data and rights status
 
-- **Internet Topology Zoo**: GraphML source files downloaded from the official
-  `mroughan/InternetTopologyZoo` repository. The dataset is presented as CC BY 4.0 in its
-  Fishshare metadata and requires attribution and indication of changes. Preserve source URLs and
-  topology metadata in `data/topologies/phase1_manifest.json`; this repository does not claim that
-  historical snapshots are current network inventories.
-- **SNDlib**: native XML files are used for Germany50, Nobel-Germany, and India35 with geographic
-  coordinates. SNDlib source and license details are being kept separate until the official dataset
-  terms can be verified from the primary SNDlib source. The downloaded mirror copies are research
-  inputs and must not be redistributed as independently licensed official data.
-- **Tunisia demonstration**: explicitly illustrative and synthetic. City coordinates are only
-  geographic anchors; no relationship to a real operator network is claimed.
+- **Internet Topology Zoo**: Project records identify the GraphML inputs as obtained from the
+  `mroughan/InternetTopologyZoo` GitHub repository. The files retain topology metadata, including
+  network-source and provenance fields where supplied. A prior project note reported that Fishshare
+  metadata presents the collection as CC BY 4.0, but that claim has not been independently verified
+  against the current source repository or checked for applicability to each included topology.
+  Accordingly, this file does not make a blanket license or redistribution-rights claim. Preserve
+  original metadata and attribution, identify conversion changes, and verify applicable terms before
+  redistributing source or derived topology data.
+- **SNDlib**: Germany50, Nobel-Germany, and India35 are present as native-format XML with geographic
+  coordinates and the SNDlib XML namespace. The checked-in files and Phase 1 manifest do not record
+  a per-instance source URL, citation, or license; the applicable primary-source terms have not been
+  verified. These files are retained as research inputs only. No license or redistribution permission
+  is asserted; verify terms and required citation with SNDlib before redistributing them or derivatives.
+- **Tunisia demonstration**: explicitly illustrative and synthetic. City coordinates are geographic
+  anchors for a modeled ring-and-mesh; no relationship to a real operator network is claimed.
+
+The topology graphs and modeled link geometry are abstractions, not current physical-network inventories.
+The Phase 1 manifest records source filenames and topology counts but is not a license registry.
 
 ## Project code
 

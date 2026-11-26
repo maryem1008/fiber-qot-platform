@@ -36,6 +36,21 @@ requirement of more than 1,000.
 - The illustrative synthetic Tunisia network.
 - GNPy 3.0.1 equipment and propagation model.
 
+The Zoo and SNDlib graphs are topology abstractions, not verified inventories of current deployed
+fiber routes. The Tunisia graph is synthetic and illustrative: its link lengths use a 1.25 multiplier
+on great-circle city distances. That factor is a modeling assumption, not measured cable length.
+
+## What the values represent
+
+- **GNPy simulation outputs:** propagated GSNR/OSNR, ASE and NLI noise powers, fiber loss, amplifier
+  gain/noise figure, and total WDM power. These are outputs of the configured GNPy physical model,
+  not field measurements.
+- **Derived values:** feasibility margin and boolean, NLI SNR from same-bandwidth inverse-SNR
+  subtraction, and path/span structural summaries computed from the simulated GNPy path.
+- **Synthetic additions:** sampled amplifier-NF, span-loss and connector-loss offsets; the per-row
+  Gaussian noise standard deviation and noisy GSNR target; and span geometry interpolated along a
+  great-circle line. Geometry is tagged `interpolated_great_circle` and is not a surveyed fiber route.
+
 ## Benchmark
 
 - 100 benchmark runs: 100 successful, 0 failed.
