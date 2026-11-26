@@ -81,6 +81,62 @@ therefore applies a common NF offset for this model. GNPy Fiber span loss includ
 `att_in`; the run-level span and connector offsets will be applied to non-negative input/output connector
 attenuations. These are configured simulation perturbations, not measured properties.
 
+### Phase 1 — Span sizing and EDFA gain evidence (GNPy 3.0.1)
+
+Before changing the Phase 1 converter, calling the existing `split_link()` with 100 km and 85 km reproduced
+uneven spans of `[80, 20]` km and `[80, 5]` km. In the installed GNPy 3.0.1 source,
+`gnpy/core/parameters.py::EdfaOperational.default_values` sets an omitted `gain_target` to `None`.
+`gnpy/core/network.py::compute_gain_power_and_tilt_target()` then computes the target gain from the preceding
+span loss (plus the configured power adjustments) when `effective_gain` is unset. `build_network()` records
+that computed target as the amplifier's `effective_gain`. The Phase 1 converter can therefore omit a fixed
+gain target and let GNPy design loss-compensating gain per span.
+
+The first regeneration also exposed zero-kilometre links in the existing Aarnet and Heanet inputs: rejecting
+those lengths would have removed previously accepted topologies. `split_link()` therefore preserves a zero-length
+link as one zero-length span, while still rejecting negative lengths. Whether these source edges propagate in GNPy
+is checked separately by the post-regeneration smoke runs.
+
+The first post-regeneration run still emitted 1,152 low-gain warnings across the 18 accepted topology designs,
+up from 1,114 before the change. All were for the imposed `std_medium_gain` variety, whose equipment entry has a
+15 dB minimum gain, while GNPy computed lower targets from the short spans. GNPy 3.0.1 `build_network()` calls
+`select_edfa()` when `type_variety` is empty; that routine filters available equipment against the computed gain
+and power targets and chooses the acceptable amplifier with the best noise figure. The converter therefore leaves
+the variety unset as well as the gain target; the post-change warning comparison tests whether this equipment-
+library selection resolves the mismatch.
+
+The comparison ran one 1-channel, 50 GHz, 0 dBm Voyager mode 1 request per accepted topology, using the
+lexically first and last node IDs as endpoints. A Python logging handler counted `WARNING` records from `gnpy`
+loggers during each GNPy run. The three columns distinguish the checked-in fixed-target baseline, the intermediate
+equal-span/automatic-gain design with `std_medium_gain` still imposed, and the final design with both gain and
+variety selected by GNPy:
+
+| Topology | Before | Intermediate | After |
+| --- | ---: | ---: | ---: |
+| sndlib_germany50 | 128 | 210 | 0 |
+| sndlib_india35 | 116 | 44 | 0 |
+| sndlib_nobel-germany | 34 | 56 | 0 |
+| tunisia | 14 | 28 | 0 |
+| zoo_aarnet | 44 | 18 | 0 |
+| zoo_agis | 42 | 32 | 0 |
+| zoo_attmpls | 86 | 72 | 0 |
+| zoo_bbnplanet | 42 | 40 | 0 |
+| zoo_bellcanada | 108 | 150 | 0 |
+| zoo_bics | 72 | 106 | 0 |
+| zoo_crlnetworkservices | 48 | 44 | 0 |
+| zoo_darkstrand | 46 | 32 | 0 |
+| zoo_elibackbone | 46 | 20 | 0 |
+| zoo_geant2009 | 84 | 66 | 0 |
+| zoo_goodnet | 46 | 26 | 0 |
+| zoo_palmetto | 114 | 150 | 0 |
+| zoo_sago | 16 | 26 | 0 |
+| zoo_spiralight | 28 | 32 | 0 |
+| **Total** | **1,114** | **1,152** | **0** |
+
+The first post-change attempt increased warnings rather than reducing them because it retained the medium-gain
+amplifier's 15 dB minimum. Allowing GNPy to select amplifier varieties eliminated those per-design gain warnings
+in the measured run. The packaged Roadm default warning is emitted separately at equipment load and is not
+included in these per-topology design counts.
+
 ### Interview questions
 
 1. **Why split sources into a unified schema?** It separates source parsing from GNPy conversion and downstream ML.

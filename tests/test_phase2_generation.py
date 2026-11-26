@@ -98,16 +98,32 @@ def test_gnpy_scenario_offsets_change_supported_parameters() -> None:
     equipment = load_equipment(use_cache=False)
     network = load_network(ROOT / "data" / "topologies" / "tunisia_gnpy.json", equipment)
     fiber = next(element for element in network if type(element).__name__ == "Fiber")
-    amplifier = next(element for element in network if type(element).__name__ == "Edfa")
     base_con_in = fiber.params.con_in
     base_con_out = fiber.params.con_out
-    base_nf1 = amplifier.params.nf_model.nf1
 
-    apply_scenario_offsets(network, 0.2, 0.4, 0.2)
+    apply_scenario_offsets(network, 0.4, 0.2)
 
     assert fiber.params.con_in == pytest.approx(base_con_in + 0.3)
     assert fiber.params.con_out == pytest.approx(base_con_out + 0.3)
-    assert amplifier.params.nf_model.nf1 == pytest.approx(base_nf1 + 0.2)
+
+
+def test_gnpy_amplifier_nf_offset_applies_after_network_design() -> None:
+    modes = load_mode_config()
+    common = {
+        "topology_id": "tunisia",
+        "unified_path": ROOT / "data" / "topologies" / "tunisia.json",
+        "source": "Bizerte",
+        "destination": "Sfax",
+        "mode_name": "mode 1",
+        "mode": modes["mode 1"],
+        "channels": 1,
+        "spacing_hz": 50e9,
+        "power_dbm": 0.0,
+    }
+    baseline = run_one(**common)
+    shifted = run_one(**common, amplifier_nf_offset_db=0.2)
+
+    assert shifted["amp_nf_mean_db"] == pytest.approx(baseline["amp_nf_mean_db"] + 0.2)
 
 
 def test_cached_networks_match_uncached_for_twenty_scenarios() -> None:

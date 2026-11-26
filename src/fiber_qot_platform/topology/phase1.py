@@ -172,14 +172,15 @@ def build_tunisia() -> tuple[dict[str, dict], list[dict]]:
 
 
 def split_link(length_km: float, max_span_km: float = 80.0) -> list[float]:
-    count = max(1, math.ceil(length_km / max_span_km))
-    remainder = length_km
-    spans = []
-    for _ in range(count):
-        span = min(max_span_km, remainder)
-        spans.append(round(span, 3))
-        remainder -= span
-    return spans
+    if length_km < 0:
+        raise ValueError("length_km must not be negative")
+    if max_span_km <= 0:
+        raise ValueError("max_span_km must be positive")
+    if length_km == 0:
+        return [0.0]
+    count = math.ceil(length_km / max_span_km)
+    span_length = length_km / count
+    return [span_length] * count
 
 
 def make_unified(
@@ -298,8 +299,8 @@ def to_gnpy_network(topology: dict) -> dict:
                 {
                     "uid": edfa_uid,
                     "type": "Edfa",
-                    "type_variety": "std_medium_gain",
-                    "operational": {"gain_target": 16.0, "tilt_target": 0.0, "out_voa": 0.0},
+                    "type_variety": "",
+                    "operational": {"tilt_target": 0.0, "out_voa": 0.0},
                     "metadata": {"location": {"latitude": 0.0, "longitude": 0.0}},
                 }
             )
@@ -307,8 +308,8 @@ def to_gnpy_network(topology: dict) -> dict:
                 {
                     "uid": reverse_edfa_uid,
                     "type": "Edfa",
-                    "type_variety": "std_medium_gain",
-                    "operational": {"gain_target": 16.0, "tilt_target": 0.0, "out_voa": 0.0},
+                    "type_variety": "",
+                    "operational": {"tilt_target": 0.0, "out_voa": 0.0},
                     "metadata": {"location": {"latitude": 0.0, "longitude": 0.0}},
                 }
             )

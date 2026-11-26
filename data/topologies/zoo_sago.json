@@ -126,8 +126,8 @@
       "target": "West Palm Beach",
       "length_km": 85.675,
       "spans_km": [
-        80.0,
-        5.675
+        42.8375,
+        42.8375
       ]
     },
     {
@@ -159,8 +159,8 @@
       "target": "Daytona Beach",
       "length_km": 82.436,
       "spans_km": [
-        80.0,
-        2.436
+        41.218,
+        41.218
       ]
     },
     {
@@ -200,8 +200,8 @@
       "target": "Gordon",
       "length_km": 95.748,
       "spans_km": [
-        80.0,
-        15.748
+        47.874,
+        47.874
       ]
     },
     {
@@ -217,8 +217,8 @@
       "target": "Surrency",
       "length_km": 88.564,
       "spans_km": [
-        80.0,
-        8.564
+        44.282,
+        44.282
       ]
     },
     {
@@ -234,8 +234,8 @@
       "target": "Daytona Beach",
       "length_km": 81.109,
       "spans_km": [
-        80.0,
-        1.109
+        40.5545,
+        40.5545
       ]
     },
     {

@@ -22,6 +22,8 @@ Baud rate comes from the selected installed GNPy mode. The GNPy network currentl
 is therefore not sampled. The per-scenario NF offset is applied to GNPy's variable-gain NF model; the span-loss
 and extra-connector offsets are combined and split evenly across each fiber span's input and output connector
 attenuations. These are synthetic perturbations applied consistently to a run's network.
+EDFA gain targets and varieties are not fixed: GNPy designs loss-compensating gain from each span's modeled
+loss and selects an equipment variety from its installed library based on the gain and power targets.
 
 The configured launch-power interval is [-3, 3] dBm and values are rounded to 0.01 dB, giving at most 601
 distinct rounded values. The test therefore checks for at least 550 distinct values, rather than the impossible

@@ -133,7 +133,6 @@ def graph_for(topology: dict) -> nx.Graph:
 
 def apply_scenario_offsets(
     network,
-    amplifier_nf_offset_db: float,
     span_loss_offset_db: float,
     extra_connector_loss_db: float,
 ) -> None:
@@ -144,7 +143,13 @@ def apply_scenario_offsets(
             element.params.con_out += connector_delta_db
             if element.params.con_in < 0 or element.params.con_out < 0:
                 raise ValueError("scenario offsets produce negative fiber connector attenuation")
-        elif isinstance(element, Edfa) and amplifier_nf_offset_db:
+
+
+def apply_amplifier_nf_offset(network, amplifier_nf_offset_db: float) -> None:
+    if not amplifier_nf_offset_db:
+        return
+    for element in network:
+        if isinstance(element, Edfa):
             nf_model = element.params.nf_model
             if nf_model is None or not all(hasattr(nf_model, name) for name in ("nf1", "nf2")):
                 raise ValueError(
@@ -242,7 +247,6 @@ def run_one(
     )
     apply_scenario_offsets(
         network,
-        amplifier_nf_offset_db,
         span_loss_offset_db,
         extra_connector_loss_db,
     )
@@ -256,6 +260,7 @@ def run_one(
         service_req=request,
         args_power=power_dbm,
     )
+    apply_amplifier_nf_offset(designed, amplifier_nf_offset_db)
     path, propagations, _, infos = transmission_simulation(
         equipment,
         designed,

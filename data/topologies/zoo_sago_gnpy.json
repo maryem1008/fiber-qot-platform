@@ -456,9 +456,8 @@
     {
       "uid": "edfa_0_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -472,9 +471,8 @@
     {
       "uid": "edfa_reverse_0_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -490,7 +488,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 42.8375,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -509,7 +507,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 42.8375,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -526,9 +524,8 @@
     {
       "uid": "edfa_1_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -542,9 +539,8 @@
     {
       "uid": "edfa_reverse_1_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -560,7 +556,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 5.675,
+        "length": 42.8375,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -579,7 +575,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 5.675,
+        "length": 42.8375,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -596,9 +592,8 @@
     {
       "uid": "edfa_1_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -612,9 +607,8 @@
     {
       "uid": "edfa_reverse_1_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -666,9 +660,8 @@
     {
       "uid": "edfa_2_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -682,9 +675,8 @@
     {
       "uid": "edfa_reverse_2_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -736,9 +728,8 @@
     {
       "uid": "edfa_3_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -752,9 +743,8 @@
     {
       "uid": "edfa_reverse_3_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -806,9 +796,8 @@
     {
       "uid": "edfa_4_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -822,9 +811,8 @@
     {
       "uid": "edfa_reverse_4_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -840,7 +828,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 41.218,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -859,7 +847,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 41.218,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -876,9 +864,8 @@
     {
       "uid": "edfa_5_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -892,9 +879,8 @@
     {
       "uid": "edfa_reverse_5_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -910,7 +896,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 2.436,
+        "length": 41.218,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -929,7 +915,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 2.436,
+        "length": 41.218,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -946,9 +932,8 @@
     {
       "uid": "edfa_5_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -962,9 +947,8 @@
     {
       "uid": "edfa_reverse_5_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1016,9 +1000,8 @@
     {
       "uid": "edfa_6_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1032,9 +1015,8 @@
     {
       "uid": "edfa_reverse_6_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1086,9 +1068,8 @@
     {
       "uid": "edfa_7_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1102,9 +1083,8 @@
     {
       "uid": "edfa_reverse_7_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1156,9 +1136,8 @@
     {
       "uid": "edfa_8_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1172,9 +1151,8 @@
     {
       "uid": "edfa_reverse_8_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1226,9 +1204,8 @@
     {
       "uid": "edfa_9_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1242,9 +1219,8 @@
     {
       "uid": "edfa_reverse_9_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1260,7 +1236,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 47.874,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1279,7 +1255,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 47.874,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1296,9 +1272,8 @@
     {
       "uid": "edfa_10_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1312,9 +1287,8 @@
     {
       "uid": "edfa_reverse_10_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1330,7 +1304,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 15.748,
+        "length": 47.874,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1349,7 +1323,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 15.748,
+        "length": 47.874,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1366,9 +1340,8 @@
     {
       "uid": "edfa_10_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1382,9 +1355,8 @@
     {
       "uid": "edfa_reverse_10_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1436,9 +1408,8 @@
     {
       "uid": "edfa_11_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1452,9 +1423,8 @@
     {
       "uid": "edfa_reverse_11_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1470,7 +1440,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 44.282,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1489,7 +1459,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 44.282,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1506,9 +1476,8 @@
     {
       "uid": "edfa_12_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1522,9 +1491,8 @@
     {
       "uid": "edfa_reverse_12_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1540,7 +1508,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 8.564,
+        "length": 44.282,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1559,7 +1527,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 8.564,
+        "length": 44.282,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1576,9 +1544,8 @@
     {
       "uid": "edfa_12_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1592,9 +1559,8 @@
     {
       "uid": "edfa_reverse_12_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1646,9 +1612,8 @@
     {
       "uid": "edfa_13_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1662,9 +1627,8 @@
     {
       "uid": "edfa_reverse_13_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1680,7 +1644,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 40.5545,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1699,7 +1663,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 80.0,
+        "length": 40.5545,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1716,9 +1680,8 @@
     {
       "uid": "edfa_14_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1732,9 +1695,8 @@
     {
       "uid": "edfa_reverse_14_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1750,7 +1712,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 1.109,
+        "length": 40.5545,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1769,7 +1731,7 @@
       "type": "Fiber",
       "type_variety": "SSMF",
       "params": {
-        "length": 1.109,
+        "length": 40.5545,
         "length_units": "km",
         "loss_coef": 0.2,
         "att_in": 0.0,
@@ -1786,9 +1748,8 @@
     {
       "uid": "edfa_14_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1802,9 +1763,8 @@
     {
       "uid": "edfa_reverse_14_1",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1856,9 +1816,8 @@
     {
       "uid": "edfa_15_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1872,9 +1831,8 @@
     {
       "uid": "edfa_reverse_15_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1926,9 +1884,8 @@
     {
       "uid": "edfa_16_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
@@ -1942,9 +1899,8 @@
     {
       "uid": "edfa_reverse_16_0",
       "type": "Edfa",
-      "type_variety": "std_medium_gain",
+      "type_variety": "",
       "operational": {
-        "gain_target": 16.0,
         "tilt_target": 0.0,
         "out_voa": 0.0
       },
