@@ -175,6 +175,20 @@ non-zero GSNR drops, and amplifier output power above post-Fiber power. For the 
 tracer's path-level signal-band GSNR, 0.1 nm GSNR, and 0.1 nm ASE OSNR matched the installed GNPy
 `transmission_simulation()` outputs exactly (0.0 dB difference for each).
 
+### Phase 2 — Chunk/resume behavior evidence
+
+Source inspection of `scripts/phase2_generate.py` confirms that it parses `--chunk-size` but sends the complete
+scenario list to one `run_many()` call, then writes fixed `phase2_smoke.*` filenames without a run manifest,
+atomic replacement, or collision check. The existing legacy smoke outputs are ignored by Git; the new
+run-directory implementation will leave them untouched.
+
+After implementation, the generator ran one real scenario with `--chunk-size 1`: 1 requested, 1 attempted,
+1 successful, 0 failed, 0 rejected, and 0 duplicate IDs. It wrote one chunk and a complete manifest; the merged
+tables contained 1 path row and 6 span rows. The manual merge command also completed and reproduced those row
+counts. The 600-scenario interruption/resume test uses the real deterministic sampler with a stubbed simulation
+runner; it verifies six 100-scenario chunks, skips the first two on resume, and compares resumed versus
+uninterrupted path/span Parquet rows and failure logs.
+
 ### Interview questions
 
 1. **Why split sources into a unified schema?** It separates source parsing from GNPy conversion and downstream ML.

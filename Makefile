@@ -32,4 +32,4 @@ phase2-benchmark:
 	PYTHONPATH=src $(PYTHON) scripts/phase2_benchmark.py
 
 phase2-smoke:
-	PYTHONPATH=src $(PYTHON) scripts/phase2_generate.py --runs 100
+	PYTHONPATH=src $(PYTHON) scripts/phase2_generate.py --runs 100 --run-id smoke

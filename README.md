@@ -43,8 +43,15 @@ topologies, and uses a fixed seed from `configs/simulation.yaml` unless `--seed`
 spacing limits, channel counts, launch powers, route ranks, and synthetic noise levels are sampled independently
 from their configured domains. Routes are constrained through their selected intermediate ROADMs in GNPy.
 
-Run a bounded generation with `python scripts/phase2_generate.py --runs 100 --workers 2`. The `--runs` option
-defaults to 100; do not use the 100,000-row target until the project pilot has passed its go/no-go checkpoint.
+Run a bounded generation with `python scripts/phase2_generate.py --runs 100 --workers 2 --run-id trial-01`.
+Outputs are isolated under `data/generated/<run-id>/`, with numbered path/span Parquet chunks, failure logs,
+and a manifest. Re-run the same command and run ID to resume completed chunks; completed chunks are skipped.
+An existing run ID with different seed/configuration is rejected. Use `--force` only to restart that run ID
+from scratch. The generator also writes merged `paths.parquet` and `spans.parquet`; to rebuild them manually,
+run `python scripts/phase2_merge.py --run-id trial-01`. `make phase2-smoke` uses the run ID `smoke`.
+
+The `--runs` option defaults to 100; do not use the 100,000-row target until the project pilot has passed its
+go/no-go checkpoint.
 
 ## Project structure
 
