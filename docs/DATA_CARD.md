@@ -8,7 +8,9 @@ benchmark and bounded outputs below are real GNPy-generated results, not estimat
 The feasibility counts in the historical smoke and 1,000-run sections below were computed with the
 previous, bandwidth-inconsistent convention and are retained only as historical results. They are not
 valid labels under the corrected convention, and the old generated files have not been regenerated.
-The redesigned sampler has not yet been used to generate a dataset; the pilot is still pending.
+The redesigned sampler has since completed a 2,000-scenario pilot; see
+[`report/CP2B_PILOT_REPORT.md`](report/CP2B_PILOT_REPORT.md). The pilot was a no-go for scaling because its
+random scenarios did not validate controlled launch-power optimum or channel-load effects.
 
 ## Sampling design
 

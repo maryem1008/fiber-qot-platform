@@ -5,10 +5,11 @@
 - Repository: `maryem1008/fiber-qot-platform`.
 - Active branch: `fix/phase2-dataset-quality`.
 - Phase 1 topology conversion is complete. Phase 2 work items WI-1 through WI-10 are committed on the branch.
-- The 2,000-scenario pilot has not run.
+- The 2,000-scenario pilot completed: 2,000 successful, 0 failed, 0 rejected, 0 duplicate IDs, two workers.
+- The pilot report recommends NO-GO for 100,000 rows until controlled launch-power and channel-load checks are done.
 - Do not run the 100,000-row generation or begin Phase 3.
 
-## Phase 2 commits before WI-10
+## Phase 2 work-item commits
 
 | Work item | Commit | Summary |
 |---|---|---|
@@ -21,9 +22,9 @@
 | WI-7 | `f5ced8e` | Add atomic chunk output, manifests, resume, and merge support. |
 | WI-8 | `8b48dee` | Derive NLI labels consistently across bandwidths with explicit invalid flags. |
 | WI-9 | `a9ad1c9` | Mark GNPy tests, add non-GNPy CI readiness, and prepare the pilot target. |
+| WI-10 | `a1a1881` | Document data provenance and the pilot checkpoint. |
 
 These are short hashes for reference; verify the current branch history before continuing.
-WI-10 documentation is included in the commit that records this handoff.
 
 ## Evidence and known adaptations
 
@@ -39,11 +40,8 @@ WI-10 documentation is included in the commit that records this handoff.
 
 ## Next checkpoint
 
-1. Push `fix/phase2-dataset-quality` to the configured remote without force-pushing.
-2. Run exactly 2,000 requested scenarios with `make phase2-pilot` (two workers by default), recording requested,
-   attempted, successful, failed, and rejected counts separately.
-3. Write `docs/report/CP2B_PILOT_REPORT.md` using only measured run results, include required distributions,
-   physical checks and plots, compare old/new feasibility on the same rows, and give a go/no-go recommendation.
-4. Commit and push the measured pilot report and any resulting plots; then stop and wait for the user's direction.
+1. Review, commit, and push the measured pilot report and four plots.
+2. Stop and wait for the user's direction. Do not start the 100,000-row run or Phase 3; the pilot recommendation
+   is NO-GO until controlled launch-power and channel-load diagnostics are addressed.
 
 Do not run 100,000 scenarios or start Phase 3.

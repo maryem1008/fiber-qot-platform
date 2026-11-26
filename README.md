@@ -4,8 +4,9 @@
 A topology-based and simulation-based project for optical Quality of Transmission (QoT) estimation. The planned platform will compare machine-learning estimates of GSNR/OSNR with GNPy simulations and visualize lightpath feasibility. No operator network data or measured QoT data is included.
 
 **Status:** Phase 1 topology conversion is complete. Phase 2 dataset-quality work WI-1 through WI-10 is
-implemented on `fix/phase2-dataset-quality`; the 2,000-scenario pilot is pending. The 100,000-row generation
-and Phase 3 have not started. No trained model, measured QoT result, or finished application is claimed.
+implemented on `fix/phase2-dataset-quality`; the 2,000-scenario pilot completed with a no-go recommendation
+for scaling pending controlled physical diagnostics. The 100,000-row generation and Phase 3 have not started.
+No trained model, measured QoT result, or finished application is claimed.
 See [`docs/CONTINUATION.md`](docs/CONTINUATION.md) for the handoff.
 
 ## Environment
@@ -52,8 +53,8 @@ and a manifest. Re-run the same command and run ID to resume completed chunks; c
 An existing run ID with different seed/configuration is rejected. Use `--force` only to restart that run ID
 from scratch. The generator also writes merged `paths.parquet` and `spans.parquet`; to rebuild them manually,
 run `python scripts/phase2_merge.py --run-id trial-01`. `make phase2-smoke` uses the run ID `smoke`.
-After the work-item validations, `make phase2-pilot` requests exactly 2,000 scenarios with two workers by
-default; override the count of workers with `PHASE2_WORKERS`. Do not run that target before the pilot checkpoint.
+`make phase2-pilot` runs exactly 2,000 scenarios with two workers by default; override the worker count with
+`PHASE2_WORKERS`. The recorded pilot is in [`docs/report/CP2B_PILOT_REPORT.md`](docs/report/CP2B_PILOT_REPORT.md).
 
 The `--runs` option defaults to 100; do not use the 100,000-row target until the project pilot has passed its
 go/no-go checkpoint.
